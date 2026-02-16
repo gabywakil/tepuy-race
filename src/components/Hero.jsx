@@ -1,8 +1,10 @@
 import React from 'react';
 import { MapPin } from 'lucide-react';
 import CountdownTimer from './CountdownTimer';
+import useMedia from '../hooks/useMedia';
 
 const Hero = () => {
+  const { isMobile } = useMedia();
   return (
     <section style={{
       minHeight: '100vh',
@@ -11,7 +13,7 @@ const Hero = () => {
       justifyContent: 'center',
       position: 'relative',
       overflow: 'hidden',
-      paddingTop: '80px',
+      paddingTop: isMobile ? '95px' : '80px',
       width: '100%',
       margin: 0
     }}>
@@ -64,7 +66,7 @@ const Hero = () => {
         textAlign: 'center',
         zIndex: 3,
         maxWidth: '900px',
-        padding: '0 40px',
+        padding: isMobile ? '0 18px' : '0 40px',
         animation: 'fadeInUp 1s ease-out',
         position: 'relative'
       }}>
@@ -73,12 +75,12 @@ const Hero = () => {
           alignItems: 'center',
           gap: '10px',
           backgroundColor: 'rgba(200, 90, 62, 0.1)',
-          padding: '10px 24px',
+          padding: isMobile ? '8px 16px' : '10px 24px',
           borderRadius: '30px',
           marginBottom: '30px',
           border: '1px solid rgba(200, 90, 62, 0.2)',
           fontFamily: "'Inter', sans-serif",
-          fontSize: '14px',
+          fontSize: isMobile ? '12px' : '14px',
           fontWeight: '600',
           color: '#c85a3e',
           letterSpacing: '1px'
@@ -88,7 +90,7 @@ const Hero = () => {
         </div>
 
         <h1 style={{
-          fontSize: '120px',
+          fontSize: isMobile ? '54px' : '120px',
           fontWeight: '900',
           margin: '0 0 20px 0',
           lineHeight: '1',
@@ -102,10 +104,10 @@ const Hero = () => {
         </h1>
 
         <p style={{
-          fontSize: '22px',
+          fontSize: isMobile ? '14px' : '22px',
           fontWeight: '400',
-          letterSpacing: '8px',
-          marginBottom: '40px',
+          letterSpacing: isMobile ? '3px' : '8px',
+          marginBottom: isMobile ? '26px' : '40px',
           color: '#f5f1e8',
           opacity: 0.8,
           fontFamily: "'Inter', sans-serif"
@@ -117,10 +119,10 @@ const Hero = () => {
           backgroundColor: '#c85a3e',
           color: '#f5f1e8',
           border: 'none',
-          padding: '18px 50px',
+          padding: isMobile ? '14px 28px' : '18px 50px',
           borderRadius: '35px',
           cursor: 'pointer',
-          fontSize: '16px',
+          fontSize: isMobile ? '14px' : '16px',
           fontWeight: '700',
           letterSpacing: '1.5px',
           transition: 'all 0.3s ease',
