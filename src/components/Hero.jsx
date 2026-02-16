@@ -45,7 +45,7 @@ const Hero = () => {
           zIndex: 1
         }}
       >
-        <source src="/videos/3.mp4" type="video/mp4" />
+       <source src={`${import.meta.env.BASE_URL}videos/3.mp4`} type="video/mp4" />
         Tu navegador no soporta video HTML5.
       </video>
 
