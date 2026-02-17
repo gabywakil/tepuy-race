@@ -60,16 +60,19 @@ React.useEffect(() => {
           </span>
         </Link>
 
-        {/* Navigation Links */}
-        <div style={{
+        {/* Navigation Links (desktop) */}
+<div style={{
   display: isMobile ? 'none' : 'flex',
   gap: '35px',
   alignItems: 'center',
   fontFamily: "'Inter', sans-serif",
   fontSize: '15px',
   fontWeight: '500'
-        }}>
-          {isMobile && (
+}}>
+  {/* tus Links aquí tal cual */}
+</div>
+          {/* Hamburger (mobile) */}
+{isMobile && (
   <button
     onClick={() => setOpen(v => !v)}
     style={{
@@ -85,6 +88,11 @@ React.useEffect(() => {
       cursor: 'pointer',
       backdropFilter: 'blur(10px)'
     }}
+    aria-label="Open menu"
+  >
+    {open ? <X size={22} /> : <Menu size={22} />}
+  </button>
+)}
     aria-label="Open menu"
   >
     {open ? <X size={22} /> : <Menu size={22} />}
