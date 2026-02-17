@@ -113,3 +113,20 @@ input:focus {
   background-color: #f4d35e;
   color: #f5f1e8;
 }
+
+
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
