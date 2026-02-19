@@ -1,8 +1,11 @@
 import React from 'react';
 import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
 import logoImage from '../assets/logo.png';
+import { Link } from 'react-router-dom';
+import useMedia from '../hooks/useMedia';
 
 const Footer = () => {
+  const { isMobile, isTablet } = useMedia();
   return (
     <footer style={{
       backgroundColor: '#0a4a42',
@@ -18,7 +21,8 @@ const Footer = () => {
       }}>
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(4, 1fr)',
+          gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)',
+gap: isMobile ? '26px' : '60px',
           gap: '60px',
           marginBottom: '60px',
           paddingBottom: '60px',
@@ -61,66 +65,97 @@ const Footer = () => {
           </div>
 
           {/* Navigation */}
-          <div>
-            <h4 style={{
-              fontSize: '14px',
-              fontWeight: '700',
-              letterSpacing: '2px',
-              marginBottom: '20px',
-              color: '#f4d35e',
-              fontFamily: "'Inter', sans-serif"
-            }}>
-              QUICK LINKS
-            </h4>
-            <div style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '12px',
-              fontFamily: "'Inter', sans-serif",
-              fontSize: '14px'
-            }}>
-              <a 
-                href="/" 
-                style={{ color: '#f5f1e8', textDecoration: 'none', opacity: 0.8, transition: 'opacity 0.3s' }}
-                onMouseOver={(e) => e.target.style.opacity = 1}
-                onMouseOut={(e) => e.target.style.opacity = 0.8}
-              >
-                Home
-              </a>
-              <a 
-                href="/about" 
-                style={{ color: '#f5f1e8', textDecoration: 'none', opacity: 0.8, transition: 'opacity 0.3s' }}
-                onMouseOver={(e) => e.target.style.opacity = 1}
-                onMouseOut={(e) => e.target.style.opacity = 0.8}
-              >
-                About Us
-              </a>
-              <a 
-                href="/projects" 
-                style={{ color: '#f5f1e8', textDecoration: 'none', opacity: 0.8, transition: 'opacity 0.3s' }}
-                onMouseOver={(e) => e.target.style.opacity = 1}
-                onMouseOut={(e) => e.target.style.opacity = 0.8}
-              >
-                Our Projects
-              </a>
-              <a 
-                href="/sponsors" 
-                style={{ color: '#f5f1e8', textDecoration: 'none', opacity: 0.8, transition: 'opacity 0.3s' }}
-                onMouseOver={(e) => e.target.style.opacity = 1}
-                onMouseOut={(e) => e.target.style.opacity = 0.8}
-              >
-                Sponsors
-              </a>
-              <a 
-                href="/register" 
-                style={{ color: '#f5f1e8', textDecoration: 'none', opacity: 0.8, transition: 'opacity 0.3s' }}
-                onMouseOver={(e) => e.target.style.opacity = 1}
-                onMouseOut={(e) => e.target.style.opacity = 0.8}
-              >
-                Register
-              </a>
-            </div>
-          </div>
+    {/* Navigation */}
+<div>
+  <h4 style={{
+    fontSize: '14px',
+    fontWeight: '700',
+    letterSpacing: '2px',
+    marginBottom: '20px',
+    color: '#f4d35e',
+    fontFamily: "'Inter', sans-serif"
+  }}>
+    QUICK LINKS
+  </h4>
+
+  <div style={{
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '12px',
+    fontFamily: "'Inter', sans-serif",
+    fontSize: '14px'
+  }}>
+    <Link
+      to="/"
+      style={{
+        color: '#f5f1e8',
+        textDecoration: 'none',
+        opacity: 0.8,
+        transition: 'opacity 0.3s'
+      }}
+      onMouseOver={(e) => { e.currentTarget.style.opacity = 1; }}
+      onMouseOut={(e) => { e.currentTarget.style.opacity = 0.8; }}
+    >
+      Home
+    </Link>
+
+    <Link
+      to="/about"
+      style={{
+        color: '#f5f1e8',
+        textDecoration: 'none',
+        opacity: 0.8,
+        transition: 'opacity 0.3s'
+      }}
+      onMouseOver={(e) => { e.currentTarget.style.opacity = 1; }}
+      onMouseOut={(e) => { e.currentTarget.style.opacity = 0.8; }}
+    >
+      About Us
+    </Link>
+
+    <Link
+      to="/projects"
+      style={{
+        color: '#f5f1e8',
+        textDecoration: 'none',
+        opacity: 0.8,
+        transition: 'opacity 0.3s'
+      }}
+      onMouseOver={(e) => { e.currentTarget.style.opacity = 1; }}
+      onMouseOut={(e) => { e.currentTarget.style.opacity = 0.8; }}
+    >
+      Our Projects
+    </Link>
+
+    <Link
+      to="/sponsors"
+      style={{
+        color: '#f5f1e8',
+        textDecoration: 'none',
+        opacity: 0.8,
+        transition: 'opacity 0.3s'
+      }}
+      onMouseOver={(e) => { e.currentTarget.style.opacity = 1; }}
+      onMouseOut={(e) => { e.currentTarget.style.opacity = 0.8; }}
+    >
+      Sponsors
+    </Link>
+
+    <Link
+      to="/register"
+      style={{
+        color: '#f5f1e8',
+        textDecoration: 'none',
+        opacity: 0.8,
+        transition: 'opacity 0.3s'
+      }}
+      onMouseOver={(e) => { e.currentTarget.style.opacity = 1; }}
+      onMouseOut={(e) => { e.currentTarget.style.opacity = 0.8; }}
+    >
+      Register
+    </Link>
+  </div>
+</div>
 
           {/* Social */}
           <div>
@@ -200,12 +235,9 @@ const Footer = () => {
         </div>
 
         <div style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          fontSize: '13px',
-          opacity: 0.6,
-          fontFamily: "'Inter', sans-serif"
+         flexDirection: isMobile ? 'column' : 'row',
+gap: isMobile ? '16px' : '0',
+textAlign: isMobile ? 'center' : 'left',
         }}>
           <div>© 2024 TEPUY RACE. ALL RIGHTS RESERVED</div>
           <div style={{ display: 'flex', gap: '30px' }}>

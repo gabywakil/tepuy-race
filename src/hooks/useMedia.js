@@ -1,23 +1,27 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export default function useMedia() {
-  const get = () => {
-    const w = window.innerWidth;
-    return {
-      width: w,
-      isMobile: w < 768,
-      isTablet: w >= 768 && w < 1024,
-      isDesktop: w >= 1024,
-    };
-  };
+  const getIsMobile = () =>
+    typeof window !== "undefined"
+      ? window.matchMedia("(max-width: 768px)").matches
+      : false;
 
-  const [media, setMedia] = useState(get());
+  const [isMobile, setIsMobile] = useState(getIsMobile);
 
   useEffect(() => {
-    const onResize = () => setMedia(get());
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
+    const mq = window.matchMedia("(max-width: 768px)");
+    const handler = (e) => setIsMobile(e.matches);
+
+    setIsMobile(mq.matches);
+
+    if (mq.addEventListener) mq.addEventListener("change", handler);
+    else mq.addListener(handler);
+
+    return () => {
+      if (mq.removeEventListener) mq.removeEventListener("change", handler);
+      else mq.removeListener(handler);
+    };
   }, []);
 
-  return media;
+  return useMemo(() => ({ isMobile }), [isMobile]);
 }
