@@ -1,5 +1,6 @@
 import React from 'react';
 import { Award } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const MainSponsors = () => {
   const mainSponsors = [
@@ -184,6 +185,7 @@ const MainSponsors = () => {
   VER TODOS LOS SPONSORS
   <span style={{ fontSize: '20px' }}>→</span>
 </Link>
+          
         </div>
       </div>
     </section>
