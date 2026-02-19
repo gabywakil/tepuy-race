@@ -5,7 +5,6 @@ import useMedia from '../hooks/useMedia';
 
 const Hero = () => {
   const { isMobile } = useMedia();
-  const isMobile = window.innerWidth < 768;
   return (
     <section style={{
       minHeight: '100vh',
