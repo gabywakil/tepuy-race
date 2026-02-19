@@ -1,27 +1,25 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
-export default function useMedia() {
-  const getIsMobile = () =>
-    typeof window !== "undefined"
-      ? window.matchMedia("(max-width: 768px)").matches
-      : false;
+export default function useMedia(query = "(max-width: 768px)") {
+  const getMatch = () =>
+    typeof window !== "undefined" ? window.matchMedia(query).matches : false;
 
-  const [isMobile, setIsMobile] = useState(getIsMobile);
+  const [matches, setMatches] = useState(getMatch);
 
   useEffect(() => {
-    const mq = window.matchMedia("(max-width: 768px)");
-    const handler = (e) => setIsMobile(e.matches);
+    const mql = window.matchMedia(query);
+    const onChange = (e) => setMatches(e.matches);
 
-    setIsMobile(mq.matches);
+    setMatches(mql.matches);
 
-    if (mq.addEventListener) mq.addEventListener("change", handler);
-    else mq.addListener(handler);
+    if (mql.addEventListener) mql.addEventListener("change", onChange);
+    else mql.addListener(onChange);
 
     return () => {
-      if (mq.removeEventListener) mq.removeEventListener("change", handler);
-      else mq.removeListener(handler);
+      if (mql.removeEventListener) mql.removeEventListener("change", onChange);
+      else mql.removeListener(onChange);
     };
-  }, []);
+  }, [query]);
 
-  return useMemo(() => ({ isMobile }), [isMobile]);
+  return { isMobile: matches };
 }
