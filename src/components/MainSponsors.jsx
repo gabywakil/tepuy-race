@@ -154,33 +154,36 @@ const MainSponsors = () => {
           textAlign: 'center',
           marginTop: '60px'
         }}>
-          <a href="/sponsors" style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '10px',
-            color: '#f4d35e',
-            textDecoration: 'none',
-            fontSize: '16px',
-            fontWeight: '600',
-            fontFamily: "'Inter', sans-serif",
-            padding: '15px 35px',
-            border: '2px solid #f4d35e',
-            borderRadius: '30px',
-            transition: 'all 0.3s ease'
-          }}
-          onMouseOver={(e) => {
-            e.currentTarget.style.backgroundColor = '#f4d35e';
-            e.currentTarget.style.color = '#0a4a42';
-            e.currentTarget.style.transform = 'translateY(-2px)';
-          }}
-          onMouseOut={(e) => {
-            e.currentTarget.style.backgroundColor = 'transparent';
-            e.currentTarget.style.color = '#f4d35e';
-            e.currentTarget.style.transform = 'translateY(0)';
-          }}>
-            VER TODOS LOS SPONSORS
-            <span style={{ fontSize: '20px' }}>→</span>
-          </a>
+         <Link
+  to="/sponsors"
+  style={{
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '10px',
+    color: '#f4d35e',
+    textDecoration: 'none',
+    fontSize: '16px',
+    fontWeight: '600',
+    fontFamily: "'Inter', sans-serif",
+    padding: '15px 35px',
+    border: '2px solid #f4d35e',
+    borderRadius: '30px',
+    transition: 'all 0.3s ease'
+  }}
+  onMouseOver={(e) => {
+    e.currentTarget.style.backgroundColor = '#f4d35e';
+    e.currentTarget.style.color = '#0a4a42';
+    e.currentTarget.style.transform = 'translateY(-2px)';
+  }}
+  onMouseOut={(e) => {
+    e.currentTarget.style.backgroundColor = 'transparent';
+    e.currentTarget.style.color = '#f4d35e';
+    e.currentTarget.style.transform = 'translateY(0)';
+  }}
+>
+  VER TODOS LOS SPONSORS
+  <span style={{ fontSize: '20px' }}>→</span>
+</Link>
         </div>
       </div>
     </section>
