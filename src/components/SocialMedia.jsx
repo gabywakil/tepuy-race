@@ -1,40 +1,15 @@
 import React from 'react';
 import { Instagram, Facebook, Youtube, Twitter, Heart } from 'lucide-react';
+import useMedia from '../hooks/useMedia';
 
 const SocialMedia = () => {
+  const { isMobile } = useMedia('(max-width: 768px)');
+
   const socialLinks = [
-    { 
-      icon: Instagram, 
-      name: 'Instagram', 
-      handle: '@tepuyrace',
-      followers: '12.5K',
-      color: '#E1306C',
-      link: 'https://instagram.com/tepuyrace'
-    },
-    { 
-      icon: Facebook, 
-      name: 'Facebook', 
-      handle: '/tepuyrace',
-      followers: '8.3K',
-      color: '#1877F2',
-      link: 'https://facebook.com/tepuyrace'
-    },
-    { 
-      icon: Youtube, 
-      name: 'YouTube', 
-      handle: '@TepuyRace',
-      followers: '5.2K',
-      color: '#FF0000',
-      link: 'https://youtube.com/@tepuyrace'
-    },
-    { 
-      icon: Twitter, 
-      name: 'Twitter', 
-      handle: '@tepuyrace',
-      followers: '4.1K',
-      color: '#1DA1F2',
-      link: 'https://twitter.com/tepuyrace'
-    }
+    { icon: Instagram, name: 'Instagram', handle: '@tepuyrace', followers: '12.5K', color: '#E1306C', link: 'https://instagram.com/tepuyrace' },
+    { icon: Facebook, name: 'Facebook', handle: '/tepuyrace', followers: '8.3K', color: '#1877F2', link: 'https://facebook.com/tepuyrace' },
+    { icon: Youtube, name: 'YouTube', handle: '@TepuyRace', followers: '5.2K', color: '#FF0000', link: 'https://youtube.com/@tepuyrace' },
+    { icon: Twitter, name: 'X (Twitter)', handle: '@tepuyrace', followers: '4.1K', color: '#1DA1F2', link: 'https://twitter.com/tepuyrace' }
   ];
 
   const stats = [
@@ -43,24 +18,21 @@ const SocialMedia = () => {
     { number: '1.2M+', label: 'Impresiones mensuales' }
   ];
 
+  const colsCards = isMobile ? '1fr' : 'repeat(4, 1fr)';
+  const colsStats = isMobile ? '1fr' : 'repeat(3, 1fr)';
+
   return (
     <section style={{
-      padding: '100px 40px',
+      padding: isMobile ? '70px 18px' : '100px 40px',
       backgroundColor: '#0a4a42',
       width: '100%',
       margin: 0,
       borderTop: '1px solid rgba(244, 211, 94, 0.2)',
       borderBottom: '1px solid rgba(244, 211, 94, 0.2)'
     }}>
-      <div style={{
-        maxWidth: '1200px',
-        margin: '0 auto'
-      }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         {/* Header */}
-        <div style={{
-          textAlign: 'center',
-          marginBottom: '70px'
-        }}>
+        <div style={{ textAlign: 'center', marginBottom: isMobile ? '34px' : '70px' }}>
           <div style={{
             display: 'inline-flex',
             alignItems: 'center',
@@ -68,7 +40,7 @@ const SocialMedia = () => {
             backgroundColor: 'rgba(244, 211, 94, 0.1)',
             padding: '10px 24px',
             borderRadius: '30px',
-            marginBottom: '25px',
+            marginBottom: '18px',
             border: '1px solid rgba(244, 211, 94, 0.3)',
             fontFamily: "'Inter', sans-serif",
             fontSize: '13px',
@@ -81,18 +53,18 @@ const SocialMedia = () => {
           </div>
 
           <h2 style={{
-            fontSize: '56px',
+            fontSize: isMobile ? 'clamp(34px, 9vw, 56px)' : '56px',
             fontWeight: '900',
-            marginBottom: '20px',
+            marginBottom: '14px',
             lineHeight: '1.1',
             color: '#f5f1e8',
             fontFamily: "'Playfair Display', serif"
           }}>
             Únete a Nuestra <span style={{ color: '#f4d35e', fontStyle: 'italic' }}>Comunidad</span>
           </h2>
-          
+
           <p style={{
-            fontSize: '18px',
+            fontSize: isMobile ? '15px' : '18px',
             color: '#f5f1e8',
             opacity: 0.8,
             maxWidth: '650px',
@@ -100,17 +72,16 @@ const SocialMedia = () => {
             fontFamily: "'Inter', sans-serif",
             lineHeight: '1.6'
           }}>
-            Comparte tu pasión, inspírate con otros runners y mantente al día 
-            con todas las novedades de Tepuy Race
+            Comparte tu pasión, inspírate con otros runners y mantente al día con todas las novedades de Tepuy Race.
           </p>
         </div>
 
         {/* Social Cards */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(4, 1fr)',
-          gap: '25px',
-          marginBottom: '60px'
+          gridTemplateColumns: colsCards,
+          gap: '16px',
+          marginBottom: isMobile ? '26px' : '50px'
         }}>
           {socialLinks.map((social, index) => {
             const Icon = social.icon;
@@ -121,7 +92,7 @@ const SocialMedia = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  padding: '35px 25px',
+                  padding: isMobile ? '22px 18px' : '32px 22px',
                   backgroundColor: 'rgba(245, 241, 232, 0.08)',
                   borderRadius: '20px',
                   border: '2px solid rgba(244, 211, 94, 0.3)',
@@ -132,56 +103,54 @@ const SocialMedia = () => {
                   display: 'block'
                 }}
                 onMouseOver={(e) => {
+                  if (isMobile) return;
                   e.currentTarget.style.transform = 'translateY(-8px)';
                   e.currentTarget.style.borderColor = social.color;
                   e.currentTarget.style.backgroundColor = `${social.color}15`;
                   e.currentTarget.style.boxShadow = `0 15px 40px ${social.color}30`;
                 }}
                 onMouseOut={(e) => {
+                  if (isMobile) return;
                   e.currentTarget.style.transform = 'translateY(0)';
                   e.currentTarget.style.borderColor = 'rgba(244, 211, 94, 0.3)';
                   e.currentTarget.style.backgroundColor = 'rgba(245, 241, 232, 0.08)';
                   e.currentTarget.style.boxShadow = 'none';
                 }}
               >
-                {/* Icon */}
                 <div style={{
-                  width: '60px',
-                  height: '60px',
+                  width: '58px',
+                  height: '58px',
                   borderRadius: '50%',
                   backgroundColor: `${social.color}20`,
                   border: `3px solid ${social.color}`,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  margin: '0 auto 20px'
+                  margin: '0 auto 14px'
                 }}>
-                  <Icon size={28} color={social.color} strokeWidth={2} />
+                  <Icon size={26} color={social.color} strokeWidth={2} />
                 </div>
 
-                {/* Name */}
                 <div style={{
-                  fontSize: '18px',
-                  fontWeight: '700',
+                  fontSize: '17px',
+                  fontWeight: '800',
                   color: '#f5f1e8',
-                  marginBottom: '8px',
+                  marginBottom: '6px',
                   fontFamily: "'Inter', sans-serif"
                 }}>
                   {social.name}
                 </div>
 
-                {/* Handle */}
                 <div style={{
-                  fontSize: '14px',
+                  fontSize: '13px',
                   color: '#f5f1e8',
-                  opacity: 0.7,
-                  marginBottom: '15px',
+                  opacity: 0.75,
+                  marginBottom: '10px',
                   fontFamily: "'Inter', sans-serif"
                 }}>
                   {social.handle}
                 </div>
 
-                {/* Followers */}
                 <div style={{
                   fontSize: '20px',
                   fontWeight: '900',
@@ -190,8 +159,9 @@ const SocialMedia = () => {
                 }}>
                   {social.followers}
                 </div>
+
                 <div style={{
-                  fontSize: '12px',
+                  fontSize: '11px',
                   color: '#f5f1e8',
                   opacity: 0.6,
                   fontFamily: "'Inter', sans-serif",
@@ -207,32 +177,32 @@ const SocialMedia = () => {
         {/* Stats */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: '30px',
-          marginBottom: '50px'
+          gridTemplateColumns: colsStats,
+          gap: '16px',
+          marginBottom: isMobile ? '26px' : '40px'
         }}>
           {stats.map((stat, index) => (
             <div key={index} style={{
               textAlign: 'center',
-              padding: '30px',
+              padding: isMobile ? '18px' : '28px',
               backgroundColor: 'rgba(244, 211, 94, 0.08)',
               borderRadius: '20px',
               border: '2px solid rgba(244, 211, 94, 0.3)'
             }}>
               <div style={{
-                fontSize: '42px',
+                fontSize: isMobile ? '34px' : '42px',
                 fontWeight: '900',
                 color: '#f4d35e',
-                marginBottom: '10px',
+                marginBottom: '8px',
                 fontFamily: "'Playfair Display', serif"
               }}>
                 {stat.number}
               </div>
               <div style={{
-                fontSize: '14px',
-                fontWeight: '600',
+                fontSize: '13px',
+                fontWeight: '700',
                 color: '#f5f1e8',
-                opacity: 0.8,
+                opacity: 0.85,
                 letterSpacing: '1px',
                 fontFamily: "'Inter', sans-serif"
               }}>
@@ -242,30 +212,30 @@ const SocialMedia = () => {
           ))}
         </div>
 
-        {/* Hashtag CTA */}
+        {/* Hashtag */}
         <div style={{
           textAlign: 'center',
-          padding: '50px',
+          padding: isMobile ? '26px 18px' : '50px',
           backgroundColor: 'rgba(200, 90, 62, 0.12)',
           borderRadius: '25px',
           border: '2px solid #c85a3e'
         }}>
           <div style={{
-            fontSize: '16px',
-            fontWeight: '600',
+            fontSize: '15px',
+            fontWeight: '700',
             color: '#f5f1e8',
-            marginBottom: '15px',
+            marginBottom: '10px',
             fontFamily: "'Inter', sans-serif",
-            opacity: 0.9
+            opacity: 0.95
           }}>
             Comparte tu experiencia con
           </div>
-          
+
           <div style={{
-            fontSize: '48px',
+            fontSize: isMobile ? '38px' : '48px',
             fontWeight: '900',
             color: '#f4d35e',
-            marginBottom: '20px',
+            marginBottom: '12px',
             fontFamily: "'Playfair Display', serif",
             fontStyle: 'italic'
           }}>
@@ -273,15 +243,15 @@ const SocialMedia = () => {
           </div>
 
           <p style={{
-            fontSize: '15px',
+            fontSize: '14px',
             color: '#f5f1e8',
-            opacity: 0.7,
+            opacity: 0.75,
             fontFamily: "'Inter', sans-serif",
-            maxWidth: '500px',
-            margin: '0 auto'
+            maxWidth: '520px',
+            margin: '0 auto',
+            lineHeight: '1.6'
           }}>
-            Etiquétanos en tus fotos y videos. Las mejores publicaciones 
-            serán compartidas en nuestras redes oficiales
+            Etiquétanos en tus fotos y videos. Las mejores publicaciones serán compartidas en nuestras redes oficiales.
           </p>
         </div>
       </div>
