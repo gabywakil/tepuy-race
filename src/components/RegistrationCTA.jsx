@@ -9,22 +9,9 @@ const RegistrationCTA = () => {
 
   const highlights = [
     { icon: Calendar, text: "Evento: Octubre 15, 2024" },
-    { icon: MapPin, text: "Mount Tepuy Plateau, Venezuela" },
-    { icon: Users, text: "Cupos Limitados: 500 corredores" }
+    { icon: MapPin, text: "Monte Tepuy (Meseta), Venezuela" },
+    { icon: Users, text: "Cupos limitados: 500 corredores" }
   ];
-
-  const handleRegisterClick = () => {
-    navigate('/checkout', {
-      state: {
-        race: {
-          id: '10k',
-          name: '10K Aventura',
-          distance: '10K',
-          price: '$65'
-        }
-      }
-    });
-  };
 
   return (
     <section style={{
@@ -76,7 +63,7 @@ const RegistrationCTA = () => {
             gap: isMobile ? '26px' : '60px',
             alignItems: 'center'
           }}>
-            {/* LEFT SIDE */}
+            {/* IZQUIERDA */}
             <div>
               <div style={{
                 display: 'inline-block',
@@ -112,14 +99,14 @@ const RegistrationCTA = () => {
                 marginBottom: isMobile ? '22px' : '40px',
                 fontFamily: "'Inter', sans-serif"
               }}>
-                Únete a cientos de atletas de todo el mundo en la experiencia de trail running más épica de Sudamérica.
+                Únete a atletas de todo el mundo en la experiencia de trail running más épica de Sudamérica.
               </p>
 
               <div style={{
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '12px',
-                marginBottom: isMobile ? '22px' : '45px'
+                marginBottom: isMobile ? '10px' : '0px'
               }}>
                 {highlights.map((item, index) => {
                   const Icon = item.icon;
@@ -153,10 +140,49 @@ const RegistrationCTA = () => {
               </div>
             </div>
 
-            {/* RIGHT SIDE */}
+            {/* DERECHA */}
             <div style={{ textAlign: 'center' }}>
+              <div style={{
+                backgroundColor: 'rgba(10, 74, 66, 0.35)',
+                border: '1px solid rgba(244, 211, 94, 0.25)',
+                borderRadius: '20px',
+                padding: isMobile ? '18px' : '24px',
+                marginBottom: '18px'
+              }}>
+                <div style={{
+                  fontSize: '13px',
+                  opacity: 0.75,
+                  color: '#f5f1e8',
+                  fontFamily: "'Inter', sans-serif",
+                  marginBottom: '8px',
+                  letterSpacing: '1.2px'
+                }}>
+                  TU INSCRIPCIÓN INCLUYE
+                </div>
+
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+                  gap: '10px'
+                }}>
+                  {['Kit de corredor', 'Medalla finisher', 'Chip de cronometraje', 'Hidratación'].map((benefit, idx) => (
+                    <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <CheckCircle size={16} color="#f4d35e" strokeWidth={2.5} />
+                      <span style={{
+                        fontSize: '14px',
+                        color: '#f5f1e8',
+                        fontFamily: "'Inter', sans-serif",
+                        opacity: 0.9
+                      }}>
+                        {benefit}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
               <button
-                onClick={handleRegisterClick}
+                onClick={() => navigate('/race-selection')}
                 style={{
                   width: '100%',
                   backgroundColor: '#c85a3e',
@@ -176,23 +202,57 @@ const RegistrationCTA = () => {
                   justifyContent: 'center',
                   gap: '12px'
                 }}
-                onMouseOver={(e) => {
-                  if (isMobile) return;
-                  e.currentTarget.style.backgroundColor = '#b04935';
-                  e.currentTarget.style.transform = 'translateY(-3px)';
-                  e.currentTarget.style.boxShadow = '0 15px 45px rgba(200, 90, 62, 0.5)';
-                }}
-                onMouseOut={(e) => {
-                  if (isMobile) return;
-                  e.currentTarget.style.backgroundColor = '#c85a3e';
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 10px 35px rgba(200, 90, 62, 0.4)';
-                }}
               >
                 INSCRÍBETE AHORA <ArrowRight size={22} strokeWidth={3} />
               </button>
+
+              <div style={{
+                fontSize: '13px',
+                color: '#f5f1e8',
+                fontFamily: "'Inter', sans-serif",
+                opacity: 0.7,
+                marginTop: '12px'
+              }}>
+                🔒 Registro seguro • Confirmación por email
+              </div>
             </div>
           </div>
+        </div>
+
+        <div style={{
+          marginTop: '26px',
+          display: 'flex',
+          justifyContent: 'center',
+          gap: isMobile ? '14px' : '50px',
+          flexWrap: 'wrap'
+        }}>
+          {[
+            { label: 'Inicio', value: '15 Oct, 2024' },
+            { label: 'Capacidad', value: '500 atletas' },
+            { label: 'Edad mínima', value: '18 años' }
+          ].map((info, index) => (
+            <div key={index} style={{ textAlign: 'center', minWidth: isMobile ? '140px' : 'auto' }}>
+              <div style={{
+                fontSize: '13px',
+                fontWeight: '600',
+                color: '#f5f1e8',
+                opacity: 0.6,
+                marginBottom: '5px',
+                fontFamily: "'Inter', sans-serif",
+                letterSpacing: '1px'
+              }}>
+                {info.label}
+              </div>
+              <div style={{
+                fontSize: '16px',
+                fontWeight: '700',
+                color: '#f4d35e',
+                fontFamily: "'Inter', sans-serif"
+              }}>
+                {info.value}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
