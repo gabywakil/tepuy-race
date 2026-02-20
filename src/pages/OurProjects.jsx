@@ -1,7 +1,10 @@
 import React from 'react';
 import { Calendar, MapPin, Users, Award, ArrowRight } from 'lucide-react';
+import useMedia from '../hooks/useMedia';
 
 const OurProjects = () => {
+  const { isMobile } = useMedia('(max-width: 768px)');
+
   const pastEvents = [
     {
       year: "2024",
@@ -30,24 +33,9 @@ const OurProjects = () => {
   ];
 
   const upcomingEvents = [
-    {
-      date: "Octubre 2024",
-      name: "Tepuy Race 2024",
-      status: "Inscripciones Abiertas",
-      color: "#f4d35e"
-    },
-    {
-      date: "Diciembre 2024",
-      name: "Tepuy Night Trail",
-      status: "Próximamente",
-      color: "#c85a3e"
-    },
-    {
-      date: "Marzo 2025",
-      name: "Tepuy Kids Run",
-      status: "En Planificación",
-      color: "#f4d35e"
-    }
+    { date: "Octubre 2024", name: "Tepuy Race 2024", status: "Inscripciones Abiertas", color: "#f4d35e" },
+    { date: "Diciembre 2024", name: "Tepuy Night Trail", status: "Próximamente", color: "#c85a3e" },
+    { date: "Marzo 2025", name: "Tepuy Kids Run", status: "En Planificación", color: "#f4d35e" }
   ];
 
   const achievements = [
@@ -56,6 +44,8 @@ const OurProjects = () => {
     { number: "15", label: "Países participantes" },
     { number: "98%", label: "Satisfacción" }
   ];
+
+  const pagePad = isMobile ? '0 18px' : '0 40px';
 
   return (
     <div style={{
@@ -66,14 +56,8 @@ const OurProjects = () => {
       margin: 0
     }}>
       {/* Hero */}
-      <section style={{
-        padding: '80px 40px',
-        textAlign: 'center'
-      }}>
-        <div style={{
-          maxWidth: '900px',
-          margin: '0 auto'
-        }}>
+      <section style={{ padding: isMobile ? '60px 18px' : '80px 40px', textAlign: 'center' }}>
+        <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <div style={{
             display: 'inline-block',
             backgroundColor: 'rgba(200, 90, 62, 0.15)',
@@ -83,17 +67,17 @@ const OurProjects = () => {
             fontSize: '13px',
             fontWeight: '700',
             letterSpacing: '2px',
-            marginBottom: '30px',
+            marginBottom: '26px',
             fontFamily: "'Inter', sans-serif"
           }}>
             NUESTROS PROYECTOS
           </div>
 
           <h1 style={{
-            fontSize: '72px',
+            fontSize: isMobile ? 'clamp(34px, 9vw, 54px)' : '72px',
             fontWeight: '900',
-            marginBottom: '30px',
-            lineHeight: '1',
+            marginBottom: isMobile ? '18px' : '30px',
+            lineHeight: '1.02',
             color: '#f5f1e8',
             fontFamily: "'Playfair Display', serif"
           }}>
@@ -101,13 +85,13 @@ const OurProjects = () => {
           </h1>
 
           <p style={{
-            fontSize: '20px',
-            lineHeight: '1.7',
+            fontSize: isMobile ? '15px' : '20px',
+            lineHeight: '1.75',
             color: '#f5f1e8',
             opacity: 0.85,
             fontFamily: "'Inter', sans-serif"
           }}>
-            Desde 2016, hemos organizado eventos que desafían límites, 
+            Desde 2016, hemos organizado eventos que desafían límites,
             construyen comunidades y celebran el espíritu del trail running.
           </p>
         </div>
@@ -115,7 +99,7 @@ const OurProjects = () => {
 
       {/* Achievements */}
       <section style={{
-        padding: '60px 40px',
+        padding: isMobile ? '40px 18px' : '60px 40px',
         borderTop: '1px solid rgba(244, 211, 94, 0.2)',
         borderBottom: '1px solid rgba(244, 211, 94, 0.2)'
       }}>
@@ -123,38 +107,43 @@ const OurProjects = () => {
           maxWidth: '1200px',
           margin: '0 auto',
           display: 'grid',
-          gridTemplateColumns: 'repeat(4, 1fr)',
-          gap: '40px'
+          gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(4, 1fr)',
+          gap: isMobile ? '14px' : '40px'
         }}>
           {achievements.map((achievement, index) => (
-            <div key={index} style={{
-              textAlign: 'center',
-              padding: '30px 20px',
-              backgroundColor: 'rgba(245, 241, 232, 0.05)',
-              borderRadius: '20px',
-              border: '2px solid rgba(244, 211, 94, 0.3)',
-              transition: 'all 0.3s ease',
-              cursor: 'pointer'
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.borderColor = '#f4d35e';
-              e.currentTarget.style.transform = 'translateY(-5px)';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.borderColor = 'rgba(244, 211, 94, 0.3)';
-              e.currentTarget.style.transform = 'translateY(0)';
-            }}>
+            <div
+              key={index}
+              style={{
+                textAlign: 'center',
+                padding: isMobile ? '18px 12px' : '30px 20px',
+                backgroundColor: 'rgba(245, 241, 232, 0.05)',
+                borderRadius: '20px',
+                border: '2px solid rgba(244, 211, 94, 0.3)',
+                transition: 'all 0.3s ease',
+                cursor: 'pointer'
+              }}
+              onMouseOver={(e) => {
+                if (isMobile) return;
+                e.currentTarget.style.borderColor = '#f4d35e';
+                e.currentTarget.style.transform = 'translateY(-5px)';
+              }}
+              onMouseOut={(e) => {
+                if (isMobile) return;
+                e.currentTarget.style.borderColor = 'rgba(244, 211, 94, 0.3)';
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
+            >
               <div style={{
-                fontSize: '48px',
+                fontSize: isMobile ? '32px' : '48px',
                 fontWeight: '900',
                 color: '#f4d35e',
-                marginBottom: '10px',
+                marginBottom: '8px',
                 fontFamily: "'Playfair Display', serif"
               }}>
                 {achievement.number}
               </div>
               <div style={{
-                fontSize: '14px',
+                fontSize: '13px',
                 fontWeight: '600',
                 color: '#f5f1e8',
                 opacity: 0.8,
@@ -169,27 +158,20 @@ const OurProjects = () => {
       </section>
 
       {/* Past Events */}
-      <section style={{
-        padding: '100px 40px'
-      }}>
-        <div style={{
-          maxWidth: '1200px',
-          margin: '0 auto'
-        }}>
-          <div style={{
-            marginBottom: '60px'
-          }}>
+      <section style={{ padding: isMobile ? '60px 18px' : '100px 40px' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <div style={{ marginBottom: isMobile ? '28px' : '60px' }}>
             <h2 style={{
-              fontSize: '52px',
+              fontSize: isMobile ? 'clamp(30px, 7vw, 44px)' : '52px',
               fontWeight: '900',
-              marginBottom: '20px',
+              marginBottom: '14px',
               color: '#f5f1e8',
               fontFamily: "'Playfair Display', serif"
             }}>
               Eventos <span style={{ color: '#f4d35e', fontStyle: 'italic' }}>Pasados</span>
             </h2>
             <p style={{
-              fontSize: '18px',
+              fontSize: isMobile ? '14px' : '18px',
               color: '#f5f1e8',
               opacity: 0.7,
               fontFamily: "'Inter', sans-serif"
@@ -198,75 +180,72 @@ const OurProjects = () => {
             </p>
           </div>
 
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '30px'
-          }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: isMobile ? '16px' : '30px' }}>
             {pastEvents.map((event, index) => (
-              <div key={index} style={{
-                padding: '40px 50px',
-                backgroundColor: 'rgba(245, 241, 232, 0.08)',
-                borderRadius: '25px',
-                border: '2px solid rgba(244, 211, 94, 0.3)',
-                transition: 'all 0.3s ease',
-                cursor: 'pointer',
-                position: 'relative',
-                overflow: 'hidden'
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.borderColor = '#f4d35e';
-                e.currentTarget.style.backgroundColor = 'rgba(244, 211, 94, 0.1)';
-                e.currentTarget.style.transform = 'translateX(10px)';
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(244, 211, 94, 0.3)';
-                e.currentTarget.style.backgroundColor = 'rgba(245, 241, 232, 0.08)';
-                e.currentTarget.style.transform = 'translateX(0)';
-              }}>
-                {/* Year Badge */}
+              <div
+                key={index}
+                style={{
+                  padding: isMobile ? '22px 18px' : '40px 50px',
+                  backgroundColor: 'rgba(245, 241, 232, 0.08)',
+                  borderRadius: '25px',
+                  border: '2px solid rgba(244, 211, 94, 0.3)',
+                  transition: 'all 0.3s ease',
+                  cursor: 'pointer',
+                  position: 'relative',
+                  overflow: 'hidden'
+                }}
+                onMouseOver={(e) => {
+                  if (isMobile) return;
+                  e.currentTarget.style.borderColor = '#f4d35e';
+                  e.currentTarget.style.backgroundColor = 'rgba(244, 211, 94, 0.1)';
+                  e.currentTarget.style.transform = 'translateX(10px)';
+                }}
+                onMouseOut={(e) => {
+                  if (isMobile) return;
+                  e.currentTarget.style.borderColor = 'rgba(244, 211, 94, 0.3)';
+                  e.currentTarget.style.backgroundColor = 'rgba(245, 241, 232, 0.08)';
+                  e.currentTarget.style.transform = 'translateX(0)';
+                }}
+              >
+                {/* Year watermark */}
                 <div style={{
                   position: 'absolute',
-                  top: '20px',
-                  right: '30px',
-                  fontSize: '72px',
+                  top: isMobile ? '10px' : '20px',
+                  right: isMobile ? '14px' : '30px',
+                  fontSize: isMobile ? '44px' : '72px',
                   fontWeight: '900',
-                  color: 'rgba(244, 211, 94, 0.1)',
+                  color: 'rgba(244, 211, 94, 0.12)',
                   fontFamily: "'Playfair Display', serif",
-                  lineHeight: '1'
+                  lineHeight: '1',
+                  pointerEvents: 'none'
                 }}>
                   {event.year}
                 </div>
 
                 <div style={{
                   display: 'grid',
-                  gridTemplateColumns: '2fr 1fr',
-                  gap: '40px',
+                  gridTemplateColumns: isMobile ? '1fr' : '2fr 1fr',
+                  gap: isMobile ? '18px' : '40px',
                   position: 'relative',
                   zIndex: 1
                 }}>
                   <div>
                     <h3 style={{
-                      fontSize: '32px',
+                      fontSize: isMobile ? '22px' : '32px',
                       fontWeight: '900',
                       color: '#f5f1e8',
-                      marginBottom: '20px',
+                      marginBottom: '16px',
                       fontFamily: "'Playfair Display', serif"
                     }}>
                       {event.name}
                     </h3>
 
-                    <div style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: '12px',
-                      marginBottom: '20px'
-                    }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '16px' }}>
                       <div style={{
                         display: 'flex',
                         alignItems: 'center',
                         gap: '12px',
-                        fontSize: '15px',
+                        fontSize: '14px',
                         color: '#f5f1e8',
                         fontFamily: "'Inter', sans-serif"
                       }}>
@@ -278,7 +257,7 @@ const OurProjects = () => {
                         display: 'flex',
                         alignItems: 'center',
                         gap: '12px',
-                        fontSize: '15px',
+                        fontSize: '14px',
                         color: '#f5f1e8',
                         fontFamily: "'Inter', sans-serif"
                       }}>
@@ -289,11 +268,11 @@ const OurProjects = () => {
 
                     <div style={{
                       display: 'inline-block',
-                      padding: '8px 20px',
+                      padding: '8px 18px',
                       backgroundColor: 'rgba(244, 211, 94, 0.15)',
                       border: '2px solid #f4d35e',
                       borderRadius: '20px',
-                      fontSize: '13px',
+                      fontSize: '12px',
                       fontWeight: '700',
                       color: '#f4d35e',
                       fontFamily: "'Inter', sans-serif",
@@ -307,16 +286,17 @@ const OurProjects = () => {
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
-                    alignItems: 'flex-end'
+                    alignItems: isMobile ? 'flex-start' : 'flex-end'
                   }}>
                     <div style={{
-                      padding: '20px 30px',
+                      padding: isMobile ? '16px' : '20px 30px',
                       backgroundColor: 'rgba(200, 90, 62, 0.15)',
                       borderRadius: '15px',
                       border: '2px solid #c85a3e',
-                      textAlign: 'right'
+                      textAlign: isMobile ? 'left' : 'right',
+                      width: isMobile ? '100%' : 'auto'
                     }}>
-                      <Award size={24} color="#c85a3e" style={{ marginBottom: '10px' }} />
+                      <Award size={22} color="#c85a3e" style={{ marginBottom: '8px' }} />
                       <div style={{
                         fontSize: '14px',
                         fontWeight: '700',
@@ -329,6 +309,7 @@ const OurProjects = () => {
                     </div>
                   </div>
                 </div>
+
               </div>
             ))}
           </div>
@@ -337,29 +318,24 @@ const OurProjects = () => {
 
       {/* Upcoming Events */}
       <section style={{
-        padding: '100px 40px',
+        padding: isMobile ? '60px 18px' : '100px 40px',
         backgroundColor: 'rgba(244, 211, 94, 0.05)',
         borderTop: '1px solid rgba(244, 211, 94, 0.2)',
         borderBottom: '1px solid rgba(244, 211, 94, 0.2)'
       }}>
-        <div style={{
-          maxWidth: '1200px',
-          margin: '0 auto'
-        }}>
-          <div style={{
-            marginBottom: '60px'
-          }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <div style={{ marginBottom: isMobile ? '28px' : '60px' }}>
             <h2 style={{
-              fontSize: '52px',
+              fontSize: isMobile ? 'clamp(30px, 7vw, 44px)' : '52px',
               fontWeight: '900',
-              marginBottom: '20px',
+              marginBottom: '14px',
               color: '#f5f1e8',
               fontFamily: "'Playfair Display', serif"
             }}>
               Próximos <span style={{ color: '#f4d35e', fontStyle: 'italic' }}>Eventos</span>
             </h2>
             <p style={{
-              fontSize: '18px',
+              fontSize: isMobile ? '14px' : '18px',
               color: '#f5f1e8',
               opacity: 0.7,
               fontFamily: "'Inter', sans-serif"
@@ -370,33 +346,38 @@ const OurProjects = () => {
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '30px'
+            gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
+            gap: isMobile ? '14px' : '30px'
           }}>
             {upcomingEvents.map((event, index) => (
-              <div key={index} style={{
-                padding: '40px 35px',
-                backgroundColor: 'rgba(10, 74, 66, 0.4)',
-                borderRadius: '25px',
-                border: `3px solid ${event.color}`,
-                transition: 'all 0.3s ease',
-                cursor: 'pointer',
-                textAlign: 'center'
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.transform = 'translateY(-10px)';
-                e.currentTarget.style.boxShadow = `0 20px 50px ${event.color}40`;
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = 'none';
-              }}>
+              <div
+                key={index}
+                style={{
+                  padding: isMobile ? '24px 18px' : '40px 35px',
+                  backgroundColor: 'rgba(10, 74, 66, 0.4)',
+                  borderRadius: '25px',
+                  border: `3px solid ${event.color}`,
+                  transition: 'all 0.3s ease',
+                  cursor: 'pointer',
+                  textAlign: 'center'
+                }}
+                onMouseOver={(e) => {
+                  if (isMobile) return;
+                  e.currentTarget.style.transform = 'translateY(-10px)';
+                  e.currentTarget.style.boxShadow = `0 20px 50px ${event.color}40`;
+                }}
+                onMouseOut={(e) => {
+                  if (isMobile) return;
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = 'none';
+                }}
+              >
                 <div style={{
                   display: 'inline-block',
-                  padding: '10px 20px',
+                  padding: '10px 18px',
                   backgroundColor: `${event.color}20`,
                   borderRadius: '20px',
-                  marginBottom: '25px',
+                  marginBottom: '18px',
                   fontSize: '13px',
                   fontWeight: '700',
                   color: event.color,
@@ -407,10 +388,10 @@ const OurProjects = () => {
                 </div>
 
                 <h3 style={{
-                  fontSize: '26px',
+                  fontSize: isMobile ? '20px' : '26px',
                   fontWeight: '900',
                   color: '#f5f1e8',
-                  marginBottom: '15px',
+                  marginBottom: '10px',
                   fontFamily: "'Playfair Display', serif",
                   lineHeight: '1.2'
                 }}>
@@ -421,7 +402,7 @@ const OurProjects = () => {
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '8px',
-                  padding: '12px 24px',
+                  padding: '12px 20px',
                   backgroundColor: 'rgba(245, 241, 232, 0.1)',
                   borderRadius: '25px',
                   border: `2px solid ${event.color}`,
@@ -429,7 +410,7 @@ const OurProjects = () => {
                   fontWeight: '700',
                   color: '#f5f1e8',
                   fontFamily: "'Inter', sans-serif",
-                  marginTop: '20px'
+                  marginTop: '14px'
                 }}>
                   {event.status}
                   <ArrowRight size={16} color={event.color} />
@@ -441,28 +422,20 @@ const OurProjects = () => {
       </section>
 
       {/* Gallery Teaser */}
-      <section style={{
-        padding: '100px 40px'
-      }}>
-        <div style={{
-          maxWidth: '1200px',
-          margin: '0 auto'
-        }}>
-          <div style={{
-            marginBottom: '60px',
-            textAlign: 'center'
-          }}>
+      <section style={{ padding: isMobile ? '60px 18px' : '100px 40px' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <div style={{ marginBottom: isMobile ? '26px' : '60px', textAlign: 'center' }}>
             <h2 style={{
-              fontSize: '52px',
+              fontSize: isMobile ? 'clamp(30px, 7vw, 44px)' : '52px',
               fontWeight: '900',
-              marginBottom: '20px',
+              marginBottom: '14px',
               color: '#f5f1e8',
               fontFamily: "'Playfair Display', serif"
             }}>
               Momentos <span style={{ color: '#f4d35e', fontStyle: 'italic' }}>Épicos</span>
             </h2>
             <p style={{
-              fontSize: '18px',
+              fontSize: isMobile ? '14px' : '18px',
               color: '#f5f1e8',
               opacity: 0.7,
               fontFamily: "'Inter', sans-serif"
@@ -471,68 +444,76 @@ const OurProjects = () => {
             </p>
           </div>
 
-          {/* Gallery Grid Placeholder */}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: '20px',
-            marginBottom: '50px'
+            gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(4, 1fr)',
+            gap: isMobile ? '12px' : '20px',
+            marginBottom: '40px'
           }}>
             {[1, 2, 3, 4, 5, 6, 7, 8].map((item, index) => (
-              <div key={index} style={{
-                height: '200px',
-                borderRadius: '20px',
-                background: `linear-gradient(${135 + index * 20}deg, rgba(200, 90, 62, ${0.2 + index * 0.05}) 0%, rgba(244, 211, 94, ${0.2 + index * 0.05}) 100%)`,
-                border: '2px solid rgba(244, 211, 94, 0.3)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '14px',
-                fontWeight: '700',
-                color: '#f5f1e8',
-                fontFamily: "'Inter', sans-serif",
-                cursor: 'pointer',
-                transition: 'all 0.3s ease'
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.transform = 'scale(1.05)';
-                e.currentTarget.style.borderColor = '#f4d35e';
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.transform = 'scale(1)';
-                e.currentTarget.style.borderColor = 'rgba(244, 211, 94, 0.3)';
-              }}>
+              <div
+                key={index}
+                style={{
+                  height: isMobile ? '140px' : '200px',
+                  borderRadius: '20px',
+                  background: `linear-gradient(${135 + index * 20}deg, rgba(200, 90, 62, ${0.2 + index * 0.05}) 0%, rgba(244, 211, 94, ${0.2 + index * 0.05}) 100%)`,
+                  border: '2px solid rgba(244, 211, 94, 0.3)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '13px',
+                  fontWeight: '700',
+                  color: '#f5f1e8',
+                  fontFamily: "'Inter', sans-serif",
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease'
+                }}
+                onMouseOver={(e) => {
+                  if (isMobile) return;
+                  e.currentTarget.style.transform = 'scale(1.05)';
+                  e.currentTarget.style.borderColor = '#f4d35e';
+                }}
+                onMouseOut={(e) => {
+                  if (isMobile) return;
+                  e.currentTarget.style.transform = 'scale(1)';
+                  e.currentTarget.style.borderColor = 'rgba(244, 211, 94, 0.3)';
+                }}
+              >
                 FOTO {item}
               </div>
             ))}
           </div>
 
-          <div style={{
-            textAlign: 'center'
-          }}>
-            <button style={{
-              backgroundColor: 'transparent',
-              color: '#f5f1e8',
-              border: '2px solid #f4d35e',
-              padding: '18px 45px',
-              borderRadius: '50px',
-              cursor: 'pointer',
-              fontSize: '15px',
-              fontWeight: '700',
-              fontFamily: "'Inter', sans-serif",
-              letterSpacing: '1px',
-              transition: 'all 0.3s ease'
-            }}
-            onMouseOver={(e) => {
-              e.target.style.backgroundColor = '#f4d35e';
-              e.target.style.color = '#0a4a42';
-              e.target.style.transform = 'translateY(-3px)';
-            }}
-            onMouseOut={(e) => {
-              e.target.style.backgroundColor = 'transparent';
-              e.target.style.color = '#f5f1e8';
-              e.target.style.transform = 'translateY(0)';
-            }}>
+          <div style={{ textAlign: 'center' }}>
+            <button
+              style={{
+                backgroundColor: 'transparent',
+                color: '#f5f1e8',
+                border: '2px solid #f4d35e',
+                padding: isMobile ? '16px 28px' : '18px 45px',
+                borderRadius: '50px',
+                cursor: 'pointer',
+                fontSize: '15px',
+                fontWeight: '700',
+                fontFamily: "'Inter', sans-serif",
+                letterSpacing: '1px',
+                transition: 'all 0.3s ease',
+                width: isMobile ? '100%' : 'auto',
+                maxWidth: isMobile ? '420px' : 'none'
+              }}
+              onMouseOver={(e) => {
+                if (isMobile) return;
+                e.target.style.backgroundColor = '#f4d35e';
+                e.target.style.color = '#0a4a42';
+                e.target.style.transform = 'translateY(-3px)';
+              }}
+              onMouseOut={(e) => {
+                if (isMobile) return;
+                e.target.style.backgroundColor = 'transparent';
+                e.target.style.color = '#f5f1e8';
+                e.target.style.transform = 'translateY(0)';
+              }}
+            >
               VER GALERÍA COMPLETA
             </button>
           </div>
