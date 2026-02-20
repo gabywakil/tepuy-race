@@ -13,6 +13,19 @@ const RegistrationCTA = () => {
     { icon: Users, text: "Cupos Limitados: 500 corredores" }
   ];
 
+  const handleRegisterClick = () => {
+    navigate('/checkout', {
+      state: {
+        race: {
+          id: '10k',
+          name: '10K Aventura',
+          distance: '10K',
+          price: '$65'
+        }
+      }
+    });
+  };
+
   return (
     <section style={{
       padding: isMobile ? '80px 18px' : '120px 40px',
@@ -63,7 +76,7 @@ const RegistrationCTA = () => {
             gap: isMobile ? '26px' : '60px',
             alignItems: 'center'
           }}>
-            {/* Left */}
+            {/* LEFT SIDE */}
             <div>
               <div style={{
                 display: 'inline-block',
@@ -99,7 +112,7 @@ const RegistrationCTA = () => {
                 marginBottom: isMobile ? '22px' : '40px',
                 fontFamily: "'Inter', sans-serif"
               }}>
-                Únete a cientos de atletas de todo el mundo en la experiencia de trail running más épica de Sudamérica. Los cupos son limitados.
+                Únete a cientos de atletas de todo el mundo en la experiencia de trail running más épica de Sudamérica.
               </p>
 
               <div style={{
@@ -138,98 +151,12 @@ const RegistrationCTA = () => {
                   );
                 })}
               </div>
-
-              <div style={{
-                backgroundColor: 'rgba(10, 74, 66, 0.5)',
-                padding: isMobile ? '18px' : '25px 30px',
-                borderRadius: '20px',
-                border: '1px solid rgba(244, 211, 94, 0.2)'
-              }}>
-                <div style={{
-                  fontSize: '13px',
-                  fontWeight: '600',
-                  color: '#f4d35e',
-                  marginBottom: '12px',
-                  fontFamily: "'Inter', sans-serif",
-                  letterSpacing: '1px'
-                }}>
-                  TU INSCRIPCIÓN INCLUYE:
-                </div>
-
-                <div style={{
-                  display: 'grid',
-                  gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
-                  gap: '10px'
-                }}>
-                  {['Kit de corredor', 'Medalla finisher', 'Timing chip', 'Hidratación'].map((benefit, idx) => (
-                    <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <CheckCircle size={16} color="#f4d35e" strokeWidth={2.5} />
-                      <span style={{
-                        fontSize: '14px',
-                        color: '#f5f1e8',
-                        fontFamily: "'Inter', sans-serif",
-                        opacity: 0.9
-                      }}>
-                        {benefit}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
             </div>
 
-            {/* Right */}
+            {/* RIGHT SIDE */}
             <div style={{ textAlign: 'center' }}>
-              <div style={{
-                backgroundColor: 'rgba(244, 211, 94, 0.12)',
-                padding: isMobile ? '22px' : '40px 35px',
-                borderRadius: '25px',
-                marginBottom: '22px',
-                border: '2px solid #f4d35e'
-              }}>
-                <div style={{
-                  fontSize: '13px',
-                  fontWeight: '600',
-                  color: '#f5f1e8',
-                  marginBottom: '16px',
-                  fontFamily: "'Inter', sans-serif",
-                  letterSpacing: '1.5px',
-                  opacity: 0.8
-                }}>
-                  TU AVENTURA TE ESPERA
-                </div>
-
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                  {[
-                    { label: 'Distancias', value: '5K • 10K • 21K' },
-                    { label: 'Altitud Máxima', value: '2,850m' },
-                    { label: 'Desnivel Acumulado', value: '+2,600m' }
-                  ].map((box, i) => (
-                    <div key={i} style={{
-                      padding: '14px',
-                      backgroundColor: 'rgba(10, 74, 66, 0.3)',
-                      borderRadius: '12px',
-                      border: '1px solid rgba(244, 211, 94, 0.2)'
-                    }}>
-                      <div style={{
-                        fontSize: '12px',
-                        color: '#f5f1e8',
-                        opacity: 0.7,
-                        marginBottom: '6px',
-                        fontFamily: "'Inter', sans-serif"
-                      }}>
-                        {box.label}
-                      </div>
-                      <div style={{ fontSize: '20px', fontWeight: '900', color: '#f4d35e' }}>
-                        {box.value}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
               <button
-                onClick={() => navigate('/register')}
+                onClick={handleRegisterClick}
                 style={{
                   width: '100%',
                   backgroundColor: '#c85a3e',
@@ -247,8 +174,7 @@ const RegistrationCTA = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  gap: '12px',
-                  marginBottom: '16px'
+                  gap: '12px'
                 }}
                 onMouseOver={(e) => {
                   if (isMobile) return;
@@ -265,80 +191,8 @@ const RegistrationCTA = () => {
               >
                 INSCRÍBETE AHORA <ArrowRight size={22} strokeWidth={3} />
               </button>
-
-              <div style={{
-                fontSize: '13px',
-                color: '#f5f1e8',
-                fontFamily: "'Inter', sans-serif",
-                opacity: 0.7,
-                marginBottom: '16px'
-              }}>
-                🔒 Registro seguro • Información detallada por email
-              </div>
-
-              <div style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                backgroundColor: 'rgba(200, 90, 62, 0.15)',
-                padding: '12px 16px',
-                borderRadius: '20px',
-                border: '1px solid rgba(200, 90, 62, 0.3)'
-              }}>
-                <div style={{
-                  width: '8px',
-                  height: '8px',
-                  borderRadius: '50%',
-                  backgroundColor: '#c85a3e',
-                  animation: 'pulse 2s infinite'
-                }} />
-                <span style={{
-                  fontSize: '13px',
-                  fontWeight: '600',
-                  color: '#f5f1e8',
-                  fontFamily: "'Inter', sans-serif"
-                }}>
-                  Solo quedan 127 cupos disponibles
-                </span>
-              </div>
             </div>
           </div>
-        </div>
-
-        <div style={{
-          marginTop: '26px',
-          display: 'flex',
-          justifyContent: 'center',
-          gap: isMobile ? '16px' : '50px',
-          flexWrap: 'wrap'
-        }}>
-          {[
-            { label: 'Inicio de carrera', value: 'Oct 15, 2024' },
-            { label: 'Capacidad máxima', value: '500 atletas' },
-            { label: 'Edad mínima', value: '18 años' }
-          ].map((info, index) => (
-            <div key={index} style={{ textAlign: 'center', minWidth: isMobile ? '140px' : 'auto' }}>
-              <div style={{
-                fontSize: '13px',
-                fontWeight: '600',
-                color: '#f5f1e8',
-                opacity: 0.6,
-                marginBottom: '5px',
-                fontFamily: "'Inter', sans-serif",
-                letterSpacing: '1px'
-              }}>
-                {info.label}
-              </div>
-              <div style={{
-                fontSize: '16px',
-                fontWeight: '700',
-                color: '#f4d35e',
-                fontFamily: "'Inter', sans-serif"
-              }}>
-                {info.value}
-              </div>
-            </div>
-          ))}
         </div>
       </div>
 
