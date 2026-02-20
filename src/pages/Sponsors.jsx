@@ -1,14 +1,11 @@
 import React from 'react';
 import { Award, TrendingUp, Users, Download, Mail } from 'lucide-react';
+import useMedia from '../hooks/useMedia';
 
 const Sponsors = () => {
-  const titleSponsors = [
-    {
-      name: "Principal Sponsor",
-      logo: "LOGO",
-      tier: "Title"
-    }
-  ];
+  const { isMobile } = useMedia('(max-width: 768px)');
+
+  const titleSponsors = [{ name: "Principal Sponsor", logo: "LOGO", tier: "Title" }];
 
   const officialSponsors = [
     { name: "Sponsor 1", logo: "LOGO" },
@@ -27,45 +24,27 @@ const Sponsors = () => {
   ];
 
   const benefits = [
-    {
-      icon: Award,
-      text: "Brand visibility to 5,000+ athletes"
-    },
-    {
-      icon: TrendingUp,
-      text: "Exclusive activation zones on race day"
-    },
-    {
-      icon: Users,
-      text: "Digital marketing across all socials"
-    }
+    { icon: Award, text: "Brand visibility to 5,000+ athletes" },
+    { icon: TrendingUp, text: "Exclusive activation zones on race day" },
+    { icon: Users, text: "Digital marketing across all socials" }
   ];
 
   return (
-    <div style={{ 
+    <div style={{
       fontFamily: "'Playfair Display', serif",
       backgroundColor: '#0a4a42',
       color: '#f5f1e8',
       minHeight: '100vh',
       paddingTop: '100px'
     }}>
-      {/* Hero Section */}
+      {/* Hero */}
       <section style={{
-        padding: '80px 40px 60px',
+        padding: isMobile ? '50px 18px 30px' : '80px 40px 60px',
         textAlign: 'center',
         position: 'relative',
         overflow: 'hidden',
         backgroundColor: '#0a4a42'
       }}>
-        <div style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: '#0a4a42'
-        }}></div>
-
         <div style={{
           maxWidth: '1200px',
           margin: '0 auto',
@@ -74,12 +53,12 @@ const Sponsors = () => {
         }}>
           <div style={{
             position: 'relative',
-            height: '400px',
+            height: isMobile ? 'auto' : '400px',
             borderRadius: '30px',
             overflow: 'hidden',
-            marginBottom: '50px',
+            marginBottom: isMobile ? '26px' : '50px',
             boxShadow: '0 20px 60px rgba(0, 0, 0, 0.15)',
-            border: '8px solid #f4d35e'
+            border: isMobile ? '5px solid #f4d35e' : '8px solid #f4d35e'
           }}>
             <div style={{
               width: '100%',
@@ -90,54 +69,61 @@ const Sponsors = () => {
               alignItems: 'center',
               justifyContent: 'center',
               color: '#f5f1e8',
-              padding: '40px'
+              padding: isMobile ? '34px 18px' : '40px'
             }}>
               <h1 style={{
-                fontSize: '72px',
+                fontSize: isMobile ? 'clamp(34px, 10vw, 56px)' : '72px',
                 fontWeight: '900',
-                margin: '0 0 20px 0',
+                margin: '0 0 16px 0',
                 lineHeight: '1',
                 letterSpacing: '-1px',
                 color: '#f4d35e'
               }}>
                 OUR SPONSORS
               </h1>
+
               <p style={{
-                fontSize: '20px',
+                fontSize: isMobile ? '14px' : '20px',
                 maxWidth: '700px',
                 margin: '0 auto',
-                lineHeight: '1.6',
+                lineHeight: '1.7',
                 fontFamily: "'Inter', sans-serif",
                 opacity: 0.95
               }}>
                 The strength of Tepuy Race comes from our partners. Meet the organizations helping us push the limits of trail running.
               </p>
-              
-              <button style={{
-                marginTop: '35px',
-                backgroundColor: '#f4d35e',
-                color: '#f5f1e8',
-                border: 'none',
-                padding: '14px 35px',
-                borderRadius: '30px',
-                cursor: 'pointer',
-                fontSize: '14px',
-                fontWeight: '700',
-                letterSpacing: '1px',
-                transition: 'all 0.3s ease',
-                boxShadow: '0 5px 20px rgba(244, 211, 94, 0.4)',
-                fontFamily: "'Inter', sans-serif"
-              }}
-              onMouseOver={(e) => {
-                e.target.style.backgroundColor = '#f5f1e8';
-                e.target.style.transform = 'translateY(-2px)';
-                e.target.style.boxShadow = '0 8px 25px rgba(244, 211, 94, 0.5)';
-              }}
-              onMouseOut={(e) => {
-                e.target.style.backgroundColor = '#f4d35e';
-                e.target.style.transform = 'translateY(0)';
-                e.target.style.boxShadow = '0 5px 20px rgba(244, 211, 94, 0.4)';
-              }}>
+
+              <button
+                style={{
+                  marginTop: '22px',
+                  width: isMobile ? '100%' : 'auto',
+                  maxWidth: isMobile ? '420px' : 'none',
+                  backgroundColor: '#f4d35e',
+                  color: '#0a4a42',
+                  border: 'none',
+                  padding: '14px 28px',
+                  borderRadius: '30px',
+                  cursor: 'pointer',
+                  fontSize: '14px',
+                  fontWeight: '800',
+                  letterSpacing: '1px',
+                  transition: 'all 0.3s ease',
+                  boxShadow: '0 5px 20px rgba(244, 211, 94, 0.4)',
+                  fontFamily: "'Inter', sans-serif"
+                }}
+                onMouseOver={(e) => {
+                  if (isMobile) return;
+                  e.target.style.backgroundColor = '#f5f1e8';
+                  e.target.style.transform = 'translateY(-2px)';
+                  e.target.style.boxShadow = '0 8px 25px rgba(244, 211, 94, 0.5)';
+                }}
+                onMouseOut={(e) => {
+                  if (isMobile) return;
+                  e.target.style.backgroundColor = '#f4d35e';
+                  e.target.style.transform = 'translateY(0)';
+                  e.target.style.boxShadow = '0 5px 20px rgba(244, 211, 94, 0.4)';
+                }}
+              >
                 VIEW TIER BENEFITS
               </button>
             </div>
@@ -145,66 +131,52 @@ const Sponsors = () => {
         </div>
       </section>
 
-      {/* Title Sponsor Section */}
+      {/* Title Sponsor */}
       <section style={{
-        padding: '80px 40px',
+        padding: isMobile ? '50px 18px' : '80px 40px',
         maxWidth: '1200px',
         margin: '0 auto'
       }}>
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '15px',
-          marginBottom: '50px'
-        }}>
-          <div style={{
-            width: '60px',
-            height: '3px',
-            backgroundColor: '#c85a3e'
-          }}></div>
-          <h2 style={{
-            fontSize: '42px',
-            fontWeight: '900',
-            color: '#f5f1e8',
-            margin: 0,
-            letterSpacing: '2px'
-          }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: isMobile ? '24px' : '50px' }}>
+          <div style={{ width: '60px', height: '3px', backgroundColor: '#c85a3e' }} />
+          <h2 style={{ fontSize: isMobile ? '28px' : '42px', fontWeight: '900', margin: 0, letterSpacing: '2px' }}>
             TITLE SPONSOR
           </h2>
         </div>
 
-        <div style={{
-          display: 'flex',
-          justifyContent: 'center'
-        }}>
-          <div style={{
-            width: '500px',
-            padding: '80px 60px',
-            backgroundColor: 'rgba(200, 90, 62, 0.08)',
-            borderRadius: '25px',
-            textAlign: 'center',
-            border: '3px solid #f4d35e',
-            boxShadow: '0 15px 40px rgba(0, 0, 0, 0.08)',
-            transition: 'all 0.3s ease',
-            cursor: 'pointer'
-          }}
-          onMouseOver={(e) => {
-            e.currentTarget.style.transform = 'translateY(-5px)';
-            e.currentTarget.style.boxShadow = '0 20px 50px rgba(200, 90, 62, 0.15)';
-          }}
-          onMouseOut={(e) => {
-            e.currentTarget.style.transform = 'translateY(0)';
-            e.currentTarget.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.08)';
-          }}>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <div
+            style={{
+              width: isMobile ? '100%' : '500px',
+              padding: isMobile ? '34px 18px' : '80px 60px',
+              backgroundColor: 'rgba(200, 90, 62, 0.08)',
+              borderRadius: '25px',
+              textAlign: 'center',
+              border: '3px solid #f4d35e',
+              boxShadow: '0 15px 40px rgba(0, 0, 0, 0.08)',
+              transition: 'all 0.3s ease',
+              cursor: 'pointer'
+            }}
+            onMouseOver={(e) => {
+              if (isMobile) return;
+              e.currentTarget.style.transform = 'translateY(-5px)';
+              e.currentTarget.style.boxShadow = '0 20px 50px rgba(200, 90, 62, 0.15)';
+            }}
+            onMouseOut={(e) => {
+              if (isMobile) return;
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.08)';
+            }}
+          >
             <div style={{
               width: '100%',
-              height: '200px',
+              height: isMobile ? '160px' : '200px',
               backgroundColor: '#0a4a42',
               borderRadius: '15px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: '28px',
+              fontSize: isMobile ? '18px' : '28px',
               fontWeight: '700',
               color: '#c85a3e',
               fontFamily: "'Inter', sans-serif",
@@ -216,75 +188,62 @@ const Sponsors = () => {
         </div>
       </section>
 
-      {/* Official Sponsors Section */}
+      {/* Official Sponsors */}
       <section style={{
-        padding: '80px 40px',
+        padding: isMobile ? '50px 18px' : '80px 40px',
         backgroundColor: '#0a4a42',
         borderTop: '1px solid rgba(200, 90, 62, 0.1)',
         borderBottom: '1px solid rgba(200, 90, 62, 0.1)'
       }}>
-        <div style={{
-          maxWidth: '1200px',
-          margin: '0 auto'
-        }}>
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '15px',
-            marginBottom: '50px'
-          }}>
-            <div style={{
-              width: '60px',
-              height: '3px',
-              backgroundColor: '#c85a3e'
-            }}></div>
-            <h2 style={{
-              fontSize: '42px',
-              fontWeight: '900',
-              color: '#f5f1e8',
-              margin: 0,
-              letterSpacing: '2px'
-            }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: isMobile ? '24px' : '50px' }}>
+            <div style={{ width: '60px', height: '3px', backgroundColor: '#c85a3e' }} />
+            <h2 style={{ fontSize: isMobile ? '28px' : '42px', fontWeight: '900', margin: 0, letterSpacing: '2px' }}>
               OFFICIAL SPONSORS
             </h2>
           </div>
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: '30px'
+            gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(4, 1fr)',
+            gap: isMobile ? '12px' : '30px'
           }}>
             {officialSponsors.map((sponsor, index) => (
-              <div key={index} style={{
-                padding: '60px 40px',
-                backgroundColor: '#0a4a42',
-                borderRadius: '20px',
-                textAlign: 'center',
-                border: '2px solid transparent',
-                boxShadow: '0 5px 20px rgba(0, 0, 0, 0.05)',
-                transition: 'all 0.3s ease',
-                cursor: 'pointer'
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.transform = 'translateY(-8px)';
-                e.currentTarget.style.borderColor = '#f4d35e';
-                e.currentTarget.style.boxShadow = '0 15px 35px rgba(200, 90, 62, 0.12)';
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.borderColor = 'transparent';
-                e.currentTarget.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.05)';
-              }}>
+              <div
+                key={index}
+                style={{
+                  padding: isMobile ? '18px' : '60px 40px',
+                  backgroundColor: 'rgba(245, 241, 232, 0.04)',
+                  borderRadius: '20px',
+                  textAlign: 'center',
+                  border: '2px solid transparent',
+                  boxShadow: '0 5px 20px rgba(0, 0, 0, 0.05)',
+                  transition: 'all 0.3s ease',
+                  cursor: 'pointer'
+                }}
+                onMouseOver={(e) => {
+                  if (isMobile) return;
+                  e.currentTarget.style.transform = 'translateY(-8px)';
+                  e.currentTarget.style.borderColor = '#f4d35e';
+                  e.currentTarget.style.boxShadow = '0 15px 35px rgba(200, 90, 62, 0.12)';
+                }}
+                onMouseOut={(e) => {
+                  if (isMobile) return;
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.borderColor = 'transparent';
+                  e.currentTarget.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.05)';
+                }}
+              >
                 <div style={{
                   width: '100%',
-                  height: '140px',
+                  height: isMobile ? '110px' : '140px',
                   backgroundColor: '#0a4a42',
                   borderRadius: '12px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontSize: '18px',
-                  fontWeight: '600',
+                  fontSize: isMobile ? '14px' : '18px',
+                  fontWeight: '700',
                   color: '#c85a3e',
                   fontFamily: "'Inter', sans-serif",
                   border: '2px dashed rgba(200, 90, 62, 0.2)'
@@ -297,72 +256,60 @@ const Sponsors = () => {
         </div>
       </section>
 
-      {/* Partners Section */}
+      {/* Partners */}
       <section style={{
-        padding: '80px 40px',
+        padding: isMobile ? '50px 18px' : '80px 40px',
         maxWidth: '1200px',
         margin: '0 auto'
       }}>
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '15px',
-          marginBottom: '50px'
-        }}>
-          <div style={{
-            width: '60px',
-            height: '3px',
-            backgroundColor: '#c85a3e'
-          }}></div>
-          <h2 style={{
-            fontSize: '42px',
-            fontWeight: '900',
-            color: '#f5f1e8',
-            margin: 0,
-            letterSpacing: '2px'
-          }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: isMobile ? '24px' : '50px' }}>
+          <div style={{ width: '60px', height: '3px', backgroundColor: '#c85a3e' }} />
+          <h2 style={{ fontSize: isMobile ? '28px' : '42px', fontWeight: '900', margin: 0, letterSpacing: '2px' }}>
             PARTNERS
           </h2>
         </div>
 
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(6, 1fr)',
-          gap: '25px'
+          gridTemplateColumns: isMobile ? 'repeat(3, 1fr)' : 'repeat(6, 1fr)',
+          gap: isMobile ? '10px' : '25px'
         }}>
           {partners.map((partner, index) => (
-            <div key={index} style={{
-              padding: '40px 20px',
-              backgroundColor: '#0a4a42',
-              borderRadius: '15px',
-              textAlign: 'center',
-              border: '2px solid rgba(200, 90, 62, 0.1)',
-              boxShadow: '0 3px 15px rgba(0, 0, 0, 0.04)',
-              transition: 'all 0.3s ease',
-              cursor: 'pointer'
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.transform = 'translateY(-5px)';
-              e.currentTarget.style.borderColor = '#f4d35e';
-              e.currentTarget.style.backgroundColor = '#f5f1e8';
-              e.currentTarget.style.boxShadow = '0 10px 25px rgba(200, 90, 62, 0.1)';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.borderColor = 'rgba(200, 90, 62, 0.1)';
-              e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.6)';
-              e.currentTarget.style.boxShadow = '0 3px 15px rgba(0, 0, 0, 0.04)';
-            }}>
+            <div
+              key={index}
+              style={{
+                padding: isMobile ? '14px 10px' : '40px 20px',
+                backgroundColor: 'rgba(245, 241, 232, 0.03)',
+                borderRadius: '15px',
+                textAlign: 'center',
+                border: '2px solid rgba(200, 90, 62, 0.1)',
+                boxShadow: '0 3px 15px rgba(0, 0, 0, 0.04)',
+                transition: 'all 0.3s ease',
+                cursor: 'pointer'
+              }}
+              onMouseOver={(e) => {
+                if (isMobile) return;
+                e.currentTarget.style.transform = 'translateY(-5px)';
+                e.currentTarget.style.borderColor = '#f4d35e';
+                e.currentTarget.style.boxShadow = '0 10px 25px rgba(200, 90, 62, 0.1)';
+              }}
+              onMouseOut={(e) => {
+                if (isMobile) return;
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.borderColor = 'rgba(200, 90, 62, 0.1)';
+                e.currentTarget.style.boxShadow = '0 3px 15px rgba(0, 0, 0, 0.04)';
+              }}
+            >
               <div style={{
                 width: '100%',
-                height: '80px',
+                height: isMobile ? '62px' : '80px',
                 backgroundColor: 'rgba(245, 241, 232, 0.05)',
                 borderRadius: '10px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontSize: '14px',
-                fontWeight: '600',
+                fontSize: isMobile ? '12px' : '14px',
+                fontWeight: '700',
                 color: '#f5f1e8',
                 fontFamily: "'Inter', sans-serif",
                 border: '1px dashed rgba(245, 241, 232, 0.2)'
@@ -374,60 +321,48 @@ const Sponsors = () => {
         </div>
       </section>
 
-      {/* Become a Partner Section */}
-      <section style={{
-        padding: '100px 40px',
-        backgroundColor: '#0a4a42',
-        color: '#f5f1e8'
-      }}>
+      {/* Become a Partner */}
+      <section style={{ padding: isMobile ? '60px 18px' : '100px 40px', backgroundColor: '#0a4a42' }}>
         <div style={{
           maxWidth: '1100px',
           margin: '0 auto',
           display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '80px',
+          gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+          gap: isMobile ? '26px' : '80px',
           alignItems: 'center'
         }}>
           <div>
             <h2 style={{
-              fontSize: '56px',
+              fontSize: isMobile ? 'clamp(30px, 8vw, 44px)' : '56px',
               fontWeight: '900',
-              marginBottom: '30px',
+              marginBottom: '16px',
               lineHeight: '1.1',
               fontStyle: 'italic',
               color: '#f4d35e'
             }}>
               BECOME A PARTNER
             </h2>
-            
+
             <p style={{
-              fontSize: '18px',
+              fontSize: isMobile ? '14px' : '18px',
               lineHeight: '1.8',
-              marginBottom: '40px',
+              marginBottom: '22px',
               opacity: 0.9,
               fontFamily: "'Inter', sans-serif"
             }}>
               Join our network of industry leaders and connect with thousands of trail running enthusiasts from around the world.
             </p>
 
-            <div style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '20px'
-            }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
               {benefits.map((benefit, index) => {
                 const Icon = benefit.icon;
                 return (
-                  <div key={index} style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '15px'
-                  }}>
+                  <div key={index} style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
                     <div style={{
                       width: '40px',
                       height: '40px',
                       borderRadius: '50%',
-                      backgroundColor: '#0a4a42',
+                      backgroundColor: 'rgba(10, 74, 66, 0.35)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -436,11 +371,7 @@ const Sponsors = () => {
                     }}>
                       <Icon size={20} color="#f4d35e" strokeWidth={2.5} />
                     </div>
-                    <span style={{
-                      fontSize: '16px',
-                      fontFamily: "'Inter', sans-serif",
-                      fontWeight: '500'
-                    }}>
+                    <span style={{ fontSize: isMobile ? '14px' : '16px', fontFamily: "'Inter', sans-serif", fontWeight: '500' }}>
                       {benefit.text}
                     </span>
                   </div>
@@ -451,99 +382,94 @@ const Sponsors = () => {
 
           <div style={{
             backgroundColor: 'rgba(200, 90, 62, 0.15)',
-            padding: '50px',
+            padding: isMobile ? '22px' : '50px',
             borderRadius: '25px',
-            border: '2px solid rgba(244, 211, 94, 0.3)',
-            backdropFilter: 'blur(10px)'
+            border: '2px solid rgba(244, 211, 94, 0.3)'
           }}>
-            <div style={{
-              textAlign: 'right',
-              marginBottom: '30px'
-            }}>
+            <div style={{ textAlign: isMobile ? 'left' : 'right', marginBottom: '20px' }}>
               <div style={{
-                fontSize: '16px',
-                fontWeight: '700',
+                fontSize: '15px',
+                fontWeight: '800',
                 color: '#f4d35e',
-                marginBottom: '8px',
+                marginBottom: '6px',
                 fontFamily: "'Inter', sans-serif",
                 letterSpacing: '1px'
               }}>
                 Ready to support the climb?
               </div>
-              <div style={{
-                fontSize: '14px',
-                opacity: 0.8,
-                fontFamily: "'Inter', sans-serif"
-              }}>
+              <div style={{ fontSize: '13px', opacity: 0.85, fontFamily: "'Inter', sans-serif" }}>
                 Download our 2024 Sponsorship Prospectus
               </div>
             </div>
 
             <div style={{
-              display: 'flex',
-              gap: '15px'
+              display: 'grid',
+              gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+              gap: '12px'
             }}>
-              <button style={{
-                flex: 1,
-                backgroundColor: '#c85a3e',
-                color: '#f5f1e8',
-                border: 'none',
-                padding: '18px 30px',
-                borderRadius: '15px',
-                cursor: 'pointer',
-                fontSize: '15px',
-                fontWeight: '700',
-                fontFamily: "'Inter', sans-serif",
-                letterSpacing: '0.5px',
-                transition: 'all 0.3s ease',
-                boxShadow: '0 5px 20px rgba(200, 90, 62, 0.4)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '10px'
-              }}
-              onMouseOver={(e) => {
-                e.target.style.backgroundColor = '#b04935';
-                e.target.style.transform = 'translateY(-2px)';
-                e.target.style.boxShadow = '0 8px 25px rgba(200, 90, 62, 0.5)';
-              }}
-              onMouseOut={(e) => {
-                e.target.style.backgroundColor = '#c85a3e';
-                e.target.style.transform = 'translateY(0)';
-                e.target.style.boxShadow = '0 5px 20px rgba(200, 90, 62, 0.4)';
-              }}>
+              <button
+                style={{
+                  backgroundColor: '#c85a3e',
+                  color: '#f5f1e8',
+                  border: 'none',
+                  padding: '16px 16px',
+                  borderRadius: '15px',
+                  cursor: 'pointer',
+                  fontSize: '14px',
+                  fontWeight: '800',
+                  fontFamily: "'Inter', sans-serif",
+                  transition: 'all 0.3s ease',
+                  boxShadow: '0 5px 20px rgba(200, 90, 62, 0.35)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '10px'
+                }}
+                onMouseOver={(e) => {
+                  if (isMobile) return;
+                  e.target.style.backgroundColor = '#b04935';
+                  e.target.style.transform = 'translateY(-2px)';
+                }}
+                onMouseOut={(e) => {
+                  if (isMobile) return;
+                  e.target.style.backgroundColor = '#c85a3e';
+                  e.target.style.transform = 'translateY(0)';
+                }}
+              >
                 <Mail size={18} />
-                CONTACT PARTNERSHIPS
+                CONTACT
               </button>
 
-              <button style={{
-                flex: 1,
-                backgroundColor: 'transparent',
-                color: '#f4d35e',
-                border: '2px solid #f4d35e',
-                padding: '18px 30px',
-                borderRadius: '15px',
-                cursor: 'pointer',
-                fontSize: '15px',
-                fontWeight: '700',
-                fontFamily: "'Inter', sans-serif",
-                letterSpacing: '0.5px',
-                transition: 'all 0.3s ease',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '10px'
-              }}
-              onMouseOver={(e) => {
-                e.target.style.backgroundColor = '#f4d35e';
-                e.target.style.color = '#f5f1e8';
-                e.target.style.transform = 'translateY(-2px)';
-              }}
-              onMouseOut={(e) => {
-                e.target.style.backgroundColor = 'transparent';
-                e.target.style.color = '#f4d35e';
-                e.target.style.transform = 'translateY(0)';
-              }}>
+              <button
+                style={{
+                  backgroundColor: 'transparent',
+                  color: '#f4d35e',
+                  border: '2px solid #f4d35e',
+                  padding: '16px 16px',
+                  borderRadius: '15px',
+                  cursor: 'pointer',
+                  fontSize: '14px',
+                  fontWeight: '800',
+                  fontFamily: "'Inter', sans-serif",
+                  transition: 'all 0.3s ease',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '10px'
+                }}
+                onMouseOver={(e) => {
+                  if (isMobile) return;
+                  e.target.style.backgroundColor = '#f4d35e';
+                  e.target.style.color = '#0a4a42';
+                  e.target.style.transform = 'translateY(-2px)';
+                }}
+                onMouseOut={(e) => {
+                  if (isMobile) return;
+                  e.target.style.backgroundColor = 'transparent';
+                  e.target.style.color = '#f4d35e';
+                  e.target.style.transform = 'translateY(0)';
+                }}
+              >
                 <Download size={18} />
                 DOWNLOAD PDF
               </button>
