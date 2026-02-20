@@ -1,6 +1,6 @@
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { User, Phone, CreditCard, Upload, Check } from 'lucide-react';
+import { User, Mail, Phone, CreditCard, Upload, Check } from 'lucide-react';
 import useMedia from '../hooks/useMedia';
 
 const Checkout = () => {
@@ -8,7 +8,13 @@ const Checkout = () => {
   const location = useLocation();
   const { isMobile } = useMedia('(max-width: 768px)');
 
-  const race = location.state?.race || { name: '10K Aventura', price: '$65', distance: '10K' };
+  const race =
+    location.state?.race || {
+      id: '10k',
+      name: '10K Aventura',
+      distance: '10K',
+      price: '$65'
+    };
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -27,15 +33,15 @@ const Checkout = () => {
   const [paymentProof, setPaymentProof] = useState(null);
   const [showPaymentInfo, setShowPaymentInfo] = useState(false);
 
-  const shirtSizes = useMemo(() => ['XS', 'S', 'M', 'L', 'XL', 'XXL'], []);
+  const shirtSizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
 
-  const paymentMethods = useMemo(() => ({
+  const paymentMethods = {
     zelle: { name: 'Zelle', email: 'payments@tepuyrace.com', phone: '+58 414-123-4567' },
     pagomovil: { name: 'Pago Móvil', bank: 'Banco de Venezuela', phone: '0414-1234567', ci: 'V-12345678' }
-  }), []);
+  };
 
   const handleInputChange = (e) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setFormData((p) => ({ ...p, [e.target.name]: e.target.value }));
   };
 
   const handleFileUpload = (e) => {
@@ -45,11 +51,12 @@ const Checkout = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (paymentProof && formData.paymentMethod) {
-      navigate('/registration-confirmed', { state: { formData, race } });
+    if (!paymentProof || !formData.paymentMethod) {
+      alert('Por favor selecciona método de pago y sube el comprobante.');
       return;
     }
-    alert('Por favor completa todos los campos y sube el comprobante de pago.');
+
+    navigate('/registrationconfirmed', { state: { formData, race } });
   };
 
   const inputBase = {
@@ -60,25 +67,15 @@ const Checkout = () => {
     color: '#f5f1e8',
     fontSize: '15px',
     fontFamily: "'Inter', sans-serif",
-    outline: 'none',
-    width: '100%',
-    boxSizing: 'border-box'
-  };
-
-  const sectionCard = {
-    backgroundColor: 'rgba(245, 241, 232, 0.08)',
-    padding: isMobile ? '22px' : '40px',
-    borderRadius: '25px',
-    border: '2px solid rgba(244, 211, 94, 0.3)',
-    marginBottom: '20px'
+    outline: 'none'
   };
 
   return (
     <div style={{
       backgroundColor: '#0a4a42',
       minHeight: '100vh',
-      paddingTop: isMobile ? '86px' : '100px',
-      paddingBottom: isMobile ? '70px' : '80px',
+      paddingTop: '100px',
+      paddingBottom: '80px',
       width: '100%',
       margin: 0
     }}>
@@ -88,7 +85,7 @@ const Checkout = () => {
         padding: isMobile ? '0 18px' : '0 40px'
       }}>
         {/* Header */}
-        <div style={{ textAlign: 'center', marginBottom: isMobile ? '26px' : '40px' }}>
+        <div style={{ textAlign: 'center', marginBottom: isMobile ? '28px' : '50px' }}>
           <div style={{
             display: 'inline-block',
             backgroundColor: 'rgba(200, 90, 62, 0.15)',
@@ -105,56 +102,54 @@ const Checkout = () => {
           </div>
 
           <h1 style={{
-            fontSize: isMobile ? 'clamp(32px, 9vw, 52px)' : '52px',
+            fontSize: isMobile ? 'clamp(32px, 8vw, 52px)' : '52px',
             fontWeight: '900',
             marginBottom: '10px',
-            lineHeight: '1.1',
+            lineHeight: '1.05',
             color: '#f5f1e8',
             fontFamily: "'Playfair Display', serif"
           }}>
-            Finaliza tu inscripción
+            Checkout
           </h1>
 
           <p style={{
             fontSize: isMobile ? '14px' : '16px',
             color: '#f5f1e8',
             opacity: 0.8,
-            fontFamily: "'Inter', sans-serif",
-            lineHeight: '1.6',
-            margin: 0
+            fontFamily: "'Inter', sans-serif"
           }}>
-            Completa tus datos y adjunta el comprobante de pago.
+            Completa tus datos para finalizar la inscripción
           </p>
         </div>
 
         <form onSubmit={handleSubmit}>
-          {/* Race Summary */}
+          {/* Resumen */}
           <div style={{
-            padding: isMobile ? '20px' : '30px',
+            padding: isMobile ? '18px' : '30px',
             backgroundColor: 'rgba(244, 211, 94, 0.12)',
             borderRadius: '20px',
             border: '2px solid #f4d35e',
-            marginBottom: '20px'
+            marginBottom: '26px'
           }}>
             <div style={{
               display: 'flex',
+              flexDirection: isMobile ? 'column' : 'row',
               justifyContent: 'space-between',
-              alignItems: 'center',
-              gap: '14px',
-              flexWrap: 'wrap'
+              alignItems: isMobile ? 'flex-start' : 'center',
+              gap: isMobile ? '10px' : '0px'
             }}>
               <div>
                 <div style={{
                   fontSize: '13px',
                   color: '#f5f1e8',
                   opacity: 0.7,
-                  marginBottom: '6px',
+                  marginBottom: '5px',
                   fontFamily: "'Inter', sans-serif"
                 }}>
                   Carrera seleccionada
                 </div>
                 <div style={{
-                  fontSize: isMobile ? '20px' : '24px',
+                  fontSize: isMobile ? '22px' : '24px',
                   fontWeight: '900',
                   color: '#f5f1e8',
                   fontFamily: "'Playfair Display', serif"
@@ -173,11 +168,17 @@ const Checkout = () => {
             </div>
           </div>
 
-          {/* Personal Info */}
-          <div style={sectionCard}>
+          {/* Personal */}
+          <div style={{
+            backgroundColor: 'rgba(245, 241, 232, 0.08)',
+            padding: isMobile ? '18px' : '40px',
+            borderRadius: '25px',
+            border: '2px solid rgba(244, 211, 94, 0.3)',
+            marginBottom: '18px'
+          }}>
             <h3 style={{
               fontSize: '18px',
-              fontWeight: '700',
+              fontWeight: '800',
               color: '#f5f1e8',
               marginBottom: '18px',
               fontFamily: "'Inter', sans-serif",
@@ -185,7 +186,7 @@ const Checkout = () => {
               alignItems: 'center',
               gap: '10px'
             }}>
-              <User size={20} color="#f4d35e" />
+              <User size={22} color="#f4d35e" />
               Información personal
             </h3>
 
@@ -194,117 +195,40 @@ const Checkout = () => {
               gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
               gap: '14px'
             }}>
-              <input
-                type="text"
-                name="firstName"
-                placeholder="Nombre *"
-                required
-                value={formData.firstName}
-                onChange={handleInputChange}
-                style={inputBase}
-                onFocus={(e) => { e.target.style.borderColor = '#f4d35e'; e.target.style.backgroundColor = 'rgba(10, 74, 66, 0.6)'; }}
-                onBlur={(e) => { e.target.style.borderColor = 'rgba(244, 211, 94, 0.3)'; e.target.style.backgroundColor = 'rgba(10, 74, 66, 0.4)'; }}
-              />
+              <input name="firstName" placeholder="Nombre *" required value={formData.firstName} onChange={handleInputChange} style={inputBase} />
+              <input name="lastName" placeholder="Apellido *" required value={formData.lastName} onChange={handleInputChange} style={inputBase} />
+              <input type="email" name="email" placeholder="Email *" required value={formData.email} onChange={handleInputChange} style={inputBase} />
+              <input type="tel" name="phone" placeholder="Teléfono *" required value={formData.phone} onChange={handleInputChange} style={inputBase} />
+              <input type="date" name="birthDate" required value={formData.birthDate} onChange={handleInputChange} style={inputBase} />
 
-              <input
-                type="text"
-                name="lastName"
-                placeholder="Apellido *"
-                required
-                value={formData.lastName}
-                onChange={handleInputChange}
-                style={inputBase}
-                onFocus={(e) => { e.target.style.borderColor = '#f4d35e'; e.target.style.backgroundColor = 'rgba(10, 74, 66, 0.6)'; }}
-                onBlur={(e) => { e.target.style.borderColor = 'rgba(244, 211, 94, 0.3)'; e.target.style.backgroundColor = 'rgba(10, 74, 66, 0.4)'; }}
-              />
-
-              <input
-                type="email"
-                name="email"
-                placeholder="Email *"
-                required
-                value={formData.email}
-                onChange={handleInputChange}
-                style={inputBase}
-                onFocus={(e) => { e.target.style.borderColor = '#f4d35e'; e.target.style.backgroundColor = 'rgba(10, 74, 66, 0.6)'; }}
-                onBlur={(e) => { e.target.style.borderColor = 'rgba(244, 211, 94, 0.3)'; e.target.style.backgroundColor = 'rgba(10, 74, 66, 0.4)'; }}
-              />
-
-              <input
-                type="tel"
-                name="phone"
-                placeholder="Teléfono *"
-                required
-                value={formData.phone}
-                onChange={handleInputChange}
-                style={inputBase}
-                onFocus={(e) => { e.target.style.borderColor = '#f4d35e'; e.target.style.backgroundColor = 'rgba(10, 74, 66, 0.6)'; }}
-                onBlur={(e) => { e.target.style.borderColor = 'rgba(244, 211, 94, 0.3)'; e.target.style.backgroundColor = 'rgba(10, 74, 66, 0.4)'; }}
-              />
-
-              <input
-                type="date"
-                name="birthDate"
-                required
-                value={formData.birthDate}
-                onChange={handleInputChange}
-                style={inputBase}
-                onFocus={(e) => { e.target.style.borderColor = '#f4d35e'; e.target.style.backgroundColor = 'rgba(10, 74, 66, 0.6)'; }}
-                onBlur={(e) => { e.target.style.borderColor = 'rgba(244, 211, 94, 0.3)'; e.target.style.backgroundColor = 'rgba(10, 74, 66, 0.4)'; }}
-              />
-
-              <select
-                name="shirtSize"
-                required
-                value={formData.shirtSize}
-                onChange={handleInputChange}
+              <select name="shirtSize" required value={formData.shirtSize} onChange={handleInputChange}
                 style={{
                   ...inputBase,
                   cursor: 'pointer',
                   color: formData.shirtSize ? '#f5f1e8' : 'rgba(245, 241, 232, 0.55)'
-                }}
-                onFocus={(e) => { e.target.style.borderColor = '#f4d35e'; e.target.style.backgroundColor = 'rgba(10, 74, 66, 0.6)'; }}
-                onBlur={(e) => { e.target.style.borderColor = 'rgba(244, 211, 94, 0.3)'; e.target.style.backgroundColor = 'rgba(10, 74, 66, 0.4)'; }}
-              >
+                }}>
                 <option value="">Talla de camisa *</option>
-                {shirtSizes.map((size) => (
-                  <option key={size} value={size} style={{ backgroundColor: '#0a4a42' }}>
-                    {size}
-                  </option>
+                {shirtSizes.map((s) => (
+                  <option key={s} value={s} style={{ backgroundColor: '#0a4a42' }}>{s}</option>
                 ))}
               </select>
 
-              <input
-                type="text"
-                name="country"
-                placeholder="País *"
-                required
-                value={formData.country}
-                onChange={handleInputChange}
-                style={inputBase}
-                onFocus={(e) => { e.target.style.borderColor = '#f4d35e'; e.target.style.backgroundColor = 'rgba(10, 74, 66, 0.6)'; }}
-                onBlur={(e) => { e.target.style.borderColor = 'rgba(244, 211, 94, 0.3)'; e.target.style.backgroundColor = 'rgba(10, 74, 66, 0.4)'; }}
-              />
-
-              <input
-                type="text"
-                name="city"
-                placeholder="Ciudad *"
-                required
-                value={formData.city}
-                onChange={handleInputChange}
-                style={inputBase}
-                onFocus={(e) => { e.target.style.borderColor = '#f4d35e'; e.target.style.backgroundColor = 'rgba(10, 74, 66, 0.6)'; }}
-                onBlur={(e) => { e.target.style.borderColor = 'rgba(244, 211, 94, 0.3)'; e.target.style.backgroundColor = 'rgba(10, 74, 66, 0.4)'; }}
-              />
+              <input name="country" placeholder="País *" required value={formData.country} onChange={handleInputChange} style={inputBase} />
+              <input name="city" placeholder="Ciudad *" required value={formData.city} onChange={handleInputChange} style={inputBase} />
             </div>
           </div>
 
-          {/* Emergency */}
-          <div style={sectionCard}>
+          {/* Emergencia */}
+          <div style={{
+            backgroundColor: 'rgba(245, 241, 232, 0.08)',
+            padding: isMobile ? '18px' : '40px',
+            borderRadius: '25px',
+            border: '2px solid rgba(244, 211, 94, 0.3)',
+            marginBottom: '18px'
+          }}>
             <h3 style={{
               fontSize: '18px',
-              fontWeight: '700',
+              fontWeight: '800',
               color: '#f5f1e8',
               marginBottom: '18px',
               fontFamily: "'Inter', sans-serif",
@@ -312,7 +236,7 @@ const Checkout = () => {
               alignItems: 'center',
               gap: '10px'
             }}>
-              <Phone size={20} color="#c85a3e" />
+              <Phone size={22} color="#c85a3e" />
               Contacto de emergencia
             </h3>
 
@@ -321,32 +245,22 @@ const Checkout = () => {
               gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
               gap: '14px'
             }}>
-              <input
-                type="text"
-                name="emergencyContact"
-                placeholder="Nombre completo *"
-                required
-                value={formData.emergencyContact}
-                onChange={handleInputChange}
-                style={inputBase}
-              />
-              <input
-                type="tel"
-                name="emergencyPhone"
-                placeholder="Teléfono *"
-                required
-                value={formData.emergencyPhone}
-                onChange={handleInputChange}
-                style={inputBase}
-              />
+              <input name="emergencyContact" placeholder="Nombre completo *" required value={formData.emergencyContact} onChange={handleInputChange} style={inputBase} />
+              <input type="tel" name="emergencyPhone" placeholder="Teléfono *" required value={formData.emergencyPhone} onChange={handleInputChange} style={inputBase} />
             </div>
           </div>
 
-          {/* Payment */}
-          <div style={sectionCard}>
+          {/* Pago */}
+          <div style={{
+            backgroundColor: 'rgba(245, 241, 232, 0.08)',
+            padding: isMobile ? '18px' : '40px',
+            borderRadius: '25px',
+            border: '2px solid rgba(244, 211, 94, 0.3)',
+            marginBottom: '22px'
+          }}>
             <h3 style={{
               fontSize: '18px',
-              fontWeight: '700',
+              fontWeight: '800',
               color: '#f5f1e8',
               marginBottom: '18px',
               fontFamily: "'Inter', sans-serif",
@@ -354,7 +268,7 @@ const Checkout = () => {
               alignItems: 'center',
               gap: '10px'
             }}>
-              <CreditCard size={20} color="#f4d35e" />
+              <CreditCard size={22} color="#f4d35e" />
               Método de pago
             </h3>
 
@@ -377,16 +291,11 @@ const Checkout = () => {
                     borderRadius: '15px',
                     border: `2px solid ${formData.paymentMethod === method ? '#f4d35e' : 'rgba(244, 211, 94, 0.3)'}`,
                     cursor: 'pointer',
-                    transition: 'all 0.3s ease',
+                    transition: 'all 0.2s ease',
                     textAlign: 'center'
                   }}
                 >
-                  <div style={{
-                    fontSize: '16px',
-                    fontWeight: '700',
-                    color: '#f5f1e8',
-                    fontFamily: "'Inter', sans-serif"
-                  }}>
+                  <div style={{ fontSize: '16px', fontWeight: '800', color: '#f5f1e8', fontFamily: "'Inter', sans-serif" }}>
                     {method === 'zelle' ? 'Zelle' : 'Pago Móvil'}
                   </div>
                   {formData.paymentMethod === method && (
@@ -398,7 +307,7 @@ const Checkout = () => {
 
             {showPaymentInfo && formData.paymentMethod && (
               <div style={{
-                padding: '18px',
+                padding: '16px',
                 backgroundColor: 'rgba(200, 90, 62, 0.15)',
                 borderRadius: '15px',
                 border: '2px solid #c85a3e',
@@ -406,21 +315,21 @@ const Checkout = () => {
               }}>
                 <div style={{
                   fontSize: '14px',
-                  fontWeight: '700',
+                  fontWeight: '800',
                   color: '#f5f1e8',
                   marginBottom: '10px',
                   fontFamily: "'Inter', sans-serif"
                 }}>
-                  Datos para transferencia
+                  Datos para transferencia:
                 </div>
 
                 {formData.paymentMethod === 'zelle' ? (
-                  <div style={{ display: 'grid', gap: '8px', fontFamily: "'Inter', sans-serif", fontSize: '14px', color: '#f5f1e8' }}>
+                  <div style={{ display: 'grid', gap: '6px', color: '#f5f1e8', fontFamily: "'Inter', sans-serif", fontSize: '14px' }}>
                     <div><strong>Email:</strong> {paymentMethods.zelle.email}</div>
                     <div><strong>Teléfono:</strong> {paymentMethods.zelle.phone}</div>
                   </div>
                 ) : (
-                  <div style={{ display: 'grid', gap: '8px', fontFamily: "'Inter', sans-serif", fontSize: '14px', color: '#f5f1e8' }}>
+                  <div style={{ display: 'grid', gap: '6px', color: '#f5f1e8', fontFamily: "'Inter', sans-serif", fontSize: '14px' }}>
                     <div><strong>Banco:</strong> {paymentMethods.pagomovil.bank}</div>
                     <div><strong>Teléfono:</strong> {paymentMethods.pagomovil.phone}</div>
                     <div><strong>Cédula:</strong> {paymentMethods.pagomovil.ci}</div>
@@ -432,7 +341,7 @@ const Checkout = () => {
             <label style={{
               display: 'block',
               fontSize: '14px',
-              fontWeight: '600',
+              fontWeight: '800',
               color: '#f5f1e8',
               marginBottom: '10px',
               fontFamily: "'Inter', sans-serif"
@@ -456,37 +365,25 @@ const Checkout = () => {
               />
 
               <div style={{
-                padding: isMobile ? '18px' : '26px',
+                padding: isMobile ? '18px' : '22px',
                 backgroundColor: 'rgba(10, 74, 66, 0.4)',
                 borderRadius: '15px',
-                border: '2px dashed rgba(244, 211, 94, 0.5)',
-                textAlign: 'center',
-                cursor: 'pointer',
-                transition: 'all 0.3s ease'
-              }}
-              onMouseOver={(e) => {
-                if (isMobile) return;
-                e.currentTarget.style.borderColor = '#f4d35e';
-                e.currentTarget.style.backgroundColor = 'rgba(244, 211, 94, 0.08)';
-              }}
-              onMouseOut={(e) => {
-                if (isMobile) return;
-                e.currentTarget.style.borderColor = 'rgba(244, 211, 94, 0.5)';
-                e.currentTarget.style.backgroundColor = 'rgba(10, 74, 66, 0.4)';
+                border: '2px dashed rgba(244, 211, 94, 0.55)',
+                textAlign: 'center'
               }}>
-                <Upload size={30} color="#f4d35e" style={{ marginBottom: '10px' }} />
+                <Upload size={28} color="#f4d35e" style={{ marginBottom: '10px' }} />
                 <div style={{
                   fontSize: '14px',
                   color: '#f5f1e8',
                   fontFamily: "'Inter', sans-serif",
-                  marginBottom: '4px'
+                  marginBottom: '6px'
                 }}>
-                  {paymentProof ? paymentProof.name : 'Haz clic para subir tu comprobante'}
+                  {paymentProof ? paymentProof.name : 'Toca aquí para subir tu comprobante'}
                 </div>
                 <div style={{
                   fontSize: '12px',
                   color: '#f5f1e8',
-                  opacity: 0.6,
+                  opacity: 0.65,
                   fontFamily: "'Inter', sans-serif"
                 }}>
                   PNG, JPG o PDF (máx. 5MB)
@@ -507,21 +404,10 @@ const Checkout = () => {
               borderRadius: '15px',
               cursor: 'pointer',
               fontSize: isMobile ? '16px' : '18px',
-              fontWeight: '700',
+              fontWeight: '900',
               fontFamily: "'Inter', sans-serif",
               letterSpacing: '1px',
-              transition: 'all 0.3s ease',
               boxShadow: '0 10px 35px rgba(200, 90, 62, 0.4)'
-            }}
-            onMouseOver={(e) => {
-              if (isMobile) return;
-              e.currentTarget.style.backgroundColor = '#b04935';
-              e.currentTarget.style.transform = 'translateY(-2px)';
-            }}
-            onMouseOut={(e) => {
-              if (isMobile) return;
-              e.currentTarget.style.backgroundColor = '#c85a3e';
-              e.currentTarget.style.transform = 'translateY(0)';
             }}
           >
             CONFIRMAR INSCRIPCIÓN
@@ -533,10 +419,9 @@ const Checkout = () => {
             fontSize: '12px',
             color: '#f5f1e8',
             opacity: 0.6,
-            fontFamily: "'Inter', sans-serif",
-            lineHeight: '1.6'
+            fontFamily: "'Inter', sans-serif"
           }}>
-            Al confirmar, aceptas nuestros términos y condiciones.
+            Al confirmar aceptas nuestros términos y condiciones.
           </div>
         </form>
       </div>
