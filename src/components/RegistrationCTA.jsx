@@ -182,7 +182,11 @@ const RegistrationCTA = () => {
               </div>
 
               <button
-                onClick={() => navigate('/race-selection')}
+                 onClick={(e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    navigate('/race-selection'); // flujo correcto
+  }}
                 style={{
                   width: '100%',
                   backgroundColor: '#c85a3e',
