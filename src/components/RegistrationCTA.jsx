@@ -1,10 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowRight, CheckCircle, Calendar, MapPin, Users } from 'lucide-react';
+import useMedia from '../hooks/useMedia';
 
 const RegistrationCTA = () => {
   const navigate = useNavigate();
-  
+  const { isMobile } = useMedia('(max-width: 768px)');
+
   const highlights = [
     { icon: Calendar, text: "Evento: Octubre 15, 2024" },
     { icon: MapPin, text: "Mount Tepuy Plateau, Venezuela" },
@@ -13,26 +15,22 @@ const RegistrationCTA = () => {
 
   return (
     <section style={{
-      padding: '120px 40px',
+      padding: isMobile ? '80px 18px' : '120px 40px',
       backgroundColor: '#0a4a42',
       width: '100%',
       margin: 0,
       position: 'relative',
       overflow: 'hidden'
     }}>
-      {/* Background decoration */}
       <div style={{
         position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
+        inset: 0,
         background: `
           radial-gradient(circle at 20% 50%, rgba(244, 211, 94, 0.03), transparent 50%),
           radial-gradient(circle at 80% 50%, rgba(200, 90, 62, 0.03), transparent 50%)
         `,
         pointerEvents: 'none'
-      }}></div>
+      }} />
 
       <div style={{
         maxWidth: '1100px',
@@ -40,17 +38,15 @@ const RegistrationCTA = () => {
         position: 'relative',
         zIndex: 1
       }}>
-        {/* Main CTA Box */}
         <div style={{
-          padding: '80px 70px',
+          padding: isMobile ? '36px 22px' : '80px 70px',
           backgroundColor: 'rgba(245, 241, 232, 0.05)',
-          borderRadius: '35px',
+          borderRadius: isMobile ? '28px' : '35px',
           border: '3px solid #f4d35e',
           boxShadow: '0 30px 80px rgba(0, 0, 0, 0.3)',
           position: 'relative',
           overflow: 'hidden'
         }}>
-          {/* Decorative corner */}
           <div style={{
             position: 'absolute',
             top: 0,
@@ -59,15 +55,15 @@ const RegistrationCTA = () => {
             height: '200px',
             background: 'radial-gradient(circle at top right, rgba(244, 211, 94, 0.15), transparent 70%)',
             pointerEvents: 'none'
-          }}></div>
+          }} />
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: '1.2fr 1fr',
-            gap: '60px',
+            gridTemplateColumns: isMobile ? '1fr' : '1.2fr 1fr',
+            gap: isMobile ? '26px' : '60px',
             alignItems: 'center'
           }}>
-            {/* Left Content */}
+            {/* Left */}
             <div>
               <div style={{
                 display: 'inline-block',
@@ -75,10 +71,10 @@ const RegistrationCTA = () => {
                 color: '#f5f1e8',
                 padding: '10px 25px',
                 borderRadius: '25px',
-                fontSize: '13px',
+                fontSize: isMobile ? '12px' : '13px',
                 fontWeight: '700',
                 letterSpacing: '2px',
-                marginBottom: '25px',
+                marginBottom: '18px',
                 fontFamily: "'Inter', sans-serif",
                 boxShadow: '0 5px 20px rgba(200, 90, 62, 0.3)'
               }}>
@@ -86,44 +82,36 @@ const RegistrationCTA = () => {
               </div>
 
               <h2 style={{
-                fontSize: '52px',
+                fontSize: isMobile ? 'clamp(34px, 9vw, 52px)' : '52px',
                 fontWeight: '900',
-                marginBottom: '25px',
+                marginBottom: '18px',
                 lineHeight: '1.1',
                 color: '#f5f1e8'
               }}>
-                ¿Listo para el <span style={{ 
-                  color: '#f4d35e',
-                  fontStyle: 'italic'
-                }}>Desafío</span>?
+                ¿Listo para el <span style={{ color: '#f4d35e', fontStyle: 'italic' }}>Desafío</span>?
               </h2>
 
               <p style={{
-                fontSize: '18px',
+                fontSize: isMobile ? '15px' : '18px',
                 lineHeight: '1.7',
                 color: '#f5f1e8',
                 opacity: 0.85,
-                marginBottom: '40px',
+                marginBottom: isMobile ? '22px' : '40px',
                 fontFamily: "'Inter', sans-serif"
               }}>
-                Únete a cientos de atletas de todo el mundo en la experiencia trail running más épica de Sudamérica. Los cupos son limitados.
+                Únete a cientos de atletas de todo el mundo en la experiencia de trail running más épica de Sudamérica. Los cupos son limitados.
               </p>
 
-              {/* Highlights */}
               <div style={{
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '15px',
-                marginBottom: '45px'
+                gap: '12px',
+                marginBottom: isMobile ? '22px' : '45px'
               }}>
                 {highlights.map((item, index) => {
                   const Icon = item.icon;
                   return (
-                    <div key={index} style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '12px'
-                    }}>
+                    <div key={index} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                       <div style={{
                         width: '35px',
                         height: '35px',
@@ -138,7 +126,7 @@ const RegistrationCTA = () => {
                         <Icon size={16} color="#f4d35e" strokeWidth={2.5} />
                       </div>
                       <span style={{
-                        fontSize: '15px',
+                        fontSize: isMobile ? '14px' : '15px',
                         fontWeight: '600',
                         color: '#f5f1e8',
                         fontFamily: "'Inter', sans-serif",
@@ -151,34 +139,30 @@ const RegistrationCTA = () => {
                 })}
               </div>
 
-              {/* Benefits List */}
               <div style={{
                 backgroundColor: 'rgba(10, 74, 66, 0.5)',
-                padding: '25px 30px',
+                padding: isMobile ? '18px' : '25px 30px',
                 borderRadius: '20px',
                 border: '1px solid rgba(244, 211, 94, 0.2)'
               }}>
                 <div style={{
-                  fontSize: '14px',
+                  fontSize: '13px',
                   fontWeight: '600',
                   color: '#f4d35e',
-                  marginBottom: '15px',
+                  marginBottom: '12px',
                   fontFamily: "'Inter', sans-serif",
                   letterSpacing: '1px'
                 }}>
                   TU INSCRIPCIÓN INCLUYE:
                 </div>
+
                 <div style={{
                   display: 'grid',
-                  gridTemplateColumns: '1fr 1fr',
-                  gap: '12px'
+                  gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+                  gap: '10px'
                 }}>
                   {['Kit de corredor', 'Medalla finisher', 'Timing chip', 'Hidratación'].map((benefit, idx) => (
-                    <div key={idx} style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px'
-                    }}>
+                    <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                       <CheckCircle size={16} color="#f4d35e" strokeWidth={2.5} />
                       <span style={{
                         fontSize: '14px',
@@ -194,165 +178,110 @@ const RegistrationCTA = () => {
               </div>
             </div>
 
-            {/* Right Content - CTA */}
-            <div style={{
-              textAlign: 'center'
-            }}>
-              {/* Event Highlights Box */}
+            {/* Right */}
+            <div style={{ textAlign: 'center' }}>
               <div style={{
                 backgroundColor: 'rgba(244, 211, 94, 0.12)',
-                padding: '40px 35px',
+                padding: isMobile ? '22px' : '40px 35px',
                 borderRadius: '25px',
-                marginBottom: '30px',
+                marginBottom: '22px',
                 border: '2px solid #f4d35e'
               }}>
                 <div style={{
-                  fontSize: '14px',
+                  fontSize: '13px',
                   fontWeight: '600',
                   color: '#f5f1e8',
-                  marginBottom: '20px',
+                  marginBottom: '16px',
                   fontFamily: "'Inter', sans-serif",
                   letterSpacing: '1.5px',
                   opacity: 0.8
                 }}>
                   TU AVENTURA TE ESPERA
                 </div>
-                
-                <div style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '15px',
-                  marginBottom: '20px'
-                }}>
-                  <div style={{
-                    padding: '15px',
-                    backgroundColor: 'rgba(10, 74, 66, 0.3)',
-                    borderRadius: '12px',
-                    border: '1px solid rgba(244, 211, 94, 0.2)'
-                  }}>
-                    <div style={{
-                      fontSize: '13px',
-                      color: '#f5f1e8',
-                      opacity: 0.7,
-                      marginBottom: '5px',
-                      fontFamily: "'Inter', sans-serif"
-                    }}>
-                      Distancias
-                    </div>
-                    <div style={{
-                      fontSize: '20px',
-                      fontWeight: '900',
-                      color: '#f4d35e'
-                    }}>
-                      5K • 10K • 21K
-                    </div>
-                  </div>
 
-                  <div style={{
-                    padding: '15px',
-                    backgroundColor: 'rgba(10, 74, 66, 0.3)',
-                    borderRadius: '12px',
-                    border: '1px solid rgba(244, 211, 94, 0.2)'
-                  }}>
-                    <div style={{
-                      fontSize: '13px',
-                      color: '#f5f1e8',
-                      opacity: 0.7,
-                      marginBottom: '5px',
-                      fontFamily: "'Inter', sans-serif"
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                  {[
+                    { label: 'Distancias', value: '5K • 10K • 21K' },
+                    { label: 'Altitud Máxima', value: '2,850m' },
+                    { label: 'Desnivel Acumulado', value: '+2,600m' }
+                  ].map((box, i) => (
+                    <div key={i} style={{
+                      padding: '14px',
+                      backgroundColor: 'rgba(10, 74, 66, 0.3)',
+                      borderRadius: '12px',
+                      border: '1px solid rgba(244, 211, 94, 0.2)'
                     }}>
-                      Altitud Máxima
+                      <div style={{
+                        fontSize: '12px',
+                        color: '#f5f1e8',
+                        opacity: 0.7,
+                        marginBottom: '6px',
+                        fontFamily: "'Inter', sans-serif"
+                      }}>
+                        {box.label}
+                      </div>
+                      <div style={{ fontSize: '20px', fontWeight: '900', color: '#f4d35e' }}>
+                        {box.value}
+                      </div>
                     </div>
-                    <div style={{
-                      fontSize: '20px',
-                      fontWeight: '900',
-                      color: '#f4d35e'
-                    }}>
-                      2,850m
-                    </div>
-                  </div>
-
-                  <div style={{
-                    padding: '15px',
-                    backgroundColor: 'rgba(10, 74, 66, 0.3)',
-                    borderRadius: '12px',
-                    border: '1px solid rgba(244, 211, 94, 0.2)'
-                  }}>
-                    <div style={{
-                      fontSize: '13px',
-                      color: '#f5f1e8',
-                      opacity: 0.7,
-                      marginBottom: '5px',
-                      fontFamily: "'Inter', sans-serif"
-                    }}>
-                      Desnivel Acumulado
-                    </div>
-                    <div style={{
-                      fontSize: '20px',
-                      fontWeight: '900',
-                      color: '#f4d35e'
-                    }}>
-                      +2,600m
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
 
-              {/* Main CTA Button */}
               <button
                 onClick={() => navigate('/register')}
                 style={{
-                width: '100%',
-                backgroundColor: '#c85a3e',
-                color: '#f5f1e8',
-                border: 'none',
-                padding: '22px 40px',
-                borderRadius: '50px',
-                cursor: 'pointer',
-                fontSize: '18px',
-                fontWeight: '700',
-                fontFamily: "'Inter', sans-serif",
-                letterSpacing: '1px',
-                transition: 'all 0.3s ease',
-                boxShadow: '0 10px 35px rgba(200, 90, 62, 0.4)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '12px',
-                marginBottom: '20px'
-              }}
-              onMouseOver={(e) => {
-                e.target.style.backgroundColor = '#b04935';
-                e.target.style.transform = 'translateY(-3px)';
-                e.target.style.boxShadow = '0 15px 45px rgba(200, 90, 62, 0.5)';
-              }}
-              onMouseOut={(e) => {
-                e.target.style.backgroundColor = '#c85a3e';
-                e.target.style.transform = 'translateY(0)';
-                e.target.style.boxShadow = '0 10px 35px rgba(200, 90, 62, 0.4)';
-              }}>
-                INSCRÍBETE AHORA
-                <ArrowRight size={22} strokeWidth={3} />
+                  width: '100%',
+                  backgroundColor: '#c85a3e',
+                  color: '#f5f1e8',
+                  border: 'none',
+                  padding: isMobile ? '18px 22px' : '22px 40px',
+                  borderRadius: '50px',
+                  cursor: 'pointer',
+                  fontSize: isMobile ? '16px' : '18px',
+                  fontWeight: '700',
+                  fontFamily: "'Inter', sans-serif",
+                  letterSpacing: '1px',
+                  transition: 'all 0.3s ease',
+                  boxShadow: '0 10px 35px rgba(200, 90, 62, 0.4)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '12px',
+                  marginBottom: '16px'
+                }}
+                onMouseOver={(e) => {
+                  if (isMobile) return;
+                  e.currentTarget.style.backgroundColor = '#b04935';
+                  e.currentTarget.style.transform = 'translateY(-3px)';
+                  e.currentTarget.style.boxShadow = '0 15px 45px rgba(200, 90, 62, 0.5)';
+                }}
+                onMouseOut={(e) => {
+                  if (isMobile) return;
+                  e.currentTarget.style.backgroundColor = '#c85a3e';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 10px 35px rgba(200, 90, 62, 0.4)';
+                }}
+              >
+                INSCRÍBETE AHORA <ArrowRight size={22} strokeWidth={3} />
               </button>
 
-              {/* Secondary Info */}
               <div style={{
                 fontSize: '13px',
                 color: '#f5f1e8',
                 fontFamily: "'Inter', sans-serif",
                 opacity: 0.7,
-                marginBottom: '20px'
+                marginBottom: '16px'
               }}>
                 🔒 Registro seguro • Información detallada por email
               </div>
 
-              {/* Urgency Badge */}
               <div style={{
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
                 backgroundColor: 'rgba(200, 90, 62, 0.15)',
-                padding: '12px 20px',
+                padding: '12px 16px',
                 borderRadius: '20px',
                 border: '1px solid rgba(200, 90, 62, 0.3)'
               }}>
@@ -362,7 +291,7 @@ const RegistrationCTA = () => {
                   borderRadius: '50%',
                   backgroundColor: '#c85a3e',
                   animation: 'pulse 2s infinite'
-                }}></div>
+                }} />
                 <span style={{
                   fontSize: '13px',
                   fontWeight: '600',
@@ -376,12 +305,11 @@ const RegistrationCTA = () => {
           </div>
         </div>
 
-        {/* Bottom Info Bar */}
         <div style={{
-          marginTop: '40px',
+          marginTop: '26px',
           display: 'flex',
           justifyContent: 'center',
-          gap: '50px',
+          gap: isMobile ? '16px' : '50px',
           flexWrap: 'wrap'
         }}>
           {[
@@ -389,9 +317,7 @@ const RegistrationCTA = () => {
             { label: 'Capacidad máxima', value: '500 atletas' },
             { label: 'Edad mínima', value: '18 años' }
           ].map((info, index) => (
-            <div key={index} style={{
-              textAlign: 'center'
-            }}>
+            <div key={index} style={{ textAlign: 'center', minWidth: isMobile ? '140px' : 'auto' }}>
               <div style={{
                 fontSize: '13px',
                 fontWeight: '600',
@@ -416,14 +342,12 @@ const RegistrationCTA = () => {
         </div>
       </div>
 
-      <style>
-        {`
-          @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.6; transform: scale(1.2); }
-          }
-        `}
-      </style>
+      <style>{`
+        @keyframes pulse {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50% { opacity: 0.6; transform: scale(1.2); }
+        }
+      `}</style>
     </section>
   );
 };
