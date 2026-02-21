@@ -134,28 +134,7 @@ const Hero = () => {
           RUN BEYOND YOUR LIMITS
         </p>
 
-        {/* Botón */}
-        <button
-          style={{
-            backgroundColor: '#c85a3e',
-            color: '#f5f1e8',
-            border: 'none',
-            padding: isMobile ? '14px 26px' : '18px 50px',
-            borderRadius: '35px',
-            cursor: 'pointer',
-            fontSize: isMobile ? '14px' : '16px',
-            fontWeight: '700',
-            letterSpacing: '1.2px',
-            transition: 'all 0.3s ease',
-            boxShadow:
-              '0 10px 30px rgba(200, 90, 62, 0.3)',
-            fontFamily: "'Inter', sans-serif",
-            animation: 'pulse 2s ease-in-out infinite',
-            maxWidth: '100%'
-          }}
-        >
-          REGISTER NOW
-        </button>
+       
 
         {/* Countdown */}
         <div
