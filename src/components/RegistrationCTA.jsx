@@ -17,12 +17,12 @@ const RegistrationCTA = () => {
     e?.preventDefault?.();
     e?.stopPropagation?.();
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    navigate('/race-selection'); // 👈 AQUI
+    navigate('/race-selection');
   };
 
   return (
     <section style={{
-      padding: isMobile ? '80px 18px' : '120px 40px',
+      padding: isMobile ? '70px 16px' : '120px 40px',
       backgroundColor: '#0a4a42',
       width: '100%',
       margin: 0,
@@ -41,9 +41,9 @@ const RegistrationCTA = () => {
 
       <div style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
         <div style={{
-          padding: isMobile ? '36px 22px' : '80px 70px',
+          padding: isMobile ? '26px 18px' : '80px 70px',
           backgroundColor: 'rgba(245, 241, 232, 0.05)',
-          borderRadius: isMobile ? '28px' : '35px',
+          borderRadius: isMobile ? '22px' : '35px',
           border: '3px solid #f4d35e',
           boxShadow: '0 30px 80px rgba(0, 0, 0, 0.3)',
           position: 'relative',
@@ -53,8 +53,8 @@ const RegistrationCTA = () => {
             position: 'absolute',
             top: 0,
             right: 0,
-            width: '200px',
-            height: '200px',
+            width: isMobile ? '120px' : '200px',
+            height: isMobile ? '120px' : '200px',
             background: 'radial-gradient(circle at top right, rgba(244, 211, 94, 0.15), transparent 70%)',
             pointerEvents: 'none'
           }} />
@@ -62,7 +62,7 @@ const RegistrationCTA = () => {
           <div style={{
             display: 'grid',
             gridTemplateColumns: isMobile ? '1fr' : '1.2fr 1fr',
-            gap: isMobile ? '26px' : '60px',
+            gap: isMobile ? '20px' : '60px',
             alignItems: 'center'
           }}>
             {/* Left */}
@@ -71,12 +71,12 @@ const RegistrationCTA = () => {
                 display: 'inline-block',
                 backgroundColor: '#c85a3e',
                 color: '#f5f1e8',
-                padding: '10px 25px',
+                padding: '10px 22px',
                 borderRadius: '25px',
                 fontSize: isMobile ? '12px' : '13px',
                 fontWeight: '700',
                 letterSpacing: '2px',
-                marginBottom: '18px',
+                marginBottom: '16px',
                 fontFamily: "'Inter', sans-serif",
                 boxShadow: '0 5px 20px rgba(200, 90, 62, 0.3)'
               }}>
@@ -84,9 +84,9 @@ const RegistrationCTA = () => {
               </div>
 
               <h2 style={{
-                fontSize: isMobile ? 'clamp(34px, 9vw, 52px)' : '52px',
+                fontSize: isMobile ? 'clamp(28px, 8vw, 44px)' : '52px',
                 fontWeight: '900',
-                marginBottom: '18px',
+                marginBottom: '16px',
                 lineHeight: '1.1',
                 color: '#f5f1e8',
                 fontFamily: "'Playfair Display', serif"
@@ -95,11 +95,11 @@ const RegistrationCTA = () => {
               </h2>
 
               <p style={{
-                fontSize: isMobile ? '15px' : '18px',
+                fontSize: isMobile ? '14px' : '18px',
                 lineHeight: '1.7',
                 color: '#f5f1e8',
                 opacity: 0.85,
-                marginBottom: isMobile ? '22px' : '40px',
+                marginBottom: isMobile ? '16px' : '40px',
                 fontFamily: "'Inter', sans-serif"
               }}>
                 Únete a atletas de todo el mundo en la experiencia de trail running más épica de Sudamérica.
@@ -110,15 +110,15 @@ const RegistrationCTA = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '12px',
-                marginBottom: isMobile ? '22px' : '45px'
+                marginBottom: isMobile ? '16px' : '45px'
               }}>
                 {highlights.map((item, index) => {
                   const Icon = item.icon;
                   return (
                     <div key={index} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                       <div style={{
-                        width: '35px',
-                        height: '35px',
+                        width: '36px',
+                        height: '36px',
                         borderRadius: '50%',
                         backgroundColor: 'rgba(244, 211, 94, 0.15)',
                         display: 'flex',
@@ -145,8 +145,8 @@ const RegistrationCTA = () => {
 
               <div style={{
                 backgroundColor: 'rgba(10, 74, 66, 0.5)',
-                padding: isMobile ? '18px' : '25px 30px',
-                borderRadius: '20px',
+                padding: isMobile ? '16px' : '25px 30px',
+                borderRadius: '18px',
                 border: '1px solid rgba(244, 211, 94, 0.2)'
               }}>
                 <div style={{
@@ -186,16 +186,16 @@ const RegistrationCTA = () => {
             <div style={{ textAlign: 'center' }}>
               <div style={{
                 backgroundColor: 'rgba(244, 211, 94, 0.12)',
-                padding: isMobile ? '22px' : '40px 35px',
-                borderRadius: '25px',
-                marginBottom: '22px',
+                padding: isMobile ? '18px' : '40px 35px',
+                borderRadius: '22px',
+                marginBottom: '18px',
                 border: '2px solid #f4d35e'
               }}>
                 <div style={{
                   fontSize: '13px',
                   fontWeight: '600',
                   color: '#f5f1e8',
-                  marginBottom: '16px',
+                  marginBottom: '14px',
                   fontFamily: "'Inter', sans-serif",
                   letterSpacing: '1.5px',
                   opacity: 0.8
@@ -205,9 +205,9 @@ const RegistrationCTA = () => {
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                   {[
-                    { label: 'Distancia', value: '10K Adventure' },
+                    { label: 'Distancias', value: '5K • 10K • 21K' },
                     { label: 'Altitud máxima', value: '2.850 m' },
-                    { label: 'Desnivel acumulado', value: '+1.311 m' }
+                    { label: 'Desnivel acumulado', value: '+2.600 m' }
                   ].map((box, i) => (
                     <div key={i} style={{
                       padding: '14px',
@@ -225,7 +225,7 @@ const RegistrationCTA = () => {
                         {box.label}
                       </div>
                       <div style={{
-                        fontSize: '20px',
+                        fontSize: '18px',
                         fontWeight: '900',
                         color: '#f4d35e',
                         fontFamily: "'Playfair Display', serif"
@@ -245,20 +245,19 @@ const RegistrationCTA = () => {
                   backgroundColor: '#c85a3e',
                   color: '#f5f1e8',
                   border: 'none',
-                  padding: isMobile ? '18px 22px' : '22px 40px',
+                  padding: isMobile ? '16px 18px' : '22px 40px',
                   borderRadius: '50px',
                   cursor: 'pointer',
                   fontSize: isMobile ? '16px' : '18px',
                   fontWeight: '700',
                   fontFamily: "'Inter', sans-serif",
                   letterSpacing: '1px',
-                  transition: 'all 0.3s ease',
                   boxShadow: '0 10px 35px rgba(200, 90, 62, 0.4)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   gap: '12px',
-                  marginBottom: '16px'
+                  marginBottom: '12px'
                 }}
               >
                 INSCRÍBETE AHORA <ArrowRight size={22} strokeWidth={3} />
@@ -268,49 +267,12 @@ const RegistrationCTA = () => {
                 fontSize: '13px',
                 color: '#f5f1e8',
                 fontFamily: "'Inter', sans-serif",
-                opacity: 0.7,
-                marginBottom: '16px'
+                opacity: 0.7
               }}>
                 🔒 Registro seguro • Confirmación por email
               </div>
             </div>
           </div>
-        </div>
-
-        <div style={{
-          marginTop: '26px',
-          display: 'flex',
-          justifyContent: 'center',
-          gap: isMobile ? '16px' : '50px',
-          flexWrap: 'wrap'
-        }}>
-          {[
-            { label: 'Inicio de carrera', value: '15 oct 2024' },
-            { label: 'Capacidad máxima', value: '500 atletas' },
-            { label: 'Edad mínima', value: '18 años' }
-          ].map((info, index) => (
-            <div key={index} style={{ textAlign: 'center', minWidth: isMobile ? '140px' : 'auto' }}>
-              <div style={{
-                fontSize: '13px',
-                fontWeight: '600',
-                color: '#f5f1e8',
-                opacity: 0.6,
-                marginBottom: '5px',
-                fontFamily: "'Inter', sans-serif",
-                letterSpacing: '1px'
-              }}>
-                {info.label}
-              </div>
-              <div style={{
-                fontSize: '16px',
-                fontWeight: '700',
-                color: '#f4d35e',
-                fontFamily: "'Inter', sans-serif"
-              }}>
-                {info.value}
-              </div>
-            </div>
-          ))}
         </div>
       </div>
     </section>
