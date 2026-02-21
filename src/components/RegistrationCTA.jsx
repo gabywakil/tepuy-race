@@ -1,11 +1,16 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowRight, CheckCircle, Calendar, MapPin, Users } from 'lucide-react';
-import useMedia from '../hooks/useMedia';
 
 const RegistrationCTA = () => {
   const navigate = useNavigate();
-  const { isMobile } = useMedia('(max-width: 768px)');
+  const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 768);
+
+  React.useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const highlights = [
     { icon: Calendar, text: "Evento: 15 de octubre, 2024" },
@@ -17,7 +22,7 @@ const RegistrationCTA = () => {
     e?.preventDefault?.();
     e?.stopPropagation?.();
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    navigate('/race-selection');
+    navigate('/register');
   };
 
   return (
