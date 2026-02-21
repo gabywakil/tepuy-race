@@ -56,7 +56,8 @@ const Checkout = () => {
       return;
     }
 
-    navigate('/registrationconfirmed', { state: { formData, race } });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    navigate('/registration-confirmed', { state: { formData, race } }); // ✅ ruta correcta
   };
 
   const inputBase = {
@@ -67,7 +68,9 @@ const Checkout = () => {
     color: '#f5f1e8',
     fontSize: '15px',
     fontFamily: "'Inter', sans-serif",
-    outline: 'none'
+    outline: 'none',
+    width: '100%',
+    boxSizing: 'border-box'
   };
 
   return (
@@ -82,10 +85,10 @@ const Checkout = () => {
       <div style={{
         maxWidth: '900px',
         margin: '0 auto',
-        padding: isMobile ? '0 18px' : '0 40px'
+        padding: isMobile ? '0 16px' : '0 40px'
       }}>
         {/* Header */}
-        <div style={{ textAlign: 'center', marginBottom: isMobile ? '28px' : '50px' }}>
+        <div style={{ textAlign: 'center', marginBottom: isMobile ? '24px' : '50px' }}>
           <div style={{
             display: 'inline-block',
             backgroundColor: 'rgba(200, 90, 62, 0.15)',
@@ -102,7 +105,7 @@ const Checkout = () => {
           </div>
 
           <h1 style={{
-            fontSize: isMobile ? 'clamp(32px, 8vw, 52px)' : '52px',
+            fontSize: isMobile ? 'clamp(30px, 8vw, 48px)' : '52px',
             fontWeight: '900',
             marginBottom: '10px',
             lineHeight: '1.05',
@@ -125,18 +128,18 @@ const Checkout = () => {
         <form onSubmit={handleSubmit}>
           {/* Resumen */}
           <div style={{
-            padding: isMobile ? '18px' : '30px',
+            padding: isMobile ? '16px' : '30px',
             backgroundColor: 'rgba(244, 211, 94, 0.12)',
-            borderRadius: '20px',
+            borderRadius: '18px',
             border: '2px solid #f4d35e',
-            marginBottom: '26px'
+            marginBottom: '20px'
           }}>
             <div style={{
               display: 'flex',
               flexDirection: isMobile ? 'column' : 'row',
               justifyContent: 'space-between',
               alignItems: isMobile ? 'flex-start' : 'center',
-              gap: isMobile ? '10px' : '0px'
+              gap: '10px'
             }}>
               <div>
                 <div style={{
@@ -149,7 +152,7 @@ const Checkout = () => {
                   Carrera seleccionada
                 </div>
                 <div style={{
-                  fontSize: isMobile ? '22px' : '24px',
+                  fontSize: isMobile ? '20px' : '24px',
                   fontWeight: '900',
                   color: '#f5f1e8',
                   fontFamily: "'Playfair Display', serif"
@@ -159,7 +162,7 @@ const Checkout = () => {
               </div>
 
               <div style={{
-                fontSize: isMobile ? '28px' : '36px',
+                fontSize: isMobile ? '26px' : '36px',
                 fontWeight: '900',
                 color: '#f4d35e'
               }}>
@@ -171,16 +174,16 @@ const Checkout = () => {
           {/* Personal */}
           <div style={{
             backgroundColor: 'rgba(245, 241, 232, 0.08)',
-            padding: isMobile ? '18px' : '40px',
-            borderRadius: '25px',
+            padding: isMobile ? '16px' : '34px',
+            borderRadius: '22px',
             border: '2px solid rgba(244, 211, 94, 0.3)',
-            marginBottom: '18px'
+            marginBottom: '16px'
           }}>
             <h3 style={{
               fontSize: '18px',
               fontWeight: '800',
               color: '#f5f1e8',
-              marginBottom: '18px',
+              marginBottom: '16px',
               fontFamily: "'Inter', sans-serif",
               display: 'flex',
               alignItems: 'center',
@@ -193,7 +196,7 @@ const Checkout = () => {
             <div style={{
               display: 'grid',
               gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
-              gap: '14px'
+              gap: '12px'
             }}>
               <input name="firstName" placeholder="Nombre *" required value={formData.firstName} onChange={handleInputChange} style={inputBase} />
               <input name="lastName" placeholder="Apellido *" required value={formData.lastName} onChange={handleInputChange} style={inputBase} />
@@ -201,12 +204,17 @@ const Checkout = () => {
               <input type="tel" name="phone" placeholder="Teléfono *" required value={formData.phone} onChange={handleInputChange} style={inputBase} />
               <input type="date" name="birthDate" required value={formData.birthDate} onChange={handleInputChange} style={inputBase} />
 
-              <select name="shirtSize" required value={formData.shirtSize} onChange={handleInputChange}
+              <select
+                name="shirtSize"
+                required
+                value={formData.shirtSize}
+                onChange={handleInputChange}
                 style={{
                   ...inputBase,
                   cursor: 'pointer',
                   color: formData.shirtSize ? '#f5f1e8' : 'rgba(245, 241, 232, 0.55)'
-                }}>
+                }}
+              >
                 <option value="">Talla de camisa *</option>
                 {shirtSizes.map((s) => (
                   <option key={s} value={s} style={{ backgroundColor: '#0a4a42' }}>{s}</option>
@@ -221,16 +229,16 @@ const Checkout = () => {
           {/* Emergencia */}
           <div style={{
             backgroundColor: 'rgba(245, 241, 232, 0.08)',
-            padding: isMobile ? '18px' : '40px',
-            borderRadius: '25px',
+            padding: isMobile ? '16px' : '34px',
+            borderRadius: '22px',
             border: '2px solid rgba(244, 211, 94, 0.3)',
-            marginBottom: '18px'
+            marginBottom: '16px'
           }}>
             <h3 style={{
               fontSize: '18px',
               fontWeight: '800',
               color: '#f5f1e8',
-              marginBottom: '18px',
+              marginBottom: '16px',
               fontFamily: "'Inter', sans-serif",
               display: 'flex',
               alignItems: 'center',
@@ -243,7 +251,7 @@ const Checkout = () => {
             <div style={{
               display: 'grid',
               gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
-              gap: '14px'
+              gap: '12px'
             }}>
               <input name="emergencyContact" placeholder="Nombre completo *" required value={formData.emergencyContact} onChange={handleInputChange} style={inputBase} />
               <input type="tel" name="emergencyPhone" placeholder="Teléfono *" required value={formData.emergencyPhone} onChange={handleInputChange} style={inputBase} />
@@ -253,16 +261,16 @@ const Checkout = () => {
           {/* Pago */}
           <div style={{
             backgroundColor: 'rgba(245, 241, 232, 0.08)',
-            padding: isMobile ? '18px' : '40px',
-            borderRadius: '25px',
+            padding: isMobile ? '16px' : '34px',
+            borderRadius: '22px',
             border: '2px solid rgba(244, 211, 94, 0.3)',
-            marginBottom: '22px'
+            marginBottom: '18px'
           }}>
             <h3 style={{
               fontSize: '18px',
               fontWeight: '800',
               color: '#f5f1e8',
-              marginBottom: '18px',
+              marginBottom: '16px',
               fontFamily: "'Inter', sans-serif",
               display: 'flex',
               alignItems: 'center',
@@ -275,43 +283,45 @@ const Checkout = () => {
             <div style={{
               display: 'grid',
               gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
-              gap: '14px',
-              marginBottom: '16px'
+              gap: '12px',
+              marginBottom: '14px'
             }}>
               {['zelle', 'pagomovil'].map((method) => (
-                <div
+                <button
                   key={method}
+                  type="button"
                   onClick={() => {
                     setFormData((p) => ({ ...p, paymentMethod: method }));
                     setShowPaymentInfo(true);
                   }}
                   style={{
-                    padding: '18px',
+                    padding: '16px',
                     backgroundColor: formData.paymentMethod === method ? 'rgba(244, 211, 94, 0.15)' : 'rgba(10, 74, 66, 0.4)',
                     borderRadius: '15px',
                     border: `2px solid ${formData.paymentMethod === method ? '#f4d35e' : 'rgba(244, 211, 94, 0.3)'}`,
                     cursor: 'pointer',
                     transition: 'all 0.2s ease',
-                    textAlign: 'center'
+                    textAlign: 'center',
+                    color: '#f5f1e8'
                   }}
                 >
-                  <div style={{ fontSize: '16px', fontWeight: '800', color: '#f5f1e8', fontFamily: "'Inter', sans-serif" }}>
+                  <div style={{ fontSize: '16px', fontWeight: '800', fontFamily: "'Inter', sans-serif" }}>
                     {method === 'zelle' ? 'Zelle' : 'Pago Móvil'}
                   </div>
                   {formData.paymentMethod === method && (
                     <Check size={18} color="#f4d35e" style={{ marginTop: '10px' }} />
                   )}
-                </div>
+                </button>
               ))}
             </div>
 
             {showPaymentInfo && formData.paymentMethod && (
               <div style={{
-                padding: '16px',
+                padding: '14px',
                 backgroundColor: 'rgba(200, 90, 62, 0.15)',
                 borderRadius: '15px',
                 border: '2px solid #c85a3e',
-                marginBottom: '16px'
+                marginBottom: '14px'
               }}>
                 <div style={{
                   fontSize: '14px',
@@ -365,7 +375,7 @@ const Checkout = () => {
               />
 
               <div style={{
-                padding: isMobile ? '18px' : '22px',
+                padding: isMobile ? '16px' : '20px',
                 backgroundColor: 'rgba(10, 74, 66, 0.4)',
                 borderRadius: '15px',
                 border: '2px dashed rgba(244, 211, 94, 0.55)',
@@ -392,7 +402,6 @@ const Checkout = () => {
             </div>
           </div>
 
-          {/* Submit */}
           <button
             type="submit"
             style={{
@@ -400,8 +409,8 @@ const Checkout = () => {
               backgroundColor: '#c85a3e',
               color: '#f5f1e8',
               border: 'none',
-              padding: isMobile ? '18px' : '20px',
-              borderRadius: '15px',
+              padding: isMobile ? '16px' : '18px',
+              borderRadius: '14px',
               cursor: 'pointer',
               fontSize: isMobile ? '16px' : '18px',
               fontWeight: '900',
@@ -415,7 +424,7 @@ const Checkout = () => {
 
           <div style={{
             textAlign: 'center',
-            marginTop: '14px',
+            marginTop: '12px',
             fontSize: '12px',
             color: '#f5f1e8',
             opacity: 0.6,
