@@ -1,11 +1,16 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowRight, CheckCircle, Mountain } from 'lucide-react';
-import useMedia from '../hooks/useMedia';
 
 const RaceSelection = () => {
   const navigate = useNavigate();
-  const { isMobile } = useMedia('(max-width: 768px)');
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const races = useMemo(() => ([
     {
