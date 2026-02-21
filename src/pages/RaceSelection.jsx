@@ -1,275 +1,189 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { TrendingUp, CheckCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle, Mountain } from 'lucide-react';
 import useMedia from '../hooks/useMedia';
 
 const RaceSelection = () => {
   const navigate = useNavigate();
   const { isMobile } = useMedia('(max-width: 768px)');
 
-  const race = {
-    id: '10k',
-    name: '10K Aventura',
-    distance: '10K',
-    price: '$65',
-    elevation: '+1,311m',
-    difficulty: 'Intermedio',
-    features: [
-      'Desafío moderado',
-      'Vistas espectaculares',
-      'Terreno variado',
-      '4 puntos de hidratación'
-    ],
-    color: '#c85a3e',
-    recommended: true
-  };
+  const races = useMemo(() => ([
+    {
+      id: '5k',
+      name: '5K Starter',
+      distance: '5K',
+      price: '$45',
+      bullets: ['Ideal para principiantes', 'Ruta panorámica', 'Hidratación incluida']
+    },
+    {
+      id: '10k',
+      name: '10K Aventura',
+      distance: '10K',
+      price: '$65',
+      bullets: ['Exigencia media', 'Sección técnica', 'Experiencia completa']
+    },
+    {
+      id: '21k',
+      name: '21K Challenge',
+      distance: '21K',
+      price: '$90',
+      bullets: ['Alta exigencia', 'Más desnivel', 'Premiación especial']
+    }
+  ]), []);
 
-  const handleContinue = () => {
-    navigate('/checkout', { state: { race } });
+  const [selected, setSelected] = useState(races[1]);
+
+  const goCheckout = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    navigate('/checkout', { state: { race: selected } });
   };
 
   return (
-    <div style={{
-      backgroundColor: '#0a4a42',
-      minHeight: '100vh',
-      paddingTop: '100px',
-      paddingBottom: '80px',
-      width: '100%',
-      margin: 0
-    }}>
-      <div style={{
-        maxWidth: '900px',
-        margin: '0 auto',
-        padding: isMobile ? '0 18px' : '0 40px'
-      }}>
-        {/* Header */}
-        <div style={{ textAlign: 'center', marginBottom: isMobile ? '30px' : '50px' }}>
+    <div style={{ backgroundColor: '#0a4a42', minHeight: '100vh', paddingTop: '100px', paddingBottom: '80px' }}>
+      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: isMobile ? '0 16px' : '0 40px' }}>
+        <div style={{ textAlign: 'center', marginBottom: isMobile ? '22px' : '44px' }}>
           <div style={{
             display: 'inline-block',
-            backgroundColor: 'rgba(200, 90, 62, 0.15)',
-            color: '#c85a3e',
-            padding: '10px 25px',
+            backgroundColor: 'rgba(244, 211, 94, 0.12)',
+            color: '#f4d35e',
+            padding: '10px 22px',
             borderRadius: '25px',
             fontSize: '13px',
-            fontWeight: '700',
+            fontWeight: '800',
             letterSpacing: '2px',
-            marginBottom: '18px',
+            marginBottom: '14px',
             fontFamily: "'Inter', sans-serif"
           }}>
             PASO 1 DE 3
           </div>
 
           <h1 style={{
-            fontSize: isMobile ? 'clamp(34px, 9vw, 56px)' : '56px',
+            fontSize: isMobile ? 'clamp(30px, 9vw, 48px)' : '56px',
             fontWeight: '900',
-            marginBottom: '14px',
-            lineHeight: '1.05',
+            margin: 0,
             color: '#f5f1e8',
-            fontFamily: "'Playfair Display', serif"
+            fontFamily: "'Playfair Display', serif",
+            lineHeight: 1.05
           }}>
-            Selecciona tu <span style={{ color: '#f4d35e', fontStyle: 'italic' }}>Reto</span>
+            Selecciona tu carrera
           </h1>
 
           <p style={{
-            fontSize: isMobile ? '15px' : '18px',
+            fontSize: isMobile ? '14px' : '16px',
             color: '#f5f1e8',
-            opacity: 0.8,
+            opacity: 0.75,
+            marginTop: '12px',
             fontFamily: "'Inter', sans-serif"
           }}>
-            Aquí tienes la carrera principal disponible con todos sus detalles.
+            Revisa detalles y precio antes de pagar.
           </p>
         </div>
 
-        {/* Card única */}
-        <div
-          style={{
-            padding: isMobile ? '26px 18px' : '40px 30px',
-            backgroundColor: 'rgba(245, 241, 232, 0.08)',
-            borderRadius: '25px',
-            border: '3px solid rgba(244, 211, 94, 0.35)',
-            position: 'relative',
-            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.22)'
-          }}
-        >
-          {/* Badge */}
-          {race.recommended && (
-            <div style={{
-              position: 'absolute',
-              top: '-14px',
-              right: '18px',
-              backgroundColor: '#c85a3e',
-              color: '#f5f1e8',
-              padding: '8px 18px',
-              borderRadius: '20px',
-              fontSize: '11px',
-              fontWeight: '700',
-              letterSpacing: '1.5px',
-              fontFamily: "'Inter', sans-serif",
-              boxShadow: '0 5px 15px rgba(200, 90, 62, 0.35)'
-            }}>
-              MÁS POPULAR
-            </div>
-          )}
-
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: isMobile ? '1fr' : '1.2fr 0.8fr',
+          gap: '16px'
+        }}>
+          {/* Cards */}
           <div style={{
-            display: 'flex',
-            flexDirection: isMobile ? 'column' : 'row',
-            justifyContent: 'space-between',
-            gap: isMobile ? '18px' : '0px',
-            alignItems: isMobile ? 'flex-start' : 'center'
+            display: 'grid',
+            gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
+            gap: '14px'
           }}>
-            <div>
-              <div style={{
-                display: 'inline-block',
-                backgroundColor: `${race.color}22`,
-                color: race.color,
-                padding: '8px 18px',
-                borderRadius: '20px',
-                fontSize: '12px',
-                fontWeight: '700',
-                letterSpacing: '1.5px',
-                marginBottom: '14px',
-                fontFamily: "'Inter', sans-serif",
-                border: `2px solid ${race.color}`
-              }}>
-                {race.distance}
-              </div>
-
-              <h3 style={{
-                fontSize: isMobile ? '28px' : '32px',
-                fontWeight: '900',
-                marginBottom: '10px',
-                color: '#f5f1e8',
-                fontFamily: "'Playfair Display', serif"
-              }}>
-                {race.name}
-              </h3>
-
-              <div style={{
-                display: 'flex',
-                gap: '18px',
-                flexWrap: 'wrap',
-                marginBottom: '16px'
-              }}>
-                <div>
-                  <div style={{ fontSize: '26px', fontWeight: '900', color: '#f4d35e' }}>
-                    {race.price}
+            {races.map((r) => {
+              const active = selected.id === r.id;
+              return (
+                <button
+                  key={r.id}
+                  type="button"
+                  onClick={() => setSelected(r)}
+                  style={{
+                    textAlign: 'left',
+                    padding: '18px',
+                    borderRadius: '18px',
+                    border: active ? '3px solid #f4d35e' : '2px solid rgba(244, 211, 94, 0.25)',
+                    backgroundColor: active ? 'rgba(244, 211, 94, 0.12)' : 'rgba(245, 241, 232, 0.06)',
+                    color: '#f5f1e8',
+                    cursor: 'pointer'
+                  }}
+                >
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '12px', opacity: 0.75, marginBottom: '6px' }}>
+                    DISTANCIA
                   </div>
-                  <div style={{ fontSize: '12px', opacity: 0.75, color: '#f5f1e8', fontFamily: "'Inter', sans-serif" }}>
-                    Inscripción
+                  <div style={{ fontSize: '22px', fontWeight: '900', fontFamily: "'Playfair Display', serif" }}>
+                    {r.distance}
                   </div>
-                </div>
+                  <div style={{ fontSize: '14px', fontWeight: '700', marginTop: '6px', fontFamily: "'Inter', sans-serif" }}>
+                    {r.name}
+                  </div>
+                  <div style={{ fontSize: '18px', fontWeight: '900', color: '#f4d35e', marginTop: '10px' }}>
+                    {r.price}
+                  </div>
+                </button>
+              );
+            })}
+          </div>
 
-                <div>
-                  <div style={{ fontSize: '16px', fontWeight: '800', color: '#f5f1e8', fontFamily: "'Inter', sans-serif" }}>
-                    {race.elevation}
-                  </div>
-                  <div style={{ fontSize: '12px', opacity: 0.75, color: '#f5f1e8', fontFamily: "'Inter', sans-serif" }}>
-                    Desnivel
-                  </div>
-                </div>
-              </div>
-
-              <div style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '10px',
-                padding: '10px 14px',
-                backgroundColor: 'rgba(10, 74, 66, 0.45)',
-                borderRadius: '12px',
-                border: '1px solid rgba(244, 211, 94, 0.2)'
-              }}>
-                <TrendingUp size={18} color={race.color} />
-                <span style={{ fontSize: '14px', fontWeight: '700', color: '#f5f1e8', fontFamily: "'Inter', sans-serif" }}>
-                  Nivel: {race.difficulty}
-                </span>
-              </div>
+          {/* Summary */}
+          <div style={{
+            padding: '18px',
+            borderRadius: '18px',
+            border: '2px solid rgba(244, 211, 94, 0.28)',
+            backgroundColor: 'rgba(10, 74, 66, 0.4)'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
+              <Mountain size={20} color="#f4d35e" />
+              <div style={{ fontWeight: '900', fontFamily: "'Inter', sans-serif" }}>Detalles</div>
             </div>
 
-            {/* Check visual */}
             <div style={{
-              width: isMobile ? '100%' : '220px',
-              backgroundColor: 'rgba(244, 211, 94, 0.08)',
-              border: '2px solid rgba(244, 211, 94, 0.3)',
-              borderRadius: '18px',
-              padding: '16px',
-              display: 'flex',
-              gap: '10px',
-              alignItems: 'center'
+              fontSize: '18px',
+              fontWeight: '900',
+              fontFamily: "'Playfair Display', serif",
+              color: '#f5f1e8',
+              marginBottom: '6px'
             }}>
-              <div style={{
-                width: '38px',
-                height: '38px',
-                borderRadius: '50%',
-                backgroundColor: 'rgba(244, 211, 94, 0.18)',
-                border: '2px solid #f4d35e',
+              {selected.name}
+            </div>
+
+            <div style={{ fontSize: '14px', opacity: 0.8, fontFamily: "'Inter', sans-serif", marginBottom: '12px' }}>
+              Precio: <span style={{ color: '#f4d35e', fontWeight: 900 }}>{selected.price}</span>
+            </div>
+
+            <div style={{ display: 'grid', gap: '10px', marginBottom: '14px' }}>
+              {selected.bullets.map((b, i) => (
+                <div key={i} style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+                  <CheckCircle size={16} color="#f4d35e" />
+                  <span style={{ fontFamily: "'Inter', sans-serif", fontSize: '14px', opacity: 0.9 }}>{b}</span>
+                </div>
+              ))}
+            </div>
+
+            <button
+              type="button"
+              onClick={goCheckout}
+              style={{
+                width: '100%',
+                backgroundColor: '#c85a3e',
+                color: '#f5f1e8',
+                border: 'none',
+                padding: '16px 18px',
+                borderRadius: '14px',
+                cursor: 'pointer',
+                fontSize: '15px',
+                fontWeight: '900',
+                fontFamily: "'Inter', sans-serif",
+                letterSpacing: '1px',
+                boxShadow: '0 10px 35px rgba(200, 90, 62, 0.35)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                flexShrink: 0
-              }}>
-                <CheckCircle size={20} color="#f4d35e" strokeWidth={2.8} />
-              </div>
-              <div style={{ color: '#f5f1e8', fontFamily: "'Inter', sans-serif" }}>
-                <div style={{ fontWeight: 800 }}>Incluye</div>
-                <div style={{ fontSize: '13px', opacity: 0.8 }}>Kit + Medalla + Chip</div>
-              </div>
-            </div>
+                gap: '10px'
+              }}
+            >
+              CONTINUAR <ArrowRight size={18} />
+            </button>
           </div>
-
-          {/* Features */}
-          <div style={{
-            marginTop: '18px',
-            paddingTop: '18px',
-            borderTop: '1px solid rgba(244, 211, 94, 0.18)',
-            display: 'grid',
-            gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
-            gap: '10px'
-          }}>
-            {race.features.map((feature, idx) => (
-              <div key={idx} style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-                <div style={{ width: '7px', height: '7px', borderRadius: '50%', backgroundColor: race.color }} />
-                <span style={{ color: '#f5f1e8', opacity: 0.92, fontFamily: "'Inter', sans-serif", fontSize: '14px' }}>
-                  {feature}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Botón continuar */}
-        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '26px' }}>
-          <button
-            onClick={handleContinue}
-            style={{
-              width: isMobile ? '100%' : '420px',
-              backgroundColor: '#c85a3e',
-              color: '#f5f1e8',
-              border: 'none',
-              padding: isMobile ? '18px 20px' : '18px 26px',
-              borderRadius: '50px',
-              cursor: 'pointer',
-              fontSize: isMobile ? '16px' : '16px',
-              fontWeight: '800',
-              fontFamily: "'Inter', sans-serif",
-              letterSpacing: '1px',
-              transition: 'all 0.25s ease',
-              boxShadow: '0 10px 35px rgba(200, 90, 62, 0.35)'
-            }}
-          >
-            CONTINUAR / ADQUIRIR ENTRADA
-          </button>
-        </div>
-
-        <div style={{
-          textAlign: 'center',
-          marginTop: '12px',
-          fontSize: '13px',
-          color: '#f5f1e8',
-          opacity: 0.65,
-          fontFamily: "'Inter', sans-serif"
-        }}>
-          Al continuar pasarás al formulario de inscripción y pago.
         </div>
       </div>
     </div>
