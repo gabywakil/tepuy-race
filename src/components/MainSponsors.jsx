@@ -3,6 +3,10 @@ import { Award } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import useMedia from '../hooks/useMedia';
 
+import logoVenetur from '../assets/LogoVenetur.png';
+import logoMarea from '../assets/LogoMarea.png';
+import logoConMariaBonita from '../assets/conmariabonita.png';
+
 const useInView = (threshold = 0.15) => {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
@@ -24,9 +28,9 @@ const MainSponsors = () => {
   const [ctaRef, ctaVisible] = useInView(0.3);
 
   const mainSponsors = [
-    { name: "Title Sponsor", tier: "TITLE", logo: "LOGO 1" },
-    { name: "Gold Sponsor",  tier: "GOLD",  logo: "LOGO 2" },
-    { name: "Gold Sponsor",  tier: "GOLD",  logo: "LOGO 3" },
+    { name: "Title Sponsor", tier: "TITLE", logo: logoVenetur },
+    { name: "Gold Sponsor",  tier: "GOLD",  logo: logoMarea },
+    { name: "Gold Sponsor",  tier: "GOLD",  logo: logoConMariaBonita },
   ];
 
   return (
@@ -55,6 +59,8 @@ const MainSponsors = () => {
         .ms-card:hover { transform: translateY(-8px) !important; border-color: #f4d35e !important; background-color: rgba(245,241,232,0.16) !important; }
         .ms-cta-btn { transition: background-color 0.25s, color 0.25s, transform 0.25s, box-shadow 0.25s; }
         .ms-cta-btn:hover { background-color: #f4d35e !important; color: #0a4a42 !important; transform: translateY(-2px) !important; box-shadow: 0 8px 24px rgba(244,211,94,0.3) !important; }
+        .ms-logo-box img { transition: transform 0.3s ease; }
+        .ms-card:hover .ms-logo-box img { transform: scale(1.05); }
       `}</style>
 
       {/* ambient orb */}
@@ -162,20 +168,30 @@ const MainSponsors = () => {
                   </div>
                 )}
 
-                <div style={{
-                  width:'100%',
-                  height: isMobile ? '140px' : (isFirst ? '200px' : '150px'),
-                  backgroundColor:'rgba(255,255,255,0.9)',
-                  borderRadius:'15px',
-                  display:'flex', alignItems:'center', justifyContent:'center',
-                  fontSize: isMobile ? '18px' : (isFirst ? '24px' : '20px'),
-                  fontWeight:'800', color:'#0a4a42',
-                  fontFamily:"'Inter',sans-serif",
-                  border:'2px dashed rgba(10,74,66,0.2)',
-                  marginBottom:'12px',
-                  transition:'transform 0.3s ease',
-                }}>
-                  {sponsor.logo}
+                {/* ── Logo ── */}
+                <div
+                  className="ms-logo-box"
+                  style={{
+                    width:'100%',
+                    height: isMobile ? '140px' : (isFirst ? '200px' : '150px'),
+                    backgroundColor:'rgba(255,255,255,0.9)',
+                    borderRadius:'15px',
+                    display:'flex', alignItems:'center', justifyContent:'center',
+                    marginBottom:'12px',
+                    overflow:'hidden',
+                    padding: '12px',
+                  }}
+                >
+                  <img
+                    src={sponsor.logo}
+                    alt={sponsor.name}
+                    style={{
+                      maxWidth:'80%',
+                      maxHeight:'80%',
+                      objectFit:'contain',
+                      display:'block',
+                    }}
+                  />
                 </div>
 
                 <div style={{
