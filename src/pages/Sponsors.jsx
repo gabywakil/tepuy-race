@@ -2,6 +2,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Award, TrendingUp, Users, Download, Mail } from 'lucide-react';
 import useMedia from '../hooks/useMedia';
 
+import logoMarea from '../assets/LogoMarea.png';
+import logoVenetur from '../assets/LogoVenetur.png';
+import logoConMariaBonita from '../assets/conmariabonita.png';
+
 const useInView = (threshold = 0.1) => {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
@@ -20,21 +24,29 @@ const Sponsors = () => {
   const { isMobile } = useMedia('(max-width: 768px)');
   const [mounted, setMounted] = useState(false);
 
-  const [heroRef,    heroVisible]    = useInView(0.1);
-  const [titleRef,   titleVisible]   = useInView(0.15);
-  const [officRef,   officVisible]   = useInView(0.08);
-  const [partRef,    partVisible]    = useInView(0.08);
-  const [becomeRef,  becomeVisible]  = useInView(0.1);
+  const [heroRef,   heroVisible]   = useInView(0.1);
+  const [titleRef,  titleVisible]  = useInView(0.15);
+  const [officRef,  officVisible]  = useInView(0.08);
+  const [partRef,   partVisible]   = useInView(0.08);
+  const [becomeRef, becomeVisible] = useInView(0.1);
 
   useEffect(() => { const t = setTimeout(() => setMounted(true), 80); return () => clearTimeout(t); }, []);
 
-  const titleSponsors   = [{ name:"Patrocinador Principal", logo:"LOGO" }];
-  const officialSponsors = [{ name:"Patrocinador 1", logo:"LOGO" },{ name:"Patrocinador 2", logo:"LOGO" },{ name:"Patrocinador 3", logo:"LOGO" },{ name:"Patrocinador 4", logo:"LOGO" }];
-  const partners        = Array.from({length:6},(_,i)=>({ name:`Aliado ${i+1}`, logo:"LOGO" }));
-  const benefits        = [
-    { icon:Award,      text:"Visibilidad de marca ante más de 5,000 atletas" },
-    { icon:TrendingUp, text:"Zonas de activación exclusivas el día de carrera" },
-    { icon:Users,      text:"Marketing digital en todas nuestras redes sociales" },
+  const titleSponsors = [{ name: "Marea", logo: logoMarea }];
+
+  const officialSponsors = [
+    { name: "Venetur",         logo: logoVenetur },
+    { name: "Con Maria Bonita", logo: logoConMariaBonita },
+    { name: "Patrocinador 3",  logo: null },
+    { name: "Patrocinador 4",  logo: null },
+  ];
+
+  const partners = Array.from({ length: 6 }, (_, i) => ({ name: `Aliado ${i + 1}`, logo: null }));
+
+  const benefits = [
+    { icon: Award,      text: "Visibilidad de marca ante más de 5,000 atletas" },
+    { icon: TrendingUp, text: "Zonas de activación exclusivas el día de carrera" },
+    { icon: Users,      text: "Marketing digital en todas nuestras redes sociales" },
   ];
 
   return (
@@ -69,6 +81,9 @@ const Sponsors = () => {
         .sp-dl-btn:hover { background-color:#f4d35e!important; color:#0a4a42!important; transform:translateY(-2px); }
         .sp-benefit-row { transition:transform 0.2s; }
         .sp-benefit-row:hover { transform:translateX(4px); }
+        .sp-logo-box img { transition:transform 0.3s ease; }
+        .sp-title-card:hover .sp-logo-box img,
+        .sp-offic-card:hover .sp-logo-box img { transform:scale(1.05); }
       `}</style>
 
       {/* ══ HERO ══ */}
@@ -83,9 +98,7 @@ const Sponsors = () => {
             opacity: heroVisible ? 1 : 0,
             animation: heroVisible ? 'spHeroIn 0.8s cubic-bezier(0.16,1,0.3,1) forwards' : 'none',
           }}>
-            {/* shimmer border top */}
             <div style={{ position:'absolute', top:0, left:0, right:0, height:'3px', background:'linear-gradient(90deg,transparent,#f4d35e 40%,#c85a3e 60%,transparent)', backgroundSize:'200% 100%', animation:'spShimmer 3s linear infinite', zIndex:2 }}/>
-
             <div style={{
               width:'100%', height:'100%',
               background:'linear-gradient(135deg,rgba(10,74,66,0.95) 0%,rgba(200,90,62,0.85) 100%)',
@@ -103,7 +116,6 @@ const Sponsors = () => {
               }}>
                 NUESTROS ALIADOS
               </div>
-
               <h1 style={{
                 fontSize: isMobile ? 'clamp(34px,10vw,56px)' : '72px',
                 fontWeight:'900', margin:'0 0 16px 0', lineHeight:'1', letterSpacing:'-1px', color:'#f4d35e',
@@ -113,7 +125,6 @@ const Sponsors = () => {
               }}>
                 NUESTROS SPONSORS
               </h1>
-
               <p style={{
                 fontSize: isMobile ? '14px' : '20px', maxWidth:'700px', margin:'0 auto',
                 lineHeight:'1.7', fontFamily:"'Inter',sans-serif", opacity: heroVisible ? 0.9 : 0,
@@ -123,7 +134,6 @@ const Sponsors = () => {
               }}>
                 La fortaleza de Tepuy Race viene de nuestros aliados. Conoce a las organizaciones que nos ayudan a llevar el trail running al siguiente nivel.
               </p>
-
               <button className="sp-hero-btn" style={{
                 marginTop:'22px', width: isMobile ? '100%' : 'auto', maxWidth: isMobile ? '420px' : 'none',
                 backgroundColor:'#f4d35e', color:'#0a4a42', border:'none',
@@ -140,7 +150,7 @@ const Sponsors = () => {
         </div>
       </section>
 
-      {/* ══ TITLE SPONSOR ══ */}
+      {/* ══ PATROCINADOR PRINCIPAL ══ */}
       <section style={{ padding: isMobile ? '50px 18px' : '80px 40px', maxWidth:'1200px', margin:'0 auto' }}>
         <div ref={titleRef} style={{ display:'flex', alignItems:'center', gap:'15px', marginBottom: isMobile ? '28px' : '50px' }}>
           <div style={{ width: titleVisible ? '60px' : '0', height:'3px', backgroundColor:'#c85a3e', transition:'width 0.7s ease', borderRadius:'2px' }}/>
@@ -155,31 +165,43 @@ const Sponsors = () => {
         </div>
 
         <div style={{ display:'flex', justifyContent:'center' }}>
-          <div
-            className="sp-title-card"
-            style={{
-              width: isMobile ? '100%' : '500px',
-              padding: isMobile ? '34px 18px' : '80px 60px',
-              backgroundColor:'rgba(200,90,62,0.08)', borderRadius:'25px',
-              textAlign:'center', border:'3px solid #f4d35e', cursor:'pointer',
-              position:'relative', overflow:'hidden',
-              opacity: titleVisible ? 1 : 0,
-              animation: titleVisible ? 'spCardIn 0.7s 0.15s ease forwards, spTitleGlow 4s 1s ease-in-out infinite' : 'none',
-              animationFillMode:'both, forwards',
-              animationIterationCount:'1, infinite',
-            }}
-          >
-            <div style={{ position:'absolute', top:0, left:'10%', right:'10%', height:'3px', background:'linear-gradient(90deg,transparent,#f4d35e 50%,transparent)', backgroundSize:'200% 100%', animation:'spShimmer 2.5s linear infinite' }}/>
-            <div style={{
-              width:'100%', height: isMobile ? '160px' : '200px',
-              backgroundColor:'rgba(10,74,66,0.6)', borderRadius:'15px',
-              display:'flex', alignItems:'center', justifyContent:'center',
-              fontSize: isMobile ? '18px' : '28px', fontWeight:'700', color:'#c85a3e',
-              fontFamily:"'Inter',sans-serif", border:'2px dashed rgba(200,90,62,0.3)',
-            }}>
-              LOGO DEL SPONSOR
+          {titleSponsors.map((s, i) => (
+            <div
+              key={i}
+              className="sp-title-card"
+              style={{
+                width: isMobile ? '100%' : '500px',
+                padding: isMobile ? '34px 18px' : '80px 60px',
+                backgroundColor:'rgba(200,90,62,0.08)', borderRadius:'25px',
+                textAlign:'center', border:'3px solid #f4d35e', cursor:'pointer',
+                position:'relative', overflow:'hidden',
+                opacity: titleVisible ? 1 : 0,
+                animation: titleVisible ? 'spCardIn 0.7s 0.15s ease forwards, spTitleGlow 4s 1s ease-in-out infinite' : 'none',
+                animationFillMode:'both, forwards',
+                animationIterationCount:'1, infinite',
+              }}
+            >
+              <div style={{ position:'absolute', top:0, left:'10%', right:'10%', height:'3px', background:'linear-gradient(90deg,transparent,#f4d35e 50%,transparent)', backgroundSize:'200% 100%', animation:'spShimmer 2.5s linear infinite' }}/>
+              <div
+                className="sp-logo-box"
+                style={{
+                  width:'100%', height: isMobile ? '160px' : '220px',
+                  backgroundColor:'rgba(255,255,255,0.92)', borderRadius:'15px',
+                  display:'flex', alignItems:'center', justifyContent:'center',
+                  padding:'16px', overflow:'hidden',
+                }}
+              >
+                <img
+                  src={s.logo}
+                  alt={s.name}
+                  style={{ maxWidth:'85%', maxHeight:'85%', objectFit:'contain', display:'block' }}
+                />
+              </div>
+              <div style={{ marginTop:'16px', fontSize: isMobile ? '15px' : '18px', fontWeight:'700', color:'#f5f1e8', fontFamily:"'Inter',sans-serif" }}>
+                {s.name}
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </section>
 
@@ -209,21 +231,50 @@ const Sponsors = () => {
                   textAlign:'center', border:'2px solid rgba(244,211,94,0.15)', cursor:'pointer',
                   position:'relative', overflow:'hidden',
                   opacity: officVisible ? 1 : 0,
-                  animation: officVisible ? `spCardIn 0.55s ${i*0.08}s ease forwards` : 'none',
+                  animation: officVisible ? `spCardIn 0.55s ${i * 0.08}s ease forwards` : 'none',
                   animationFillMode:'both',
                 }}
               >
                 <div style={{ position:'absolute', top:0, left:'20%', right:'20%', height:'1px', background:'linear-gradient(90deg,transparent,rgba(244,211,94,0.2),transparent)' }}/>
-                <div style={{ width:'100%', height: isMobile ? '110px' : '140px', backgroundColor:'rgba(10,74,66,0.5)', borderRadius:'12px', display:'flex', alignItems:'center', justifyContent:'center', fontSize: isMobile ? '14px' : '18px', fontWeight:'700', color:'#c85a3e', fontFamily:"'Inter',sans-serif", border:'2px dashed rgba(200,90,62,0.2)' }}>
-                  LOGO
+
+                {/* ── Logo o placeholder ── */}
+                <div
+                  className="sp-logo-box"
+                  style={{
+                    width:'100%', height: isMobile ? '110px' : '140px',
+                    backgroundColor: s.logo ? 'rgba(255,255,255,0.92)' : 'rgba(10,74,66,0.5)',
+                    borderRadius:'12px',
+                    display:'flex', alignItems:'center', justifyContent:'center',
+                    padding: s.logo ? '10px' : '0',
+                    overflow:'hidden',
+                    border: s.logo ? 'none' : '2px dashed rgba(200,90,62,0.2)',
+                  }}
+                >
+                  {s.logo ? (
+                    <img
+                      src={s.logo}
+                      alt={s.name}
+                      style={{ maxWidth:'85%', maxHeight:'85%', objectFit:'contain', display:'block' }}
+                    />
+                  ) : (
+                    <span style={{ fontSize: isMobile ? '14px' : '18px', fontWeight:'700', color:'#c85a3e', fontFamily:"'Inter',sans-serif" }}>
+                      LOGO
+                    </span>
+                  )}
                 </div>
+
+                {s.logo && (
+                  <div style={{ marginTop:'12px', fontSize: isMobile ? '13px' : '15px', fontWeight:'700', color:'#f5f1e8', fontFamily:"'Inter',sans-serif" }}>
+                    {s.name}
+                  </div>
+                )}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ══ ALIADOS ══ */}
+      {/* ══ ALIADOS ESTRATÉGICOS ══ */}
       <section style={{ padding: isMobile ? '50px 18px' : '80px 40px', maxWidth:'1200px', margin:'0 auto' }}>
         <div ref={partRef}>
           <div style={{ display:'flex', alignItems:'center', gap:'15px', marginBottom: isMobile ? '24px' : '50px' }}>
@@ -249,11 +300,18 @@ const Sponsors = () => {
                   textAlign:'center', border:'2px solid rgba(200,90,62,0.1)', cursor:'pointer',
                   position:'relative', overflow:'hidden',
                   opacity: partVisible ? 1 : 0,
-                  animation: partVisible ? `spCardIn 0.45s ${i*0.06}s ease forwards` : 'none',
+                  animation: partVisible ? `spCardIn 0.45s ${i * 0.06}s ease forwards` : 'none',
                   animationFillMode:'both',
                 }}
               >
-                <div style={{ width:'100%', height: isMobile ? '62px' : '80px', backgroundColor:'rgba(245,241,232,0.05)', borderRadius:'10px', display:'flex', alignItems:'center', justifyContent:'center', fontSize: isMobile ? '12px' : '14px', fontWeight:'700', color:'#f5f1e8', fontFamily:"'Inter',sans-serif", border:'1px dashed rgba(245,241,232,0.18)' }}>
+                <div style={{
+                  width:'100%', height: isMobile ? '62px' : '80px',
+                  backgroundColor:'rgba(245,241,232,0.05)', borderRadius:'10px',
+                  display:'flex', alignItems:'center', justifyContent:'center',
+                  fontSize: isMobile ? '12px' : '14px', fontWeight:'700',
+                  color:'#f5f1e8', fontFamily:"'Inter',sans-serif",
+                  border:'1px dashed rgba(245,241,232,0.18)',
+                }}>
                   LOGO
                 </div>
               </div>
@@ -286,14 +344,14 @@ const Sponsors = () => {
             </p>
 
             <div style={{ display:'flex', flexDirection:'column', gap:'14px' }}>
-              {benefits.map(({ icon:Icon, text }, i) => (
+              {benefits.map(({ icon: Icon, text }, i) => (
                 <div
                   key={i}
                   className="sp-benefit-row"
                   style={{
                     display:'flex', alignItems:'center', gap:'14px',
                     opacity: becomeVisible ? 1 : 0,
-                    animation: becomeVisible ? `spFadeRight 0.5s ${0.1+i*0.1}s ease forwards` : 'none',
+                    animation: becomeVisible ? `spFadeRight 0.5s ${0.1 + i * 0.1}s ease forwards` : 'none',
                     animationFillMode:'both',
                   }}
                 >
@@ -316,7 +374,6 @@ const Sponsors = () => {
             animationFillMode:'both',
           }}>
             <div style={{ position:'absolute', top:0, left:'10%', right:'10%', height:'2px', background:'linear-gradient(90deg,transparent,rgba(244,211,94,0.35),transparent)' }}/>
-
             <div style={{ textAlign: isMobile ? 'left' : 'right', marginBottom:'24px' }}>
               <div style={{ fontSize:'15px', fontWeight:'800', color:'#f4d35e', marginBottom:'6px', fontFamily:"'Inter',sans-serif", letterSpacing:'1px' }}>
                 ¿Listo para apoyar la carrera?
@@ -325,7 +382,6 @@ const Sponsors = () => {
                 Descarga nuestro Prospecto de Patrocinio 2024
               </div>
             </div>
-
             <div style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap:'12px' }}>
               <button className="sp-contact-btn" style={{
                 backgroundColor:'#c85a3e', color:'#f5f1e8', border:'none',
