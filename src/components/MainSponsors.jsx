@@ -28,9 +28,9 @@ const MainSponsors = () => {
   const [ctaRef, ctaVisible] = useInView(0.3);
 
   const mainSponsors = [
-    { name: "Title Sponsor", tier: "TITLE", logo: logoVenetur },
-    { name: "Gold Sponsor",  tier: "GOLD",  logo: logoMarea },
-    { name: "Gold Sponsor",  tier: "GOLD",  logo: logoConMariaBonita },
+    { name: "Patrocinador Principal", tier: "PRINCIPAL", logo: logoVenetur },
+    { name: "Patrocinador Oro",       tier: "ORO",       logo: logoMarea },
+    { name: "Patrocinador Oro",       tier: "ORO",       logo: logoConMariaBonita },
   ];
 
   return (
@@ -153,7 +153,8 @@ const MainSponsors = () => {
                   animationIterationCount: isFirst ? '1, infinite' : '1',
                 }}
               >
-                {isFirst && (
+                {/* ── Badge de tier (todos) ── */}
+                {isFirst ? (
                   <div style={{
                     display:'inline-block',
                     background:'linear-gradient(90deg,#f4d35e,#fff8dc,#f4d35e)',
@@ -166,6 +167,20 @@ const MainSponsors = () => {
                   }}>
                     {sponsor.tier}
                   </div>
+                ) : (
+                  <div style={{
+                    display:'inline-block',
+                    background:'linear-gradient(90deg,rgba(244,211,94,0.3),rgba(244,211,94,0.1),rgba(244,211,94,0.3))',
+                    backgroundSize:'200% 100%',
+                    animation:'msShimmer 2.5s linear infinite',
+                    color:'#f4d35e',
+                    padding:'5px 18px', borderRadius:'20px',
+                    fontSize:'11px', fontWeight:'800', letterSpacing:'1.5px',
+                    marginBottom:'14px', fontFamily:"'Inter',sans-serif",
+                    border:'1px solid rgba(244,211,94,0.4)',
+                  }}>
+                    {sponsor.tier}
+                  </div>
                 )}
 
                 {/* ── Logo ── */}
@@ -173,27 +188,28 @@ const MainSponsors = () => {
                   className="ms-logo-box"
                   style={{
                     width:'100%',
-                    height: isMobile ? '140px' : (isFirst ? '200px' : '150px'),
+                    height: isMobile ? '180px' : (isFirst ? '260px' : '200px'),
                     backgroundColor:'rgba(255,255,255,0.9)',
                     borderRadius:'15px',
                     display:'flex', alignItems:'center', justifyContent:'center',
                     marginBottom:'12px',
                     overflow:'hidden',
-                    padding: '12px',
+                    padding:'12px',
                   }}
                 >
                   <img
                     src={sponsor.logo}
                     alt={sponsor.name}
                     style={{
-                      maxWidth:'80%',
-                      maxHeight:'80%',
+                      maxWidth:'85%',
+                      maxHeight:'85%',
                       objectFit:'contain',
                       display:'block',
                     }}
                   />
                 </div>
 
+                {/* ── Nombre ── */}
                 <div style={{
                   fontSize: isMobile ? '15px' : (isFirst ? '18px' : '16px'),
                   fontWeight:'700', color:'#f5f1e8',
@@ -225,7 +241,7 @@ const MainSponsors = () => {
               width: isMobile ? '100%' : 'auto', maxWidth: isMobile ? '360px' : 'none',
             }}
           >
-            VER TODOS LOS SPONSORS <span style={{ fontSize:'20px' }}>→</span>
+            VER TODOS LOS PATROCINADORES <span style={{ fontSize:'20px' }}>→</span>
           </Link>
         </div>
       </div>
