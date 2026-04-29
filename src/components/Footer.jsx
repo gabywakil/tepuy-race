@@ -27,7 +27,7 @@ const Footer = () => {
 
   return (
     <footer style={{
-      backgroundColor: '#0a4a42',
+      backgroundColor: 'transparent',
       color: '#f5f1e8',
       padding: isMobile ? '60px 20px 32px' : '80px 40px 40px',
       borderTop: '2px solid rgba(244, 211, 94, 0.2)',
