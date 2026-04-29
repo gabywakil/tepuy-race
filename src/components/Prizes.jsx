@@ -37,7 +37,7 @@ const Prizes = () => {
   return (
     <section style={{
       padding: isMobile ? '80px 18px' : '120px 40px',
-      backgroundColor:'#0a4a42', width:'100%', margin:0,
+      backgroundColor:'transparent', width:'100%', margin:0,
       borderTop:'1px solid rgba(244,211,94,0.2)',
       borderBottom:'1px solid rgba(244,211,94,0.2)',
       position:'relative', overflow:'hidden',
