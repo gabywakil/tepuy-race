@@ -26,7 +26,7 @@ const RegistrationConfirmed = () => {
   const displayEmail = isGroup ? groupLeader?.email : formData?.email;
 
   return (
-    <div style={{ backgroundColor:'#0a4a42', minHeight:'100vh', paddingTop:'110px', paddingBottom:'80px', overflowX:'hidden', position:'relative' }}>
+    <div style={{ backgroundColor:'transparent', minHeight:'100vh', paddingTop:'110px', paddingBottom:'80px', overflowX:'hidden', position:'relative' }}>
       <style>{`
         @keyframes rcPageIn    { from{opacity:0} to{opacity:1} }
         @keyframes rcCardIn    { from{opacity:0;transform:translateY(40px)scale(0.95)} to{opacity:1;transform:translateY(0)scale(1)} }
