@@ -67,7 +67,7 @@ const AboutUs = () => {
   ];
 
   return (
-    <div style={{ backgroundColor: '#0a4a42', minHeight: '100vh', paddingTop: '100px', width: '100%', margin: 0, overflowX: 'hidden' }}>
+    <div style={{ backgroundColor: 'transparent', minHeight: '100vh', paddingTop: '100px', width: '100%', margin: 0, overflowX: 'hidden' }}>
       <style>{`
         @keyframes auFadeUp    { from{opacity:0;transform:translateY(38px)} to{opacity:1;transform:translateY(0)} }
         @keyframes auFadeRight { from{opacity:0;transform:translateX(-32px)} to{opacity:1;transform:translateX(0)} }
