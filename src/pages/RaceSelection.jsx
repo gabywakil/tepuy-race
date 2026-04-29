@@ -40,7 +40,7 @@ const RaceSelection = () => {
   const goGroupCheckout = () => { window.scrollTo({top:0,behavior:'smooth'}); navigate('/checkout',{state:{race,isGroup:true}}); };
 
   return (
-    <div style={{ backgroundColor:'#0a4a42', minHeight:'100vh', paddingTop:'100px', paddingBottom:'80px', overflowX:'hidden' }}>
+    <div style={{ backgroundColor:'transparent', minHeight:'100vh', paddingTop:'100px', paddingBottom:'80px', overflowX:'hidden' }}>
       <style>{`
         @keyframes rsFadeUp    { from{opacity:0;transform:translateY(32px)} to{opacity:1;transform:translateY(0)} }
         @keyframes rsBadgePop  { from{opacity:0;transform:scale(0.8)} to{opacity:1;transform:scale(1)} }
