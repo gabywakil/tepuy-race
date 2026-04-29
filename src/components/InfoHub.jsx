@@ -51,7 +51,7 @@ const InfoHub = () => {
   return (
     <section style={{
       padding: isMobile ? '52px 18px' : '90px 40px',
-      backgroundColor: '#0a4a42',
+      backgroundColor: 'transparent',
       color: '#f5f1e8',
       width: '100%',
       margin: 0,
