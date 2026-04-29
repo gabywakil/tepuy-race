@@ -208,7 +208,7 @@ const Checkout = () => {
 
   return (
     <div style={{
-      backgroundColor: '#0a4a42',
+      backgroundColor: 'transparent',
       minHeight: '100vh',
       paddingTop: '100px',
       paddingBottom: '80px',
@@ -548,7 +548,7 @@ const Checkout = () => {
                       >
                         <option value="">Talla de camisa *</option>
                         {shirtSizes.map((s) => (
-                          <option key={s} value={s} style={{ backgroundColor: '#0a4a42' }}>{s}</option>
+                          <option key={s} value={s} style={{ backgroundColor: 'transparent' }}>{s}</option>
                         ))}
                       </select>
                       <input name="country" placeholder="País *" required value={member.country} onChange={(e) => handleMemberChange(index, e)} style={inputBase} />
@@ -706,7 +706,7 @@ const Checkout = () => {
                   >
                     <option value="">Talla de camisa *</option>
                     {shirtSizes.map((s) => (
-                      <option key={s} value={s} style={{ backgroundColor: '#0a4a42' }}>{s}</option>
+                      <option key={s} value={s} style={{ backgroundColor: 'transparent' }}>{s}</option>
                     ))}
                   </select>
                   <input name="country" placeholder="País *" required value={formData.country} onChange={handleInputChange} style={inputBase} />
