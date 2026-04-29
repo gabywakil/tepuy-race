@@ -50,7 +50,7 @@ const Sponsors = () => {
   ];
 
   return (
-    <div style={{ fontFamily:"'Playfair Display',serif", backgroundColor:'#0a4a42', color:'#f5f1e8', minHeight:'100vh', paddingTop:'100px', overflowX:'hidden' }}>
+    <div style={{ fontFamily:"'Playfair Display',serif", backgroundColor:'transparent', color:'#f5f1e8', minHeight:'100vh', paddingTop:'100px', overflowX:'hidden' }}>
       <style>{`
         @keyframes spFadeUp    { from{opacity:0;transform:translateY(36px)} to{opacity:1;transform:translateY(0)} }
         @keyframes spFadeRight { from{opacity:0;transform:translateX(-28px)} to{opacity:1;transform:translateX(0)} }
@@ -321,7 +321,7 @@ const Sponsors = () => {
       </section>
 
       {/* ══ CONVIÉRTETE EN ALIADO ══ */}
-      <section style={{ padding: isMobile ? '60px 18px' : '100px 40px', backgroundColor:'#0a4a42', position:'relative', overflow:'hidden' }}>
+      <section style={{ padding: isMobile ? '60px 18px' : '100px 40px', backgroundColor:'transparent', position:'relative', overflow:'hidden' }}>
         <div style={{ position:'absolute', inset:0, background:'radial-gradient(circle at 30% 50%,rgba(244,211,94,0.04),transparent 50%)', pointerEvents:'none' }}/>
         <div
           ref={becomeRef}
