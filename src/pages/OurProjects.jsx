@@ -62,7 +62,7 @@ const OurProjects = () => {
   ];
 
   return (
-    <div style={{ backgroundColor:'#0a4a42', minHeight:'100vh', paddingTop:'100px', width:'100%', margin:0, overflowX:'hidden' }}>
+    <div style={{ backgroundColor:'transparent', minHeight:'100vh', paddingTop:'100px', width:'100%', margin:0, overflowX:'hidden' }}>
       <style>{`
         @keyframes opFadeUp    { from{opacity:0;transform:translateY(36px)} to{opacity:1;transform:translateY(0)} }
         @keyframes opFadeRight { from{opacity:0;transform:translateX(-28px)} to{opacity:1;transform:translateX(0)} }
