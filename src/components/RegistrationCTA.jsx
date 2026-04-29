@@ -42,7 +42,7 @@ const RegistrationCTA = () => {
   return (
     <section style={{
       padding: isMobile ? '70px 16px' : '120px 40px',
-      backgroundColor:'#0a4a42', width:'100%', margin:0,
+      backgroundColor:'transparent', width:'100%', margin:0,
       position:'relative', overflow:'hidden',
     }}>
       <style>{`
