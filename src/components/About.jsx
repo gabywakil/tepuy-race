@@ -51,7 +51,7 @@ const About = () => {
       ref={sectionRef}
       style={{
         padding: isMobile ? "80px 20px" : "140px 40px",
-        backgroundColor: "#0a4a42",
+        backgroundColor: "transparent",
         width: "100%",
         position: "relative",
         overflow: "hidden",
