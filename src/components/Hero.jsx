@@ -69,7 +69,7 @@ const Hero = () => {
         }}
       >
         {/* ── solid bg fallback ── */}
-        <div style={{ position: 'absolute', inset: 0, background: '#0a4a42', zIndex: 0 }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'transparent', zIndex: 0 }} />
 
         {/* ── video ── */}
         <video
