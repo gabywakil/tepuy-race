@@ -21,16 +21,16 @@ function App() {
   }, []);
 
  return (
-  <div className="App" style={{
-    fontFamily: "'Playfair Display', serif",
-    backgroundColor: '#0a4a42',
-    color: '#f5f1e8',
-    minHeight: '100vh',
-    margin: 0,
-    padding: 0,
-    width: '100%',
-    position: 'relative'
-  }}>
+ <div className="App" style={{
+  fontFamily: "'Playfair Display', serif",
+  /* backgroundColor: '#0a4a42',  ← elimina esta línea */
+  color: '#f5f1e8',
+  minHeight: '100vh',
+  margin: 0,
+  padding: 0,
+  width: '100%',
+  position: 'relative'
+}}>
 
     {/* 🌿 Hojas de palmera decorativas */}
     <div className="palm-bg">
