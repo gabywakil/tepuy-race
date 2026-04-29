@@ -49,7 +49,7 @@ const Overview = () => {
   return (
     <section style={{
       padding: isMobile ? '90px 18px' : '120px 40px',
-      backgroundColor: '#0a4a42',
+      backgroundColor: 'transparent',
       borderTop: '1px solid rgba(244,211,94,0.2)',
       borderBottom: '1px solid rgba(244,211,94,0.2)',
       width: '100%', margin: 0, overflowX: 'hidden',
