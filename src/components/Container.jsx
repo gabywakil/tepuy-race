@@ -41,7 +41,7 @@ const Container = () => {
       ref={containerRef}
       style={{
         fontFamily: "'Playfair Display', serif",
-        backgroundColor: '#0a4a42',
+        backgroundColor: 'transparent',
         color: '#f5f1e8',
         minHeight: '100vh',
         margin: 0,
