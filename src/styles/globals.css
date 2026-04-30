@@ -21,47 +21,61 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #0a4a42;
+  color: #f5f1e8;
+  overflow-x: hidden;
+  width: 100%;
+  min-height: 100vh;
+}
 
-  /* ═══════════════════════════════════════════
-     FONDO TEPUY: hojas de palma + silueta tepuy
-     Todas las capas usan background-attachment: fixed
-     para que queden fijas detrás del scroll.
-     Los colores son variantes del verde base (#0a4a42)
-     ligeramente más claros para que se distingan
-     sin romper la paleta ni la legibilidad.
-  ═══════════════════════════════════════════ */
+/*
+  ═══════════════════════════════════════════════════
+  FONDO TEPUY CON HOJAS
+  Usamos un pseudo-elemento ::before en #root con
+  position:fixed para que funcione en iOS Safari.
+  z-index negativo lo manda detrás de todo el contenido.
+  ═══════════════════════════════════════════════════
+*/
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: transparent;
+  position: relative;
+  isolation: isolate;
+}
+
+#root::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
 
   background-image:
-
-    /* ── HOJA GRANDE esquina superior izquierda ── */
+    /* hoja grande esquina superior izquierda */
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 260 520'%3E%3Cg opacity='0.55'%3E%3Cellipse cx='130' cy='260' rx='110' ry='250' fill='%23134d3a' transform='rotate(-18 130 260)'/%3E%3Cellipse cx='130' cy='260' rx='55' ry='240' fill='%230e3d2d' transform='rotate(-18 130 260)'/%3E%3Cline x1='130' y1='20' x2='130' y2='500' stroke='%230a3020' stroke-width='5' opacity='0.6' transform='rotate(-18 130 260)'/%3E%3Cline x1='130' y1='120' x2='50' y2='220' stroke='%230a3020' stroke-width='2' opacity='0.4' transform='rotate(-18 130 260)'/%3E%3Cline x1='130' y1='180' x2='200' y2='270' stroke='%230a3020' stroke-width='2' opacity='0.4' transform='rotate(-18 130 260)'/%3E%3Cline x1='130' y1='240' x2='45' y2='320' stroke='%230a3020' stroke-width='2' opacity='0.4' transform='rotate(-18 130 260)'/%3E%3Cline x1='130' y1='300' x2='210' y2='380' stroke='%230a3020' stroke-width='2' opacity='0.4' transform='rotate(-18 130 260)'/%3E%3Cline x1='130' y1='360' x2='55' y2='430' stroke='%230a3020' stroke-width='2' opacity='0.3' transform='rotate(-18 130 260)'/%3E%3C/g%3E%3C/svg%3E"),
-
-    /* ── HOJA GRANDE esquina superior derecha (espejada) ── */
+    /* hoja grande esquina superior derecha */
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 260 520'%3E%3Cg opacity='0.5'%3E%3Cellipse cx='130' cy='260' rx='105' ry='245' fill='%23124838' transform='rotate(20 130 260)'/%3E%3Cellipse cx='130' cy='260' rx='52' ry='235' fill='%230d3a2a' transform='rotate(20 130 260)'/%3E%3Cline x1='130' y1='20' x2='130' y2='500' stroke='%230a2e1e' stroke-width='5' opacity='0.55' transform='rotate(20 130 260)'/%3E%3Cline x1='130' y1='130' x2='210' y2='210' stroke='%230a2e1e' stroke-width='2' opacity='0.35' transform='rotate(20 130 260)'/%3E%3Cline x1='130' y1='200' x2='55' y2='280' stroke='%230a2e1e' stroke-width='2' opacity='0.35' transform='rotate(20 130 260)'/%3E%3Cline x1='130' y1='270' x2='215' y2='345' stroke='%230a2e1e' stroke-width='2' opacity='0.35' transform='rotate(20 130 260)'/%3E%3Cline x1='130' y1='340' x2='50' y2='405' stroke='%230a2e1e' stroke-width='2' opacity='0.3' transform='rotate(20 130 260)'/%3E%3C/g%3E%3C/svg%3E"),
-
-    /* ── HOJA MEDIANA esquina inferior izquierda ── */
+    /* hoja mediana esquina inferior izquierda */
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 440'%3E%3Cg opacity='0.45'%3E%3Cellipse cx='110' cy='220' rx='95' ry='210' fill='%23165544' transform='rotate(25 110 220)'/%3E%3Cellipse cx='110' cy='220' rx='48' ry='200' fill='%23104030' transform='rotate(25 110 220)'/%3E%3Cline x1='110' y1='15' x2='110' y2='420' stroke='%230c3222' stroke-width='4' opacity='0.5' transform='rotate(25 110 220)'/%3E%3Cline x1='110' y1='100' x2='40' y2='185' stroke='%230c3222' stroke-width='2' opacity='0.35' transform='rotate(25 110 220)'/%3E%3Cline x1='110' y1='165' x2='178' y2='240' stroke='%230c3222' stroke-width='2' opacity='0.35' transform='rotate(25 110 220)'/%3E%3Cline x1='110' y1='230' x2='38' y2='305' stroke='%230c3222' stroke-width='2' opacity='0.3' transform='rotate(25 110 220)'/%3E%3Cline x1='110' y1='295' x2='182' y2='360' stroke='%230c3222' stroke-width='2' opacity='0.3' transform='rotate(25 110 220)'/%3E%3C/g%3E%3C/svg%3E"),
-
-    /* ── HOJA MEDIANA esquina inferior derecha ── */
+    /* hoja mediana esquina inferior derecha */
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 440'%3E%3Cg opacity='0.48'%3E%3Cellipse cx='110' cy='220' rx='98' ry='212' fill='%23134a38' transform='rotate(-22 110 220)'/%3E%3Cellipse cx='110' cy='220' rx='50' ry='202' fill='%230e3c2c' transform='rotate(-22 110 220)'/%3E%3Cline x1='110' y1='15' x2='110' y2='422' stroke='%230b3020' stroke-width='4' opacity='0.5' transform='rotate(-22 110 220)'/%3E%3Cline x1='110' y1='110' x2='185' y2='190' stroke='%230b3020' stroke-width='2' opacity='0.35' transform='rotate(-22 110 220)'/%3E%3Cline x1='110' y1='180' x2='38' y2='255' stroke='%230b3020' stroke-width='2' opacity='0.35' transform='rotate(-22 110 220)'/%3E%3Cline x1='110' y1='250' x2='188' y2='320' stroke='%230b3020' stroke-width='2' opacity='0.3' transform='rotate(-22 110 220)'/%3E%3Cline x1='110' y1='315' x2='42' y2='385' stroke='%230b3020' stroke-width='2' opacity='0.3' transform='rotate(-22 110 220)'/%3E%3C/g%3E%3C/svg%3E"),
-
-    /* ── SILUETA TEPUY fondo centro-izquierda ── */
+    /* silueta tepuy */
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Cpath fill='%230c4535' opacity='0.35' d='M0,300 L0,180 L40,175 L70,140 L100,138 L130,100 L160,98 L185,60 L210,58 L235,80 L255,78 L275,45 L295,43 L315,70 L335,68 L360,90 L385,55 L405,53 L425,75 L450,110 L480,108 L510,140 L540,160 L570,158 L600,180 L600,300 Z'/%3E%3Cpath fill='%230e4a3a' opacity='0.2' d='M0,300 L0,220 L60,215 L100,190 L150,185 L190,160 L230,158 L270,135 L310,132 L350,155 L390,150 L430,170 L470,168 L510,185 L550,183 L600,200 L600,300 Z'/%3E%3C/svg%3E"),
-
-    /* ── HOJA PEQUEÑA lateral izquierdo medio ── */
+    /* hoja pequeña lateral izquierdo */
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 320'%3E%3Cg opacity='0.38'%3E%3Cellipse cx='80' cy='160' rx='70' ry='155' fill='%23175a46' transform='rotate(35 80 160)'/%3E%3Cellipse cx='80' cy='160' rx='35' ry='148' fill='%23114234' transform='rotate(35 80 160)'/%3E%3Cline x1='80' y1='10' x2='80' y2='310' stroke='%230d3426' stroke-width='3' opacity='0.45' transform='rotate(35 80 160)'/%3E%3Cline x1='80' y1='80' x2='28' y2='140' stroke='%230d3426' stroke-width='1.5' opacity='0.3' transform='rotate(35 80 160)'/%3E%3Cline x1='80' y1='140' x2='132' y2='195' stroke='%230d3426' stroke-width='1.5' opacity='0.3' transform='rotate(35 80 160)'/%3E%3Cline x1='80' y1='200' x2='25' y2='255' stroke='%230d3426' stroke-width='1.5' opacity='0.25' transform='rotate(35 80 160)'/%3E%3C/g%3E%3C/svg%3E"),
-
-    /* ── HOJA PEQUEÑA lateral derecho medio ── */
+    /* hoja pequeña lateral derecho */
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 320'%3E%3Cg opacity='0.35'%3E%3Cellipse cx='80' cy='160' rx='68' ry='152' fill='%23144d3e' transform='rotate(-30 80 160)'/%3E%3Cellipse cx='80' cy='160' rx='34' ry='145' fill='%23103c2e' transform='rotate(-30 80 160)'/%3E%3Cline x1='80' y1='10' x2='80' y2='308' stroke='%230c3020' stroke-width='3' opacity='0.42' transform='rotate(-30 80 160)'/%3E%3Cline x1='80' y1='90' x2='135' y2='148' stroke='%230c3020' stroke-width='1.5' opacity='0.28' transform='rotate(-30 80 160)'/%3E%3Cline x1='80' y1='155' x2='22' y2='210' stroke='%230c3020' stroke-width='1.5' opacity='0.28' transform='rotate(-30 80 160)'/%3E%3Cline x1='80' y1='215' x2='138' y2='268' stroke='%230c3020' stroke-width='1.5' opacity='0.22' transform='rotate(-30 80 160)'/%3E%3C/g%3E%3C/svg%3E");
 
   background-size:
-    480px 960px,   /* hoja grande izq arriba */
-    440px 880px,   /* hoja grande der arriba */
-    360px 720px,   /* hoja mediana izq abajo */
-    380px 760px,   /* hoja mediana der abajo */
-    100% 420px,    /* silueta tepuy */
-    260px 520px,   /* hoja pequeña izq medio */
-    240px 480px;   /* hoja pequeña der medio */
+    480px 960px,
+    440px 880px,
+    360px 720px,
+    380px 760px,
+    100% 420px,
+    260px 520px,
+    240px 480px;
 
   background-position:
     left -120px top -60px,
@@ -73,144 +87,59 @@ body {
     right -55px center;
 
   background-repeat: no-repeat;
-  background-attachment: fixed; /* desktop */
-
-  color: #f5f1e8;
-  overflow-x: hidden;
-  width: 100%;
-  min-height: 100vh;
+  background-color: #0a4a42;
 }
 
-#root {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  min-height: 100vh;
-  background-color: transparent;
+/* móvil: tamaños más pequeños */
+@media (max-width: 768px) {
+  #root::before {
+    background-size:
+      220px 440px,
+      200px 400px,
+      180px 360px,
+      190px 380px,
+      100% 220px,
+      120px 240px,
+      110px 220px;
+
+    background-position:
+      left -50px top -10px,
+      right -45px top -10px,
+      left -35px bottom -10px,
+      right -40px bottom -10px,
+      center 65%,
+      left -25px center,
+      right -22px center;
+  }
 }
 
 /* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f5f1e8;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #c85a3e;
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #b04935;
-}
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #f5f1e8; }
+::-webkit-scrollbar-thumb { background: #c85a3e; border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: #b04935; }
 
 /* Animations */
 @keyframes float {
-  0%, 100% { 
-    transform: translate(0, 0) rotate(0deg); 
-  }
-  33% { 
-    transform: translate(30px, -30px) rotate(2deg); 
-  }
-  66% { 
-    transform: translate(-20px, 20px) rotate(-2deg); 
-  }
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33%       { transform: translate(30px, -30px) rotate(2deg); }
+  66%       { transform: translate(-20px, 20px) rotate(-2deg); }
 }
-
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-
 @keyframes pulse {
-  0%, 100% { 
-    transform: scale(1); 
-  }
-  50% { 
-    transform: scale(1.05); 
-  }
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.05); }
 }
 
-/* Global link styles */
-a {
-  color: inherit;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
+a { color: inherit; text-decoration: none; transition: all 0.3s ease; }
+a:hover { color: #c85a3e; }
+button:focus, input:focus { outline: none; }
+::selection { background-color: #f4d35e; color: #f5f1e8; }
+::-moz-selection { background-color: #f4d35e; color: #f5f1e8; }
 
-a:hover {
-  color: #c85a3e;
-}
+html, body, #root { width: 100%; max-width: 100%; overflow-x: hidden; }
 
-/* Button focus styles */
-button:focus,
-input:focus {
-  outline: none;
-}
-
-/* Selection color */
-::selection {
-  background-color: #f4d35e;
-  color: #f5f1e8;
-}
-
-::-moz-selection {
-  background-color: #f4d35e;
-  color: #f5f1e8;
-}
-
-html, body {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-#root {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
-/* ── palm-bg (App.jsx) se puede borrar, ya no hace falta ── */
 .palm-bg { display: none; }
-
-/* ══════════════════════════════════════════════
-   MÓVIL: background-attachment:fixed no funciona
-   en iOS Safari. Se cambia a scroll y se ajustan
-   tamaños y posiciones para pantallas estrechas.
-══════════════════════════════════════════════ */
-@media (max-width: 768px) {
-  body {
-    background-attachment: scroll;
-    background-size:
-      260px 520px,   /* hoja grande izq arriba — más pequeña en móvil */
-      240px 480px,   /* hoja grande der arriba */
-      200px 400px,   /* hoja mediana izq abajo */
-      210px 420px,   /* hoja mediana der abajo */
-      100% 280px,    /* silueta tepuy */
-      140px 280px,   /* hoja pequeña izq medio */
-      130px 260px;   /* hoja pequeña der medio */
-
-    background-position:
-      left -60px top -20px,
-      right -55px top -10px,
-      left -40px bottom -20px,
-      right -45px bottom -10px,
-      center 60%,
-      left -30px center,
-      right -28px center;
-  }
-}
