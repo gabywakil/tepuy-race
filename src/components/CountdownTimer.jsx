@@ -1,6 +1,5 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import useMedia from "../hooks/useMedia";
-import useInView from "../hooks/useInView";
 
 const TARGET = new Date("2024-10-15T07:00:00");
 
@@ -14,10 +13,8 @@ const calcTime = () => {
   };
 };
 
-// Memoizado: solo re-renderiza si su value cambia
 const FlipDigit = React.memo(({ value, prev }) => {
   const [flipping, setFlipping] = useState(false);
-
   useEffect(() => {
     if (value === prev) return;
     setFlipping(true);
@@ -49,7 +46,8 @@ const UNITS = [
 
 const CountdownTimer = () => {
   const { isMobile } = useMedia("(max-width: 768px)");
-  const [ref, visible] = useInView(0.2);
+  const [visible, setVisible] = useState(false);
+  const ref = useRef(null);
 
   // ── Un solo estado con prev incluido → un solo render por segundo ──
   const [{ current, prev }, setTime] = useState(() => {
@@ -62,6 +60,18 @@ const CountdownTimer = () => {
       setTime(({ current }) => ({ prev: current, current: calcTime() }));
     }, 1000);
     return () => clearInterval(id);
+  }, []);
+
+  // ── IntersectionObserver inline (sin hook externo) ──
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      { threshold: 0.2 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
   }, []);
 
   return (
@@ -100,8 +110,7 @@ const CountdownTimer = () => {
           animation: visible ? "ctGlow 5s 1s ease-in-out infinite" : "none",
         }}>
           <div style={{
-            position: "absolute", top: 0, left: "10%", right: "10%",
-            height: "2px",
+            position: "absolute", top: 0, left: "10%", right: "10%", height: "2px",
             background: "linear-gradient(90deg,transparent,#c85a3e 40%,#f4d35e 60%,transparent)",
             animation: "ctLinePulse 3s ease-in-out infinite",
           }} />
@@ -138,8 +147,7 @@ const CountdownTimer = () => {
                     )}
                     <div style={{
                       fontSize: isMobile ? "clamp(34px,12vw,52px)" : "clamp(44px,5vw,64px)",
-                      fontWeight: 900, color: "#a2432d", lineHeight: 1,
-                      marginBottom: "8px",
+                      fontWeight: 900, color: "#a2432d", lineHeight: 1, marginBottom: "8px",
                       fontFamily: "'Playfair Display', serif", letterSpacing: "-1px",
                     }}>
                       <FlipDigit value={current[key]} prev={prev[key]} />
@@ -189,12 +197,7 @@ const CountdownTimer = () => {
               <div style={{ fontSize: "11px", fontWeight: 700, color: "#0d4037", opacity: 0.6, marginBottom: "8px", fontFamily: "'Inter',sans-serif", letterSpacing: "2px" }}>
                 UNTIL RACE DAY
               </div>
-              <div style={{
-                display: "inline-block",
-                backgroundColor: "rgba(162,67,45,0.1)",
-                border: "1.5px solid rgba(162,67,45,0.25)",
-                borderRadius: "12px", padding: "10px 18px",
-              }}>
+              <div style={{ display: "inline-block", backgroundColor: "rgba(162,67,45,0.1)", border: "1.5px solid rgba(162,67,45,0.25)", borderRadius: "12px", padding: "10px 18px" }}>
                 <div style={{ fontSize: isMobile ? "17px" : "20px", fontWeight: 800, color: "#a2432d", fontFamily: "'Playfair Display',serif", lineHeight: 1, marginBottom: "4px" }}>
                   Oct 15, 2024
                 </div>
@@ -206,8 +209,7 @@ const CountdownTimer = () => {
           </div>
 
           <div style={{
-            position: "absolute", bottom: 0, left: "20%", right: "20%",
-            height: "1px",
+            position: "absolute", bottom: 0, left: "20%", right: "20%", height: "1px",
             background: "linear-gradient(90deg,transparent,rgba(162,67,45,0.2),transparent)",
           }} />
         </div>
