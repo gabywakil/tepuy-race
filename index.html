@@ -3,29 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- SEO básico -->
     <title>Tepuy Race - Run Beyond Your Limits</title>
-    <meta name="description" content="La carrera de trail más épica de Sudamérica. Conquista el Tepuy en la Gran Sabana, Venezuela. Inscríbete ahora." />
+    <meta name="description" content="La carrera de trail más épica de Sudamérica. Conquista el Tepuy en la Gran Sabana, Venezuela." />
     <meta name="theme-color" content="#0a4a42" />
-
-    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
 
-    <!-- Preconnect a Google Fonts → reduce latencia de tipografías -->
+    <!-- Fondo mientras carga JS → evita flash blanco -->
+    <style>html,body,#root{background:#0a4a42;margin:0;padding:0}</style>
+
+    <!-- Preconnect → reduce latencia de fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Carga de fuentes con display=swap → texto visible aunque la fuente no haya cargado -->
+    <!-- Fuentes NO bloqueantes: media=print trick -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;600;700&display=swap"
+      media="print"
+      onload="this.media='all'"
     />
-
-    <!-- Color de fondo mientras carga JS → evita flash blanco -->
-    <style>
-      html, body, #root { background-color: #0a4a42; margin: 0; padding: 0; }
-    </style>
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;600;700&display=swap" />
+    </noscript>
   </head>
   <body>
     <div id="root"></div>
