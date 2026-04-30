@@ -32,10 +32,7 @@ function App() {
     let ticking = false;
     const onScroll = () => {
       if (!ticking) {
-        requestAnimationFrame(() => {
-          setScrollY(window.scrollY);
-          ticking = false;
-        });
+        requestAnimationFrame(() => { setScrollY(window.scrollY); ticking = false; });
         ticking = true;
       }
     };
@@ -49,8 +46,16 @@ function App() {
       color: '#f5f1e8',
       minHeight: '100vh',
       margin: 0, padding: 0, width: '100%',
-      position: 'relative', /* ← clave para que .App::before se posicione dentro */
+      position: 'relative',
     }}>
+      {/* ── Hojas decorativas fijas — siempre visibles en toda la página ── */}
+      <div className="leaf-tl" />
+      <div className="leaf-tr" />
+      <div className="leaf-ml" />
+      <div className="leaf-mr" />
+      <div className="leaf-bl" />
+      <div className="leaf-br" />
+
       <Navbar scrollY={scrollY} />
       <Suspense fallback={<PageLoader />}>
         <Routes>
