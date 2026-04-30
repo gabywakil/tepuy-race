@@ -3,20 +3,8 @@ import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
 import logoImage from '../assets/logo.png';
 import { Link } from 'react-router-dom';
 import useMedia from '../hooks/useMedia';
+import useInView from '../hooks/useInView';
 
-const useInView = (threshold = 0.15) => {
-  const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
-      { threshold }
-    );
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, [threshold]);
-  return [ref, visible];
-};
 
 const Footer = () => {
   const { isMobile, isTablet } = useMedia();
@@ -27,7 +15,7 @@ const Footer = () => {
 
   return (
     <footer style={{
-      backgroundColor: 'transparent',
+      backgroundColor: '#0a4a42',
       color: '#f5f1e8',
       padding: isMobile ? '60px 20px 32px' : '80px 40px 40px',
       borderTop: '2px solid rgba(244, 211, 94, 0.2)',
