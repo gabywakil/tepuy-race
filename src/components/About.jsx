@@ -52,7 +52,7 @@ const About = () => {
       ref={sectionRef}
       style={{
         padding: isMobile ? "80px 20px" : "140px 40px",
-        backgroundColor: "#0a4a42",
+        backgroundColor: "transparent",
         width: "100%",
         position: "relative",
         overflow: "hidden",
@@ -324,16 +324,9 @@ const About = () => {
              <img
                src={granSabanaImg}
                alt="Paisaje del Tepuy"
-               width="600"
-               height="620"
-               loading="lazy"
-               decoding="async"
-               style={{
-                 width: "100%",
-                 height: "100%",
-                 objectFit: "cover",
-                 transition: "transform 6s ease",
-               }}
+               width="600" height="620"
+               loading="lazy" decoding="async"
+               style={{ width:"100%", height:"100%", objectFit:"cover", transition:"transform 6s ease" }}
                onMouseEnter={e => e.currentTarget.style.transform = "scale(1.04)"}
                onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
              />
