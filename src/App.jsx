@@ -1,10 +1,9 @@
-import React, { lazy, Suspense, useCallback, useEffect, useState } from 'react';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import './styles/globals.css';
 
-// ── Lazy load todas las páginas → bundle inicial mucho más liviano ──
 const Home                  = lazy(() => import('./pages/Home'));
 const Sponsors              = lazy(() => import('./pages/Sponsors'));
 const RaceSelection         = lazy(() => import('./pages/RaceSelection'));
@@ -40,7 +39,6 @@ function App() {
         ticking = true;
       }
     };
-    // passive: true → no bloquea el hilo principal
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -51,9 +49,9 @@ function App() {
       color: '#f5f1e8',
       minHeight: '100vh',
       margin: 0, padding: 0, width: '100%',
+      position: 'relative', /* ← clave para que .App::before se posicione dentro */
     }}>
       <Navbar scrollY={scrollY} />
-
       <Suspense fallback={<PageLoader />}>
         <Routes>
           <Route path="/"                       element={<Home />} />
@@ -65,7 +63,6 @@ function App() {
           <Route path="/projects"               element={<OurProjects />} />
         </Routes>
       </Suspense>
-
       <Footer />
     </div>
   );
