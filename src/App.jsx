@@ -1,33 +1,22 @@
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Sponsors from './pages/Sponsors';
+import RaceSelection from './pages/RaceSelection';
+import Checkout from './pages/Checkout';
+import RegistrationConfirmed from './pages/RegistrationConfirmed';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import AboutUs from './pages/AboutUs';
+import OurProjects from './pages/OurProjects';
 import './styles/globals.css';
-
-// Lazy load all pages — only downloaded when the user navigates there
-const Home                 = lazy(() => import('./pages/Home'));
-const Sponsors             = lazy(() => import('./pages/Sponsors'));
-const RaceSelection        = lazy(() => import('./pages/RaceSelection'));
-const Checkout             = lazy(() => import('./pages/Checkout'));
-const RegistrationConfirmed = lazy(() => import('./pages/RegistrationConfirmed'));
-const AboutUs              = lazy(() => import('./pages/AboutUs'));
-const OurProjects          = lazy(() => import('./pages/OurProjects'));
 
 function App() {
   const [scrollY, setScrollY] = React.useState(0);
 
   React.useEffect(() => {
-    let ticking = false;
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          setScrollY(window.scrollY);
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -45,17 +34,15 @@ function App() {
 
       <Navbar scrollY={scrollY} />
 
-      <Suspense fallback={null}>
-        <Routes>
-          <Route path="/"                       element={<Home />} />
-          <Route path="/sponsors"               element={<Sponsors />} />
-          <Route path="/register"               element={<RaceSelection />} />
-          <Route path="/checkout"               element={<Checkout />} />
-          <Route path="/registration-confirmed" element={<RegistrationConfirmed />} />
-          <Route path="/about"                  element={<AboutUs />} />
-          <Route path="/projects"               element={<OurProjects />} />
-        </Routes>
-      </Suspense>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/sponsors" element={<Sponsors />} />
+        <Route path="/register" element={<RaceSelection />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/registration-confirmed" element={<RegistrationConfirmed />} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/projects" element={<OurProjects />} />
+      </Routes>
 
       <Footer />
     </div>
