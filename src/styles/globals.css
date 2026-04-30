@@ -73,7 +73,7 @@ body {
     right -55px center;
 
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: fixed; /* desktop */
 
   color: #f5f1e8;
   overflow-x: hidden;
@@ -86,7 +86,7 @@ body {
   padding: 0;
   width: 100%;
   min-height: 100vh;
-  background-color: transparent;  /* ← este cambio */
+  background-color: transparent;
 }
 
 /* Custom Scrollbar */
@@ -186,3 +186,31 @@ html, body {
 
 /* ── palm-bg (App.jsx) se puede borrar, ya no hace falta ── */
 .palm-bg { display: none; }
+
+/* ══════════════════════════════════════════════
+   MÓVIL: background-attachment:fixed no funciona
+   en iOS Safari. Se cambia a scroll y se ajustan
+   tamaños y posiciones para pantallas estrechas.
+══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
+    background-size:
+      260px 520px,   /* hoja grande izq arriba — más pequeña en móvil */
+      240px 480px,   /* hoja grande der arriba */
+      200px 400px,   /* hoja mediana izq abajo */
+      210px 420px,   /* hoja mediana der abajo */
+      100% 280px,    /* silueta tepuy */
+      140px 280px,   /* hoja pequeña izq medio */
+      130px 260px;   /* hoja pequeña der medio */
+
+    background-position:
+      left -60px top -20px,
+      right -55px top -10px,
+      left -40px bottom -20px,
+      right -45px bottom -10px,
+      center 60%,
+      left -30px center,
+      right -28px center;
+  }
+}
