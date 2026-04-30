@@ -6,20 +6,9 @@ import useMedia from '../hooks/useMedia';
 import logoVenetur from '../assets/LogoVenetur.png';
 import logoMarea from '../assets/LogoMarea.png';
 import logoConMariaBonita from '../assets/conmariabonita.png';
+import useInView from '../hooks/useInView';
 
-const useInView = (threshold = 0.15) => {
-  const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
-      { threshold }
-    );
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, [threshold]);
-  return [ref, visible];
-};
+
 
 const MainSponsors = () => {
   const { isMobile } = useMedia('(max-width: 768px)');
