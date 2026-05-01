@@ -1,12 +1,21 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Heart } from "lucide-react";
 import useMedia from "../hooks/useMedia";
-import granSabanaImg from '../assets/gransabana.jpg';
-import granSabanaWebp from '../assets/gransabana.webp';
-import useInView from '../hooks/useInView';
 
 /* ─── tiny hook: fires once when element enters viewport ─── */
-
+const useInView = (threshold = 0.2) => {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      { threshold }
+    );
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, [threshold]);
+  return [ref, visible];
+};
 
 /* ─── animated counter ─── */
 const AnimatedNumber = ({ target, suffix = "", visible }) => {
@@ -308,18 +317,14 @@ const About = () => {
             animationFillMode: "both, forwards",
             animationIterationCount: "1, infinite",
           }}>
-           <picture>
-             <source srcSet={granSabanaWebp} type="image/webp" />
-             <img
-               src={granSabanaImg}
-               alt="Paisaje del Tepuy"
-               width="600" height="620"
-               loading="lazy" decoding="async"
+           <video
+               autoPlay loop muted playsInline
                style={{ width:"100%", height:"100%", objectFit:"cover", transition:"transform 6s ease" }}
                onMouseEnter={e => e.currentTarget.style.transform = "scale(1.04)"}
                onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
-             />
-           </picture>
+             >
+               <source src="/videos/about-sabana.mp4" type="video/mp4" />
+             </video>
 
             {/* image overlay gradient */}
             <div style={{
