@@ -50,11 +50,11 @@ const Sponsors = () => {
     { name: "Con María Bonita", logo: logoConMariaBonita, logoWebp: logoConMariaBonitoWebp },
     { name: "Natvisual",        logo: logoNatvisual,      logoWebp: logoNatvisualWebp },
     { name: "BOOM Eventos",     logo: logoBoom,           logoWebp: logoBoomWebp },
+    { name: "DC Gráficos",         logo: logoDC,    logoWebp: logoDCWebp },
+    { name: "Grupo Somos",         logo: logoSomos, logoWebp: logoSomosWebp },
   ];
 
   const partners = [
-    { name: "DC Gráficos",         logo: logoDC,    logoWebp: logoDCWebp },
-    { name: "Grupo Somos",         logo: logoSomos, logoWebp: logoSomosWebp },
     { name: "POW Fitness",         logo: logoPow,   logoWebp: logoPowWebp },
     { name: "Vive Pilates Studio", logo: logoVive,  logoWebp: logoViveWebp },
     { name: "SYF",                 logo: logoSyf,   logoWebp: logoSyfWebp },
