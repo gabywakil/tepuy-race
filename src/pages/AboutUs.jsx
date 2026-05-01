@@ -51,7 +51,7 @@ const AboutUs = () => {
   const stats = [
     { number: "300+",  label: "Atletas en la I Edición" },
 { number: "2",     label: "Ediciones realizadas" },
-{ number: "5K/10K",label: "Categorías II Edición" },
+{ number: "10K",label: "Categorías II Edición" },
 { number: "3",     label: "Países representados" },
   ];
 
