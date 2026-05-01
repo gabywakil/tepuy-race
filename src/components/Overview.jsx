@@ -30,7 +30,7 @@ const Overview = () => {
 
   const features = [
     { icon: Mountain,   title: "Terreno Único",        description: "Recorre paisajes naturales impresionantes a través de formaciones geológicas ancestrales", stat: "2,850m", label: "Elevación",    delay: "0s"    },
-    { icon: Users,      title: "Comunidad Global",     description: "Únete a corredores de más de 45 países en esta experiencia transformadora",               stat: "500+",   label: "Participantes", delay: "0.1s"  },
+    { icon: Users,      title: "Comunidad Global",     description: "Únete a corredores de más de diferentes países en esta experiencia transformadora",               stat: "500+",   label: "Participantes", delay: "0.1s"  },
     { icon: TrendingUp, title: "Desafío Personal",     description: "Supera tus límites con rutas diseñadas para todos los niveles de experiencia",             stat: "3",      label: "Categorías",    delay: "0.2s"  },
     { icon: Award,      title: "Certificación Oficial",description: "Recibe reconocimiento internacional por completar este desafío épico",                     stat: "100%",   label: "Certificados",  delay: "0.3s"  },
   ];
