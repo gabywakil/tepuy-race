@@ -307,65 +307,38 @@ const OurProjects = () => {
 
           <div
             ref={galleryRef}
-            style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(4,1fr)', gap: isMobile ? '12px' : '20px', marginBottom:'40px' }}
+            style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(3,1fr)', gap: isMobile ? '12px' : '20px' }}
           >
             {[
-              { src: '/videos/gallery1.mp4' },
-              { src: '/videos/gallery2.mp4' },
-              { src: '/videos/gallery3.mp4' },
-              { src: '/videos/gallery4.mp4' },
-              { src: '/videos/gallery5.mp4' },
-              { src: '/videos/gallery6.mp4' },
-              { src: null },
-              { src: null },
-            ].map((item, i) => (
+              '/videos/gallery1.mp4',
+              '/videos/gallery2.mp4',
+              '/videos/gallery3.mp4',
+              '/videos/gallery4.mp4',
+              '/videos/gallery5.mp4',
+              '/videos/gallery6.mp4',
+            ].map((src, i) => (
               <div
                 key={i}
                 className="op-gallery-item"
                 style={{
-                  height: isMobile ? '140px' : '200px',
+                  height: isMobile ? '140px' : '220px',
                   borderRadius:'20px',
-                  background:`linear-gradient(${135+i*20}deg,rgba(200,90,62,${0.2+i*0.04}) 0%,rgba(244,211,94,${0.2+i*0.04}) 100%)`,
                   border:'2px solid rgba(244,211,94,0.25)',
-                  display:'flex', alignItems:'center', justifyContent:'center',
-                  fontSize:'13px', fontWeight:'700', color:'#f5f1e8', fontFamily:"'Inter',sans-serif",
-                  cursor:'pointer', overflow:'hidden', position:'relative',
+                  overflow:'hidden', position:'relative',
                   opacity: galleryVisible ? 1 : 0,
-                  animation: galleryVisible ? `opGalleryIn 0.5s ${i*0.06}s ease forwards` : 'none',
+                  animation: galleryVisible ? `opGalleryIn 0.5s ${i*0.08}s ease forwards` : 'none',
                   animationFillMode:'both',
                 }}
               >
-                {item.src ? (
-                  <video
-                    autoPlay loop muted playsInline
-                    style={{ position:'absolute', inset:0, width:'100%', height:'100%', objectFit:'cover' }}
-                  >
-                    <source src={item.src} type="video/mp4" />
-                  </video>
-                ) : null}
-                <div style={{ position:'absolute', inset:0, background:'linear-gradient(180deg,transparent 50%,rgba(10,74,66,0.4) 100%)', pointerEvents:'none' }}/>
-                {!item.src && <span style={{ position:'relative', zIndex:1, opacity:0.7 }}>PRÓXIMAMENTE</span>}
+                <video
+                  autoPlay loop muted playsInline
+                  style={{ position:'absolute', inset:0, width:'100%', height:'100%', objectFit:'cover' }}
+                >
+                  <source src={src} type="video/mp4" />
+                </video>
+                <div style={{ position:'absolute', inset:0, background:'linear-gradient(180deg,transparent 55%,rgba(10,74,66,0.45) 100%)', pointerEvents:'none' }}/>
               </div>
             ))}
-          </div>
-
-          <div style={{ textAlign:'center' }}>
-            <button
-              className="op-gallery-btn"
-              style={{
-                backgroundColor:'transparent', color:'#f5f1e8',
-                border:'2px solid #f4d35e',
-                padding: isMobile ? '16px 28px' : '18px 45px',
-                borderRadius:'50px', cursor:'pointer',
-                fontSize:'15px', fontWeight:'700', fontFamily:"'Inter',sans-serif", letterSpacing:'1px',
-                width: isMobile ? '100%' : 'auto', maxWidth: isMobile ? '420px' : 'none',
-                opacity: galleryVisible ? 1 : 0,
-                animation: galleryVisible ? 'opFadeUp 0.5s 0.5s ease forwards' : 'none',
-                animationFillMode:'both',
-              }}
-            >
-              VER GALERÍA COMPLETA
-            </button>
           </div>
         </div>
       </section>
