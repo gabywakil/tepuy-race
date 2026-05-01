@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
 import logoImage from '../assets/logo.png';
 import logoImageWebp from '../assets/logo.webp';
+import gwLogo from '../assets/gw.png';
 import { Link } from 'react-router-dom';
 import useMedia from '../hooks/useMedia';
 import useInView from '../hooks/useInView';
@@ -96,7 +97,7 @@ const Footer = () => {
         .ft-bottom-link:hover { opacity: 1; color: #f4d35e; }
       `}</style>
 
-      {/* top ambient glow */}
+      {/* brillo ambiental superior */}
       <div style={{
         position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)',
         width: '60%', height: '1px',
@@ -111,7 +112,7 @@ const Footer = () => {
 
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
 
-        {/* ── columns ── */}
+        {/* ── columnas ── */}
         <div
           ref={colRef}
           style={{
@@ -123,7 +124,7 @@ const Footer = () => {
             borderBottom: '1px solid rgba(244,211,94,0.15)',
           }}
         >
-          {/* ── Brand ── */}
+          {/* ── Marca ── */}
           <div style={{
             opacity: colVisible ? 1 : 0,
             animation: colVisible ? 'ftFadeUp 0.6s 0s ease forwards' : 'none',
@@ -131,7 +132,7 @@ const Footer = () => {
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
               <picture>
                 <source srcSet={logoImageWebp} type="image/webp" />
-                <img src={logoImage} alt="Tepuy Race Logo" style={{ height: '45px', width: 'auto' }} />
+                <img src={logoImage} alt="Logo Tepuy Race" style={{ height: '45px', width: 'auto' }} />
               </picture>
               <span style={{
                 fontSize: '22px', fontWeight: '700', color: '#f4d35e',
@@ -140,7 +141,7 @@ const Footer = () => {
                 TEPUY RACE
               </span>
             </div>
-            {/* thin accent line under brand */}
+            {/* línea de acento bajo la marca */}
             <div style={{
               height: '2px', marginBottom: '16px', borderRadius: '2px',
               background: 'linear-gradient(90deg, #c85a3e, transparent)',
@@ -156,7 +157,7 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* ── Quick Links ── */}
+          {/* ── Enlaces rápidos ── */}
           <div style={{
             opacity: colVisible ? 1 : 0,
             animation: colVisible ? 'ftFadeUp 0.6s 0.1s ease forwards' : 'none',
@@ -167,14 +168,14 @@ const Footer = () => {
               marginBottom: '22px', color: '#f4d35e',
               fontFamily: "'Inter', sans-serif",
             }}>
-              QUICK LINKS
+              ENLACES RÁPIDOS
             </h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
               {[
-                { to: '/',         label: 'Home' },
-                { to: '/about',    label: 'About Us' },
-                { to: '/projects', label: 'Our Projects' },
-                { to: '/sponsors', label: 'Sponsors' },
+                { to: '/',         label: 'Inicio' },
+                { to: '/about',    label: 'Nosotros' },
+                { to: '/projects', label: 'Nuestros Proyectos' },
+                { to: '/sponsors', label: 'Patrocinadores' },
               ].map(({ to, label }, i) => (
                 <Link
                   key={i}
@@ -192,7 +193,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* ── Social ── */}
+          {/* ── Redes sociales ── */}
           <div style={{
             opacity: colVisible ? 1 : 0,
             animation: colVisible ? 'ftFadeUp 0.6s 0.2s ease forwards' : 'none',
@@ -203,7 +204,7 @@ const Footer = () => {
               marginBottom: '22px', color: '#f4d35e',
               fontFamily: "'Inter', sans-serif",
             }}>
-              FOLLOW US
+              SÍGUENOS
             </h4>
             <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
               {[
@@ -212,7 +213,7 @@ const Footer = () => {
                 { Icon: Youtube,   link: 'https://youtube.com/@tepuyrace',   label: 'YouTube' },
                 { Icon: Twitter,   link: 'https://twitter.com/tepuyrace',    label: 'Twitter' },
               ].map(({ Icon, link, label }, i) => (
-                <a
+                
                   key={i}
                   href={link}
                   target="_blank"
@@ -235,7 +236,7 @@ const Footer = () => {
               ))}
             </div>
 
-            {/* newsletter hint */}
+            {/* aviso de novedades */}
             <div style={{
               marginTop: '28px',
               padding: '14px 16px',
@@ -250,7 +251,7 @@ const Footer = () => {
                 fontSize: '11px', letterSpacing: '1.5px', color: '#f4d35e',
                 fontWeight: '700', fontFamily: "'Inter', sans-serif", marginBottom: '6px',
               }}>
-                STAY UPDATED
+                MANTENTE INFORMADO
               </div>
               <div style={{
                 fontSize: '13px', color: '#f5f1e8', opacity: 0.7,
@@ -261,7 +262,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* ── Location ── */}
+          {/* ── Ubicación ── */}
           <div style={{
             opacity: colVisible ? 1 : 0,
             animation: colVisible ? 'ftFadeUp 0.6s 0.3s ease forwards' : 'none',
@@ -272,20 +273,20 @@ const Footer = () => {
               marginBottom: '22px', color: '#f4d35e',
               fontFamily: "'Inter', sans-serif",
             }}>
-              LOCATION
+              UBICACIÓN
             </h4>
             <div style={{
               fontSize: '14px', lineHeight: '1.9', opacity: 0.8,
               fontFamily: "'Inter', sans-serif", color: '#f5f1e8',
             }}>
-              <p style={{ margin: '0 0 6px 0' }}>Mount Tepuy National Park,</p>
+              <p style={{ margin: '0 0 6px 0' }}>Parque Nacional Monte Tepuy,</p>
               <p style={{ margin: '0 0 6px 0' }}>Gran Sabana, Venezuela</p>
               <p style={{ margin: '0 0 20px 0', color: '#f4d35e', fontWeight: '600', opacity: 1 }}>
                 info@tepuyrace.com
               </p>
             </div>
 
-            {/* map pill */}
+            {/* píldora de mapa */}
             <div style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -304,34 +305,78 @@ const Footer = () => {
               animationFillMode: 'both',
             }}>
               <span style={{ fontSize: '14px' }}>📍</span>
-              5°50′ N · 61°30′ W
+              5°50′ N · 61°30′ O
             </div>
           </div>
         </div>
 
-        {/* ── bottom bar ── */}
+        {/* ── barra inferior ── */}
         <div
           ref={bottomRef}
           style={{
             display: 'flex',
             flexDirection: isMobile ? 'column' : 'row',
             justifyContent: 'space-between',
-            alignItems: isMobile ? 'center' : 'center',
+            alignItems: 'center',
             gap: isMobile ? '16px' : '0',
             textAlign: isMobile ? 'center' : 'left',
             opacity: bottomVisible ? 1 : 0,
             animation: bottomVisible ? 'ftFadeIn 0.7s 0s ease forwards' : 'none',
           }}
         >
+          {/* derechos + créditos */}
           <div style={{
-            fontSize: '11px', letterSpacing: '1.5px', opacity: 0.45,
-            fontFamily: "'Inter', sans-serif",
+            display: 'flex',
+            flexDirection: isMobile ? 'column' : 'row',
+            alignItems: 'center',
+            gap: isMobile ? '8px' : '16px',
           }}>
-            © 2024 TEPUY RACE. ALL RIGHTS RESERVED
+            <div style={{
+              fontSize: '11px', letterSpacing: '1.5px', opacity: 0.45,
+              fontFamily: "'Inter', sans-serif",
+            }}>
+              © 2025 TEPUY RACE. TODOS LOS DERECHOS RESERVADOS
+            </div>
+
+            {/* separador vertical */}
+            {!isMobile && (
+              <div style={{ width: '1px', height: '12px', backgroundColor: 'rgba(245,241,232,0.2)' }} />
+            )}
+
+            {/* créditos gw.studios_ */}
+            <div
+              style={{
+                display: 'flex', alignItems: 'center', gap: '7px',
+                opacity: 0.45,
+                transition: 'opacity 0.25s',
+                cursor: 'default',
+              }}
+              onMouseEnter={e => e.currentTarget.style.opacity = 1}
+              onMouseLeave={e => e.currentTarget.style.opacity = 0.45}
+            >
+              <img
+                src={gwLogo}
+                alt="gw.studios_"
+                style={{
+                  width: '18px', height: '18px', borderRadius: '50%',
+                  objectFit: 'cover', flexShrink: 0,
+                }}
+              />
+              <span style={{
+                fontSize: '11px', letterSpacing: '1.2px',
+                fontFamily: "'Inter', sans-serif", color: '#f5f1e8',
+                whiteSpace: 'nowrap',
+              }}>
+                DISEÑADO POR GABRIELLA WAKIL ·{' '}
+                <span style={{ color: '#f4d35e' }}>@gw.studios_</span>
+              </span>
+            </div>
           </div>
+
+          {/* links legales */}
           <div style={{ display: 'flex', gap: '28px' }}>
-            <a href="#" className="ft-bottom-link">PRIVACY POLICY</a>
-            <a href="#" className="ft-bottom-link">TERMS OF SERVICE</a>
+            <a href="#" className="ft-bottom-link">POLÍTICA DE PRIVACIDAD</a>
+            <a href="#" className="ft-bottom-link">TÉRMINOS DE SERVICIO</a>
           </div>
         </div>
 
