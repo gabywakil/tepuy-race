@@ -279,8 +279,8 @@ const Footer = () => {
               fontSize: '14px', lineHeight: '1.9', opacity: 0.8,
               fontFamily: "'Inter', sans-serif", color: '#f5f1e8',
             }}>
-              <p style={{ margin: '0 0 6px 0' }}>Parque Nacional Monte Tepuy,</p>
-              <p style={{ margin: '0 0 6px 0' }}>Gran Sabana, Venezuela</p>
+              <p style={{ margin: '0 0 6px 0' }}>Lechería,</p>
+<p style={{ margin: '0 0 6px 0' }}>Anzoátegui, Venezuela</p>
               <p style={{ margin: '0 0 20px 0', color: '#f4d35e', fontWeight: '600', opacity: 1 }}>
                 info@tepuyrace.com
               </p>
