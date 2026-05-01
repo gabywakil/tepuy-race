@@ -49,9 +49,8 @@ const OurProjects = () => {
   ];
 
   const upcomingEvents = [
-    { date:"Octubre 2024",  name:"Tepuy Race 2024",    status:"Inscripciones Abiertas", color:"#f4d35e" },
-    { date:"Diciembre 2024",name:"Tepuy Night Trail",  status:"Próximamente",           color:"#c85a3e" },
-    { date:"Marzo 2025",    name:"Tepuy Kids Run",     status:"En Planificación",       color:"#f4d35e" },
+    { date:"Agosto 2026",  name:"Tepuy Race 2026",    status:"Inscripciones Abiertas", color:"#f4d35e" },
+    
   ];
 
   const achievements = [
