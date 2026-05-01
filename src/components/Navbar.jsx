@@ -17,11 +17,11 @@ const Navbar = ({ scrollY }) => {
 
   const scrolled = scrollY > 50;
   const links = [
-    { to: '/',          label: 'Home' },
-    { to: '/about',     label: 'About' },
-    { to: '/projects',  label: 'Projects' },
+    { to: '/',          label: 'Inicio' },
+    { to: '/about',     label: 'Nosotros' },
+    { to: '/projects',  label: 'Proyectos' },
     { to: '/sponsors',  label: 'Sponsors' },
-    { href: '#contact', label: 'Contact' },
+    { href: '#contact', label: 'Contacto' },
   ];
 
   return (
