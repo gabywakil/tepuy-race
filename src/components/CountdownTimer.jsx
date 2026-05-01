@@ -282,6 +282,7 @@ const CountdownTimer = () => {
                 border: "1.5px solid rgba(162,67,45,0.25)",
                 borderRadius: "12px",
                 padding: "10px 18px",
+                marginBottom: "14px",
               }}>
                 <div style={{
                   fontSize: isMobile ? "17px" : "20px",
@@ -303,6 +304,48 @@ const CountdownTimer = () => {
                   LECHERÍA · VE
                 </div>
               </div>
+
+              {/* ── botón inscríbete ── */}
+              <div style={{ display: "flex", justifyContent: isMobile ? "center" : "flex-start" }}>
+                <a
+                  href="https://tepuy.b9ticketing.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "8px",
+                    padding: "12px 24px",
+                    backgroundColor: "#c85a3e",
+                    color: "#f5f1e8",
+                    borderRadius: "50px",
+                    fontSize: "13px",
+                    fontWeight: 700,
+                    fontFamily: "'Inter', sans-serif",
+                    letterSpacing: "1px",
+                    textDecoration: "none",
+                    boxShadow: "0 10px 35px rgba(200,90,62,0.4)",
+                    animation: visible ? "ctBtnPulse 2.8s ease-in-out infinite" : "none",
+                    transition: "transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease",
+                    whiteSpace: "nowrap",
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.transform = "translateY(-3px) scale(1.03)";
+                    e.currentTarget.style.backgroundColor = "#d4664a";
+                    e.currentTarget.style.boxShadow = "0 16px 48px rgba(200,90,62,0.55)";
+                    e.currentTarget.style.animation = "none";
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.transform = "translateY(0) scale(1)";
+                    e.currentTarget.style.backgroundColor = "#c85a3e";
+                    e.currentTarget.style.boxShadow = "0 10px 35px rgba(200,90,62,0.4)";
+                    e.currentTarget.style.animation = "ctBtnPulse 2.8s ease-in-out infinite";
+                  }}
+                >
+                  INSCRÍBETE AHORA →
+                </a>
+              </div>
             </div>
 
           </div>
@@ -314,46 +357,6 @@ const CountdownTimer = () => {
             background: "linear-gradient(90deg, transparent, rgba(162,67,45,0.2), transparent)",
           }} />
         </div>
-
-        {/* ── botón inscríbete ── */}
-        <a
-          href="https://tepuy.b9ticketing.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "10px",
-            marginTop: "24px",
-            padding: isMobile ? "16px 36px" : "18px 52px",
-            backgroundColor: "#c85a3e",
-            color: "#f5f1e8",
-            borderRadius: "50px",
-            fontSize: isMobile ? "15px" : "17px",
-            fontWeight: 700,
-            fontFamily: "'Inter', sans-serif",
-            letterSpacing: "1px",
-            textDecoration: "none",
-            boxShadow: "0 10px 35px rgba(200,90,62,0.4)",
-            animation: visible ? "ctBtnPulse 2.8s ease-in-out infinite" : "none",
-            transition: "transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease",
-          }}
-          onMouseEnter={e => {
-            e.currentTarget.style.transform = "translateY(-3px) scale(1.03)";
-            e.currentTarget.style.backgroundColor = "#d4664a";
-            e.currentTarget.style.boxShadow = "0 16px 48px rgba(200,90,62,0.55)";
-            e.currentTarget.style.animation = "none";
-          }}
-          onMouseLeave={e => {
-            e.currentTarget.style.transform = "translateY(0) scale(1)";
-            e.currentTarget.style.backgroundColor = "#c85a3e";
-            e.currentTarget.style.boxShadow = "0 10px 35px rgba(200,90,62,0.4)";
-            e.currentTarget.style.animation = "ctBtnPulse 2.8s ease-in-out infinite";
-          }}
-        >
-          INSCRÍBETE AHORA →
-        </a>
       </div>
     </>
   );
