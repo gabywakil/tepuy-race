@@ -282,7 +282,7 @@ const RegistrationCTA = () => {
                 </div>
               </div>
 
-              {/*
+              
               <button
                 type="button"
                 onClick={goToRaceSelection} disabled style={{ cursor:'not-allowed', opacity:0.55 }}
@@ -306,7 +306,7 @@ const RegistrationCTA = () => {
               }}>
                 🔒 Registro seguro · Confirmación por email
               </div> 
-              */}
+              
             </div>
           </div>
         </div>
