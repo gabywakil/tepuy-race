@@ -43,9 +43,7 @@ const OurProjects = () => {
   const [galleryRef,  galleryVisible]  = useInView(0.08);
 
   const pastEvents = [
-    { year:"2024", name:"Tepuy Race Mountain Challenge", location:"Monte Roraima, Venezuela",   participants:"450", distances:"5K · 10K · 21K", highlight:"Récord de asistencia internacional" },
-    { year:"2023", name:"Tepuy Ultra Trail",             location:"Gran Sabana, Venezuela",     participants:"380", distances:"10K · 21K · 42K", highlight:"Primera edición Ultra Maratón" },
-    { year:"2022", name:"Tepuy Summit Series",           location:"Meseta del Monte Tepuy",     participants:"320", distances:"5K · 10K · 15K",  highlight:"Evento del año — Trail Running Venezuela" },
+    { year:"2024", name:"Tepuy Ultra Trail",             location:"Gran Sabana, Venezuela",     participants:"380", distances:"5K · 10K", highlight:"Primera edición Ultra Maratón" },
   ];
 
   const upcomingEvents = [
