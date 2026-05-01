@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import useMedia from '../hooks/useMedia';
 import logoImage from '../assets/logo.png';
+import logoImageWebp from '../assets/logo.webp';
 
 const Navbar = ({ scrollY }) => {
   const { isMobile } = useMedia('(max-width: 768px)');
@@ -139,7 +140,9 @@ const Navbar = ({ scrollY }) => {
             animation: mounted ? 'navLogoIn 0.5s 0.2s ease forwards' : 'none',
             animationFillMode:'both',
           }}>
-            <img
+            <picture>
+              <source srcSet={logoImageWebp} type="image/webp" />
+              <img
               src={logoImage} alt="Tepuy Race Logo"
               style={{
                 height: isMobile ? '38px' : '48px', width:'auto',
@@ -147,7 +150,8 @@ const Navbar = ({ scrollY }) => {
               }}
               onMouseEnter={e => e.currentTarget.style.transform='rotate(-4deg) scale(1.06)'}
               onMouseLeave={e => e.currentTarget.style.transform='rotate(0deg) scale(1)'}
-            />
+              />
+            </picture>
             <span style={{
               fontSize: isMobile ? '18px' : '23px',
               fontWeight:'700', color:'#c85a3e',
