@@ -213,7 +213,7 @@ const Footer = () => {
                 { Icon: Youtube,   link: 'https://youtube.com/@tepuyrace',   label: 'YouTube' },
                 { Icon: Twitter,   link: 'https://twitter.com/tepuyrace',    label: 'Twitter' },
               ].map(({ Icon, link, label }, i) => (
-                
+                <a
                   key={i}
                   href={link}
                   target="_blank"
