@@ -283,29 +283,23 @@ const RegistrationCTA = () => {
               </div>
 
               
-              <button
-                type="button"
-                onClick={goToRaceSelection} disabled style={{ cursor:'not-allowed', opacity:0.55 }}
-                className="cta-main-btn"
-                style={{
-                  width:'100%', backgroundColor:'#c85a3e', color:'#f5f1e8',
-                  border:'none',
-                  padding: isMobile ? '16px 18px' : '22px 40px',
-                  borderRadius:'50px', cursor:'pointer',
-                  fontSize: isMobile ? '16px' : '18px', fontWeight:'700',
-                  fontFamily:"'Inter',sans-serif", letterSpacing:'1px',
-                  display:'flex', alignItems:'center', justifyContent:'center', gap:'12px',
-                  marginBottom:'12px',
-                }}
-              >
-                INSCRÍBETE AHORA <ArrowRight size={22} strokeWidth={3}/>
-              </button>
-
-              <div style={{
-                fontSize:'13px', color:'#f5f1e8', fontFamily:"'Inter',sans-serif", opacity:0.65,
-              }}>
-                🔒 Registro seguro · Confirmación por email
-              </div> 
+           <button
+  type="button"
+  onClick={() => window.open('https://tepuy.b9ticketing.com', '_blank')}
+  className="cta-main-btn"
+  style={{
+    width:'100%', backgroundColor:'#c85a3e', color:'#f5f1e8',
+    border:'none',
+    padding: isMobile ? '16px 18px' : '22px 40px',
+    borderRadius:'50px', cursor:'pointer',
+    fontSize: isMobile ? '16px' : '18px', fontWeight:'700',
+    fontFamily:"'Inter',sans-serif", letterSpacing:'1px',
+    display:'flex', alignItems:'center', justifyContent:'center', gap:'12px',
+    marginBottom:'12px',
+  }}
+>
+  INSCRÍBETE AHORA <ArrowRight size={22} strokeWidth={3}/>
+</button>
               
             </div>
           </div>
