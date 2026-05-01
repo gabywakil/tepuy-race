@@ -203,17 +203,18 @@ const MainSponsors = () => {
                   <picture>
                     <source srcSet={sponsor.logoWebp} type="image/webp" />
                     <img
-                    src={sponsor.logo}
-                    alt={sponsor.name}
-                    loading="lazy"
-                    decoding="async"
-                    style={{
-                      maxWidth:'85%',
-                      maxHeight:'85%',
-                      objectFit:'contain',
-                      display:'block',
-                    }}
-                  />
+                      src={sponsor.logo}
+                      alt={sponsor.name}
+                      loading="lazy"
+                      decoding="async"
+                      style={{
+                        maxWidth:'85%',
+                        maxHeight:'85%',
+                        objectFit:'contain',
+                        display:'block',
+                      }}
+                    />
+                  </picture>
                 </div>
 
                 {/* ── Nombre ── */}
