@@ -113,7 +113,7 @@ const Overview = () => {
           animation: headerVisible ? 'ovFadeUp 0.6s 0.15s ease forwards' : 'none',
           animationFillMode:'both',
         }}>
-          Más que una carrera, es una experiencia transformadora que combina desafío físico, belleza natural y comunidad global.
+          La primera carrera ecológica de la región. Parte de lo recaudado apoya la limpieza de playas y la preservación de ecosistemas locales, promoviendo el turismo responsable y el desarrollo de comunidades indígenas.
         </p>
       </div>
 
