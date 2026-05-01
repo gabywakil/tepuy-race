@@ -26,7 +26,7 @@ const FlipDigit = ({ value, prev }) => {
 };
 
 // Defined outside so they are never recreated on each render
-const TARGET = new Date("2024-10-15T07:00:00");
+const TARGET = new Date("2026-08-02T07:00:00");
 
 const calcTime = () => {
   const diff = Math.max(0, TARGET - Date.now());
@@ -55,7 +55,7 @@ const CountdownTimer = () => {
       });
     }, 1000);
     return () => clearInterval(timer);
-  }, []); // empty array — interval is created once and never recreated
+  }, []);
 
   /* intersection observer for entrance */
   useEffect(() => {
@@ -287,7 +287,7 @@ const CountdownTimer = () => {
                   lineHeight: 1,
                   marginBottom: "4px",
                 }}>
-                  Oct 15, 2024
+                  Ago 02, 2026
                 </div>
                 <div style={{
                   fontSize: "11px",
@@ -296,7 +296,7 @@ const CountdownTimer = () => {
                   fontFamily: "'Inter', sans-serif",
                   letterSpacing: "1px",
                 }}>
-                  GRAN SABANA · VE
+                  LECHERÍA · VE
                 </div>
               </div>
             </div>
