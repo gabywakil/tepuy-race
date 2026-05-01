@@ -28,14 +28,10 @@ const RegistrationCTA = () => {
   }, []);
 
   const highlights = [
-    { icon: Calendar, text: "Evento: 15 de octubre, 2024" },
-    { icon: MapPin,   text: "Monte Tepuy (Meseta), Venezuela" },
-    { icon: Users,    text: "Cupos limitados: 500 corredores" },
+    { icon: Calendar, text: "Evento: Agosto 2026" },
+    { icon: MapPin,   text: "Lechería, Anzoátegui, Venezuela" },
+    { icon: Users,    text: "¡Abierto a todos los corredores!" },
   ];
-
-  const goToRaceSelection = (e) => {
-    // Registration temporarily disabled — tickets via external platform
-  };
 
   return (
     <section style={{
@@ -171,7 +167,7 @@ const RegistrationCTA = () => {
                 animation: visible ? 'ctaFadeUp 0.6s 0.2s ease forwards' : 'none',
                 animationFillMode:'both',
               }}>
-                Únete a atletas de todo el mundo en la experiencia de trail running más épica de Sudamérica. Los cupos son limitados.
+                Únete a atletas de todo el mundo en la experiencia de trail running más épica de Sudamérica. Desde la Gran Sabana hasta el Mar Caribe.
               </p>
 
               {/* highlights */}
@@ -258,7 +254,7 @@ const RegistrationCTA = () => {
 
                 <div style={{ display:'flex', flexDirection:'column', gap:'12px' }}>
                   {[
-                    { label:'Distancias',           value:'5K · 10K · 21K' },
+                    { label:'Distancias',           value:'5K · 10K' },
                     { label:'Altitud máxima',        value:'2.850 m' },
                     { label:'Desnivel acumulado',    value:'+2.600 m' },
                   ].map(({ label, value }, i) => (
@@ -282,25 +278,29 @@ const RegistrationCTA = () => {
                 </div>
               </div>
 
-              
-           <button
-  type="button"
-  onClick={() => window.open('https://tepuy.b9ticketing.com', '_blank')}
-  className="cta-main-btn"
-  style={{
-    width:'100%', backgroundColor:'#c85a3e', color:'#f5f1e8',
-    border:'none',
-    padding: isMobile ? '16px 18px' : '22px 40px',
-    borderRadius:'50px', cursor:'pointer',
-    fontSize: isMobile ? '16px' : '18px', fontWeight:'700',
-    fontFamily:"'Inter',sans-serif", letterSpacing:'1px',
-    display:'flex', alignItems:'center', justifyContent:'center', gap:'12px',
-    marginBottom:'12px',
-  }}
->
-  INSCRÍBETE AHORA <ArrowRight size={22} strokeWidth={3}/>
-</button>
-              
+              <button
+                type="button"
+                onClick={() => window.open('https://tepuy.b9ticketing.com', '_blank')}
+                className="cta-main-btn"
+                style={{
+                  width:'100%', backgroundColor:'#c85a3e', color:'#f5f1e8',
+                  border:'none',
+                  padding: isMobile ? '16px 18px' : '22px 40px',
+                  borderRadius:'50px', cursor:'pointer',
+                  fontSize: isMobile ? '16px' : '18px', fontWeight:'700',
+                  fontFamily:"'Inter',sans-serif", letterSpacing:'1px',
+                  display:'flex', alignItems:'center', justifyContent:'center', gap:'12px',
+                  marginBottom:'12px',
+                }}
+              >
+                INSCRÍBETE AHORA <ArrowRight size={22} strokeWidth={3}/>
+              </button>
+
+              <div style={{
+                fontSize:'13px', color:'#f5f1e8', fontFamily:"'Inter',sans-serif", opacity:0.65,
+              }}>
+                🔒 Registro seguro · Confirmación por email
+              </div>
             </div>
           </div>
         </div>
