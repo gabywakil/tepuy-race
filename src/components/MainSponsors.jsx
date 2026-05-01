@@ -4,11 +4,25 @@ import { Link } from 'react-router-dom';
 import useMedia from '../hooks/useMedia';
 
 import logoVenetur from '../assets/LogoVenetur.png';
+import logoVeneturWebp from '../assets/LogoVenetur.webp';
 import logoMarea from '../assets/LogoMarea.png';
+import logoMareaWebp from '../assets/LogoMarea.webp';
 import logoConMariaBonita from '../assets/conmariabonita.png';
-import useInView from '../hooks/useInView';
+import logoConMariaBonitoWebp from '../assets/conmariabonita.webp';
 
-
+const useInView = (threshold = 0.15) => {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      { threshold }
+    );
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, [threshold]);
+  return [ref, visible];
+};
 
 const MainSponsors = () => {
   const { isMobile } = useMedia('(max-width: 768px)');
@@ -17,9 +31,9 @@ const MainSponsors = () => {
   const [ctaRef, ctaVisible] = useInView(0.3);
 
   const mainSponsors = [
-    { name: "Patrocinador Principal", tier: "PRINCIPAL", logo: logoVenetur },
-    { name: "Patrocinador Oro",       tier: "ORO",       logo: logoMarea },
-    { name: "Patrocinador Oro",       tier: "ORO",       logo: logoConMariaBonita },
+    { name: "Patrocinador Principal", tier: "PRINCIPAL", logo: logoVenetur,       logoWebp: logoVeneturWebp },
+    { name: "Patrocinador Oro",       tier: "ORO",       logo: logoMarea,          logoWebp: logoMareaWebp },
+    { name: "Patrocinador Oro",       tier: "ORO",       logo: logoConMariaBonita, logoWebp: logoConMariaBonitoWebp },
   ];
 
   return (
@@ -186,9 +200,13 @@ const MainSponsors = () => {
                     padding:'12px',
                   }}
                 >
-                  <img
+                  <picture>
+                    <source srcSet={sponsor.logoWebp} type="image/webp" />
+                    <img
                     src={sponsor.logo}
                     alt={sponsor.name}
+                    loading="lazy"
+                    decoding="async"
                     style={{
                       maxWidth:'85%',
                       maxHeight:'85%',
