@@ -1,22 +1,32 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Award, TrendingUp, Users, Download, Mail } from 'lucide-react';
 import useMedia from '../hooks/useMedia';
+import useInView from '../hooks/useInView';
+
+import logoVenetur from '../assets/logo-venetur.png';
+import logoVeneturWebp from '../assets/logo-venetur.webp';
+import logoMarea from '../assets/logo-marea.png';
+import logoMareaWebp from '../assets/logo-marea.webp';
+import logoMintur from '../assets/logo-mintur.png';
+import logoMinturWebp from '../assets/logo-mintur.webp';
+import logoConMariaBonita from '../assets/logo-conmariabonita.png';
+import logoConMariaBonitoWebp from '../assets/logo-conmariabonita.webp';
+import logoNatvisual from '../assets/logo-natvisual.png';
+import logoNatvisualWebp from '../assets/logo-natvisual.webp';
+import logoBoom from '../assets/logo-boom.png';
+import logoBoomWebp from '../assets/logo-boom.webp';
+import logoDC from '../assets/logo-dc.png';
+import logoDCWebp from '../assets/logo-dc.webp';
+import logoSomos from '../assets/logo-somos.png';
+import logoSomosWebp from '../assets/logo-somos.webp';
+import logoPow from '../assets/logo-pow.png';
+import logoPowWebp from '../assets/logo-pow.webp';
+import logoVive from '../assets/logo-vive.png';
+import logoViveWebp from '../assets/logo-vive.webp';
+import logoSyf from '../assets/logo-syf.png';
+import logoSyfWebp from '../assets/logo-syf.webp';
 
 
-
-const useInView = (threshold = 0.1) => {
-  const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
-      { threshold }
-    );
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, [threshold]);
-  return [ref, visible];
-};
 
 const Sponsors = () => {
   const { isMobile } = useMedia('(max-width: 768px)');
