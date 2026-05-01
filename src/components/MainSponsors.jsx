@@ -2,27 +2,20 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Award } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import useMedia from '../hooks/useMedia';
+import useInView from '../hooks/useInView';
 
-import logoVenetur from '../assets/LogoVenetur.png';
-import logoVeneturWebp from '../assets/LogoVenetur.webp';
-import logoMarea from '../assets/LogoMarea.png';
-import logoMareaWebp from '../assets/LogoMarea.webp';
-import logoConMariaBonita from '../assets/conmariabonita.png';
-import logoConMariaBonitoWebp from '../assets/conmariabonita.webp';
+import logoVenetur from '../assets/logo-venetur.png';
+import logoVeneturWebp from '../assets/logo-venetur.webp';
+import logoMarea from '../assets/logo-marea.png';
+import logoMareaWebp from '../assets/logo-marea.webp';
+import logoMintur from '../assets/logo-mintur.png';
+import logoMinturWebp from '../assets/logo-mintur.webp';
+import logoConMariaBonita from '../assets/logo-conmariabonita.png';
+import logoConMariaBonitoWebp from '../assets/logo-conmariabonita.webp';
+import logoNatvisual from '../assets/logo-natvisual.png';
+import logoNatvisualWebp from '../assets/logo-natvisual.webp';
 
-const useInView = (threshold = 0.15) => {
-  const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
-      { threshold }
-    );
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, [threshold]);
-  return [ref, visible];
-};
+
 
 const MainSponsors = () => {
   const { isMobile } = useMedia('(max-width: 768px)');
@@ -31,9 +24,11 @@ const MainSponsors = () => {
   const [ctaRef, ctaVisible] = useInView(0.3);
 
   const mainSponsors = [
-    { name: "Patrocinador Principal", tier: "PRINCIPAL", logo: logoVenetur,       logoWebp: logoVeneturWebp },
-    { name: "Patrocinador Oro",       tier: "ORO",       logo: logoMarea,          logoWebp: logoMareaWebp },
-    { name: "Patrocinador Oro",       tier: "ORO",       logo: logoConMariaBonita, logoWebp: logoConMariaBonitoWebp },
+    { name: "Venetur",         tier: "PRINCIPAL", logo: logoVenetur,       logoWebp: logoVeneturWebp },
+    { name: "Marea",           tier: "PRINCIPAL", logo: logoMarea,          logoWebp: logoMareaWebp },
+    { name: "Mintur",          tier: "PRINCIPAL", logo: logoMintur,         logoWebp: logoMinturWebp },
+    { name: "Con María Bonita",tier: "ORO",       logo: logoConMariaBonita, logoWebp: logoConMariaBonitoWebp },
+    { name: "Natvisual",       tier: "ORO",       logo: logoNatvisual,      logoWebp: logoNatvisualWebp },
   ];
 
   return (
@@ -200,21 +195,16 @@ const MainSponsors = () => {
                     padding:'12px',
                   }}
                 >
-                  <picture>
-                    <source srcSet={sponsor.logoWebp} type="image/webp" />
-                    <img
-                      src={sponsor.logo}
-                      alt={sponsor.name}
-                      loading="lazy"
-                      decoding="async"
-                      style={{
-                        maxWidth:'85%',
-                        maxHeight:'85%',
-                        objectFit:'contain',
-                        display:'block',
-                      }}
-                    />
-                  </picture>
+                  <img
+                    src={sponsor.logo}
+                    alt={sponsor.name}
+                    style={{
+                      maxWidth:'85%',
+                      maxHeight:'85%',
+                      objectFit:'contain',
+                      display:'block',
+                    }}
+                  />
                 </div>
 
                 {/* ── Nombre ── */}
