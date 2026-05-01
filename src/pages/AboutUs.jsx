@@ -49,10 +49,10 @@ const AboutUs = () => {
   ];
 
   const stats = [
-    { number: "8+",    label: "Años de experiencia" },
-    { number: "12",    label: "Eventos realizados" },
-    { number: "5,000+",label: "Corredores" },
-    { number: "15",    label: "Países representados" },
+    { number: "300+",  label: "Atletas en la I Edición" },
+{ number: "2",     label: "Ediciones realizadas" },
+{ number: "5K/10K",label: "Categorías II Edición" },
+{ number: "3",     label: "Países representados" },
   ];
 
   return (
