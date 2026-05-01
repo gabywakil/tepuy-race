@@ -1,7 +1,8 @@
 import React, { lazy, Suspense, useEffect, useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 import './styles/globals.css';
 
 const Home                  = lazy(() => import('./pages/Home'));
@@ -56,18 +57,21 @@ function App() {
       <div className="leaf-bl" />
       <div className="leaf-br" />
 
+      <ScrollToTop />
       <Navbar scrollY={scrollY} />
+
       <Suspense fallback={<PageLoader />}>
         <Routes>
           <Route path="/"                       element={<Home />} />
           <Route path="/sponsors"               element={<Sponsors />} />
-          <Route path="/register"               element={<RaceSelection />} />
-          <Route path="/checkout"               element={<Checkout />} />
-          <Route path="/registration-confirmed" element={<RegistrationConfirmed />} />
           <Route path="/about"                  element={<AboutUs />} />
           <Route path="/projects"               element={<OurProjects />} />
+          <Route path="/register"               element={<Navigate to="/" replace />} />
+          <Route path="/checkout"               element={<Navigate to="/" replace />} />
+          <Route path="/registration-confirmed" element={<Navigate to="/" replace />} />
         </Routes>
       </Suspense>
+
       <Footer />
     </div>
   );
