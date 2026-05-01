@@ -202,7 +202,7 @@ const Hero = () => {
             backdropFilter: 'blur(6px)',
           }}>
             <MapPin size={14} strokeWidth={2.5} />
-            MOUNT TEPUY PLATEAU
+            LECHERÍA, ANZOÁTEGUI · 2026
           </div>
 
           {/* main title */}
@@ -238,7 +238,7 @@ const Hero = () => {
             animation: loaded ? 'heroSub 1s 0.9s ease forwards' : 'none',
             animationFillMode: 'both',
           }}>
-            RUN BEYOND YOUR LIMITS
+            DE LO ANCESTRAL AL CARIBE
           </p>
 
           {/* thin divider line */}
