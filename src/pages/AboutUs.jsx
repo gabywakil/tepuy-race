@@ -155,8 +155,7 @@ const AboutUs = () => {
             animation: heroVisible ? 'auFadeUp 0.7s 0.2s ease forwards' : 'none',
             animationFillMode: 'both',
           }}>
-            Desde 2016, creamos experiencias de trail running que transforman vidas,
-            construyen comunidades y celebran la belleza de nuestras montañas.
+            Nacida en el corazón de la Gran Sabana venezolana, Tepuy Race fusiona deporte, ecología y acción social. Somos la primera carrera ecológica de la región, conectando atletas, comunidades indígenas y el Mar Caribe.
           </p>
 
           {/* Stats */}
@@ -246,8 +245,9 @@ const AboutUs = () => {
             <div style={{ width:'50px', height:'3px', background:'linear-gradient(90deg,#c85a3e,transparent)', borderRadius:'2px', marginBottom:'24px' }}/>
 
             {[
-              "Todo comenzó en 2016 con un grupo de amigos apasionados por el trail running y un sueño: crear el evento de montaña más espectacular de Venezuela.",
-              "Lo que empezó como una carrera local de 50 participantes se ha convertido en un movimiento internacional que atrae corredores de más de 15 países cada año.",
+              "La primera edición de Tepuy Race tuvo lugar a los pies de los milenarios tepuyes, en la entrada de Santa Elena de Uairén, consolidando más de 300 atletas venezolanos, brasileros y líderes de comunidades indígenas.",
+"Tras el éxito en el sur, llegamos a Lechería: donde la energía de la ciudad se encuentra con la brisa del Mar Caribe. Nuestras rutas de 5K y 10K honran el paisaje costero de Anzoátegui.",
+"El recorrido parte de Marea Club de Playa, cruza la emblemática Playa los Canales y recorre la Av. Camejo Octavio, integrando el casco central y el icónico Morro de Lechería.",
               "Hoy, Tepuy Race es más que un evento. Es una comunidad, una familia y un compromiso de promover el deporte outdoor responsable y sostenible.",
             ].map((t, i) => (
               <p key={i} style={{
