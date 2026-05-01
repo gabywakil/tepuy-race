@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
 import logoImage from '../assets/logo.png';
+import logoImageWebp from '../assets/logo.webp';
 import { Link } from 'react-router-dom';
 import useMedia from '../hooks/useMedia';
 import useInView from '../hooks/useInView';
@@ -128,7 +129,10 @@ const Footer = () => {
             animation: colVisible ? 'ftFadeUp 0.6s 0s ease forwards' : 'none',
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
-              <img src={logoImage} alt="Tepuy Race Logo" style={{ height: '45px', width: 'auto' }} />
+              <picture>
+                <source srcSet={logoImageWebp} type="image/webp" />
+                <img src={logoImage} alt="Tepuy Race Logo" style={{ height: '45px', width: 'auto' }} />
+              </picture>
               <span style={{
                 fontSize: '22px', fontWeight: '700', color: '#f4d35e',
                 fontFamily: "'Playfair Display', serif",
