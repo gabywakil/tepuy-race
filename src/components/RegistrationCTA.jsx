@@ -1,9 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowRight, CheckCircle, Calendar, MapPin, Users } from 'lucide-react';
-import useInView from '../hooks/useInView';
 
-
+const useInView = (threshold = 0.12) => {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      { threshold }
+    );
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, [threshold]);
+  return [ref, visible];
+};
 
 const RegistrationCTA = () => {
   const navigate = useNavigate();
@@ -23,9 +34,7 @@ const RegistrationCTA = () => {
   ];
 
   const goToRaceSelection = (e) => {
-    e?.preventDefault?.(); e?.stopPropagation?.();
-    window.scrollTo({ top:0, behavior:'smooth' });
-    navigate('/register');
+    // Registration temporarily disabled — tickets via external platform
   };
 
   return (
@@ -275,7 +284,7 @@ const RegistrationCTA = () => {
 
               <button
                 type="button"
-                onClick={goToRaceSelection}
+                onClick={goToRaceSelection} disabled style={{ cursor:'not-allowed', opacity:0.55 }}
                 className="cta-main-btn"
                 style={{
                   width:'100%', backgroundColor:'#c85a3e', color:'#f5f1e8',
