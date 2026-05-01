@@ -80,6 +80,9 @@ const Navbar = ({ scrollY }) => {
           letter-spacing: 0.5px;
           animation: navRegisterPulse 3s ease-in-out infinite;
           transition: transform 0.2s, background-color 0.2s;
+          text-decoration: none;
+          display: inline-flex;
+          align-items: center;
         }
         .nav-register:hover {
           transform: translateY(-2px) scale(1.04);
@@ -115,6 +118,26 @@ const Navbar = ({ scrollY }) => {
           transform:translateX(4px);
         }
         .nav-mobile-link:hover::before { transform:scaleY(1); }
+        .nav-mobile-register {
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          margin: 10px 6px 6px;
+          padding: 14px 16px;
+          border-radius: 12px;
+          background-color: #c85a3e;
+          color: #f5f1e8;
+          text-decoration: none;
+          font-family: 'Inter', sans-serif;
+          font-weight: 700;
+          font-size: 15px;
+          letter-spacing: 0.5px;
+          transition: background-color 0.2s, transform 0.2s;
+        }
+        .nav-mobile-register:hover {
+          background-color: #d4664a;
+          transform: translateY(-2px);
+        }
       `}</style>
 
       <nav style={{
@@ -143,13 +166,13 @@ const Navbar = ({ scrollY }) => {
             <picture>
               <source srcSet={logoImageWebp} type="image/webp" />
               <img
-              src={logoImage} alt="Tepuy Race Logo"
-              style={{
-                height: isMobile ? '38px' : '48px', width:'auto',
-                transition:'transform 0.3s ease',
-              }}
-              onMouseEnter={e => e.currentTarget.style.transform='rotate(-4deg) scale(1.06)'}
-              onMouseLeave={e => e.currentTarget.style.transform='rotate(0deg) scale(1)'}
+                src={logoImage} alt="Tepuy Race Logo"
+                style={{
+                  height: isMobile ? '38px' : '48px', width:'auto',
+                  transition:'transform 0.3s ease',
+                }}
+                onMouseEnter={e => e.currentTarget.style.transform='rotate(-4deg) scale(1.06)'}
+                onMouseLeave={e => e.currentTarget.style.transform='rotate(0deg) scale(1)'}
               />
             </picture>
             <span style={{
@@ -165,7 +188,8 @@ const Navbar = ({ scrollY }) => {
 
           {/* Right */}
           <div style={{ display:'flex', alignItems:'center', gap:'12px' }}>
-            {/* Desktop links */}
+
+            {/* Desktop links + botón */}
             {!isMobile && (
               <div style={{ display:'flex', gap:'32px', alignItems:'center' }}>
                 {links.map(({ to, href, label }) =>
@@ -181,6 +205,15 @@ const Navbar = ({ scrollY }) => {
                   )
                 )}
 
+                {/* Botón inscríbete desktop */}
+                <a
+                  href="https://tepuy.b9ticketing.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="nav-register"
+                >
+                  INSCRÍBETE
+                </a>
               </div>
             )}
 
@@ -239,7 +272,22 @@ const Navbar = ({ scrollY }) => {
               )
             )}
 
+            {/* divider */}
+            <div style={{
+              height:'1px', margin:'10px 12px',
+              background:'linear-gradient(90deg,transparent,rgba(244,211,94,0.2),transparent)',
+            }}/>
 
+            {/* Botón inscríbete mobile */}
+            <a
+              href="https://tepuy.b9ticketing.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="nav-mobile-register"
+              onClick={() => setOpen(false)}
+            >
+              INSCRÍBETE AHORA
+            </a>
           </div>
         )}
       </nav>
