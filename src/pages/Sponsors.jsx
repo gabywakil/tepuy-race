@@ -1,11 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Award, TrendingUp, Users, Download, Mail } from 'lucide-react';
 import useMedia from '../hooks/useMedia';
+import useInView from '../hooks/useInView';
 
 import logoMarea from '../assets/LogoMarea.png';
+import logoMareaWebp from '../assets/LogoMarea.webp';
 import logoVenetur from '../assets/LogoVenetur.png';
+import logoVeneturWebp from '../assets/LogoVenetur.webp';
 import logoConMariaBonita from '../assets/conmariabonita.png';
-import useInView from '../hooks/useInView';
+import logoConMariaBonitoWebp from '../assets/conmariabonita.webp';
 
 
 
@@ -24,8 +27,8 @@ const Sponsors = () => {
   const titleSponsors = [{ name: "Marea", logo: logoMarea }];
 
   const officialSponsors = [
-    { name: "Venetur",         logo: logoVenetur },
-    { name: "Con Maria Bonita", logo: logoConMariaBonita },
+    { name: "Venetur",         logo: logoVenetur,       logoWebp: logoVeneturWebp },
+    { name: "Con Maria Bonita", logo: logoConMariaBonita, logoWebp: logoConMariaBonitoWebp },
     { name: "Patrocinador 3",  logo: null },
     { name: "Patrocinador 4",  logo: null },
   ];
@@ -180,11 +183,11 @@ const Sponsors = () => {
                   padding:'16px', overflow:'hidden',
                 }}
               >
-                <img
-                  src={s.logo}
-                  alt={s.name}
-                  style={{ maxWidth:'85%', maxHeight:'85%', objectFit:'contain', display:'block' }}
-                />
+                <picture>
+                  <source srcSet={s.logoWebp} type="image/webp" />
+                  <img src={s.logo} alt={s.name} loading="lazy" decoding="async"
+                    style={{ maxWidth:'85%', maxHeight:'85%', objectFit:'contain', display:'block' }} />
+                </picture>
               </div>
               <div style={{ marginTop:'16px', fontSize: isMobile ? '15px' : '18px', fontWeight:'700', color:'#f5f1e8', fontFamily:"'Inter',sans-serif" }}>
                 {s.name}
@@ -240,11 +243,11 @@ const Sponsors = () => {
                   }}
                 >
                   {s.logo ? (
-                    <img
-                      src={s.logo}
-                      alt={s.name}
-                      style={{ maxWidth:'85%', maxHeight:'85%', objectFit:'contain', display:'block' }}
-                    />
+                    <picture>
+                      <source srcSet={s.logoWebp} type="image/webp" />
+                      <img src={s.logo} alt={s.name} loading="lazy" decoding="async"
+                        style={{ maxWidth:'85%', maxHeight:'85%', objectFit:'contain', display:'block' }} />
+                    </picture>
                   ) : (
                     <span style={{ fontSize: isMobile ? '14px' : '18px', fontWeight:'700', color:'#c85a3e', fontFamily:"'Inter',sans-serif" }}>
                       LOGO
