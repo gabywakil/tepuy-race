@@ -210,10 +210,7 @@ const About = () => {
             fontFamily: "'Inter', sans-serif",
             animation: sectionVisible ? "aboutFadeUp 0.8s 0.3s ease forwards" : "none",
           }}>
-            Vive un evento de carrera inspirado en la naturaleza que empuja tus
-            límites a través de paisajes majestuosos. Tepuy Race no es solo una
-            carrera: es un viaje espiritual por algunas de las formaciones
-            geológicas más antiguas de la Tierra.
+            Tepuy Race es más que una competencia de running; es un movimiento que fusiona el deporte, la ecología y la acción social. Nacida en la majestuosidad de la Gran Sabana, nuestra carrera se inspira en la fuerza de la naturaleza, el espíritu de superación y la conexión profunda entre el atleta y el entorno.
           </p>
 
           {/* ── stats ── */}
@@ -227,8 +224,8 @@ const About = () => {
             }}
           >
             {[
-              { value: "2,600m", label: "Desnivel vertical que pone a prueba tu resistencia", delay: "0s" },
-              { value: "500+",   label: "Comunidad internacional de atletas de alto nivel",   delay: "0.15s" },
+              { value: "300+",  label: "Atletas en la primera edición, uniendo venezolanos, brasileros y líderes indígenas" },
+{ value: "2026",  label: "II Edición en Lechería con rutas de 5K y 10K en el Mar Caribe" },
             ].map(({ value, label, delay }, i) => (
               <div
                 key={i}
