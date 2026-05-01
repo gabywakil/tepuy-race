@@ -1,16 +1,22 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Award, TrendingUp, Users, Download, Mail } from 'lucide-react';
 import useMedia from '../hooks/useMedia';
-import useInView from '../hooks/useInView';
-
-import logoMarea from '../assets/LogoMarea.png';
-import logoMareaWebp from '../assets/LogoMarea.webp';
-import logoVenetur from '../assets/LogoVenetur.png';
-import logoVeneturWebp from '../assets/LogoVenetur.webp';
-import logoConMariaBonita from '../assets/conmariabonita.png';
-import logoConMariaBonitoWebp from '../assets/conmariabonita.webp';
 
 
+
+const useInView = (threshold = 0.1) => {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      { threshold }
+    );
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, [threshold]);
+  return [ref, visible];
+};
 
 const Sponsors = () => {
   const { isMobile } = useMedia('(max-width: 768px)');
@@ -24,16 +30,25 @@ const Sponsors = () => {
 
   useEffect(() => { const t = setTimeout(() => setMounted(true), 80); return () => clearTimeout(t); }, []);
 
-  const titleSponsors = [{ name: "Marea", logo: logoMarea }];
-
-  const officialSponsors = [
-    { name: "Venetur",         logo: logoVenetur,       logoWebp: logoVeneturWebp },
-    { name: "Con Maria Bonita", logo: logoConMariaBonita, logoWebp: logoConMariaBonitoWebp },
-    { name: "Patrocinador 3",  logo: null },
-    { name: "Patrocinador 4",  logo: null },
+  const titleSponsors = [
+    { name: "Venetur", logo: logoVenetur, logoWebp: logoVeneturWebp },
+    { name: "Marea",   logo: logoMarea,   logoWebp: logoMareaWebp },
+    { name: "Mintur",  logo: logoMintur,  logoWebp: logoMinturWebp },
   ];
 
-  const partners = Array.from({ length: 6 }, (_, i) => ({ name: `Aliado ${i + 1}`, logo: null }));
+  const officialSponsors = [
+    { name: "Con María Bonita", logo: logoConMariaBonita, logoWebp: logoConMariaBonitoWebp },
+    { name: "Natvisual",        logo: logoNatvisual,      logoWebp: logoNatvisualWebp },
+    { name: "BOOM Eventos",     logo: logoBoom,           logoWebp: logoBoomWebp },
+  ];
+
+  const partners = [
+    { name: "DC Gráficos",         logo: logoDC,    logoWebp: logoDCWebp },
+    { name: "Grupo Somos",         logo: logoSomos, logoWebp: logoSomosWebp },
+    { name: "POW Fitness",         logo: logoPow,   logoWebp: logoPowWebp },
+    { name: "Vive Pilates Studio", logo: logoVive,  logoWebp: logoViveWebp },
+    { name: "SYF",                 logo: logoSyf,   logoWebp: logoSyfWebp },
+  ];
 
   const benefits = [
     { icon: Award,      text: "Visibilidad de marca ante más de 5,000 atletas" },
@@ -183,11 +198,11 @@ const Sponsors = () => {
                   padding:'16px', overflow:'hidden',
                 }}
               >
-                <picture>
-                  <source srcSet={s.logoWebp} type="image/webp" />
-                  <img src={s.logo} alt={s.name} loading="lazy" decoding="async"
-                    style={{ maxWidth:'85%', maxHeight:'85%', objectFit:'contain', display:'block' }} />
-                </picture>
+                <img
+                  src={s.logo}
+                  alt={s.name}
+                  style={{ maxWidth:'85%', maxHeight:'85%', objectFit:'contain', display:'block' }}
+                />
               </div>
               <div style={{ marginTop:'16px', fontSize: isMobile ? '15px' : '18px', fontWeight:'700', color:'#f5f1e8', fontFamily:"'Inter',sans-serif" }}>
                 {s.name}
@@ -243,11 +258,11 @@ const Sponsors = () => {
                   }}
                 >
                   {s.logo ? (
-                    <picture>
-                      <source srcSet={s.logoWebp} type="image/webp" />
-                      <img src={s.logo} alt={s.name} loading="lazy" decoding="async"
-                        style={{ maxWidth:'85%', maxHeight:'85%', objectFit:'contain', display:'block' }} />
-                    </picture>
+                    <img
+                      src={s.logo}
+                      alt={s.name}
+                      style={{ maxWidth:'85%', maxHeight:'85%', objectFit:'contain', display:'block' }}
+                    />
                   ) : (
                     <span style={{ fontSize: isMobile ? '14px' : '18px', fontWeight:'700', color:'#c85a3e', fontFamily:"'Inter',sans-serif" }}>
                       LOGO
