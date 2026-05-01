@@ -175,7 +175,6 @@ const Footer = () => {
                 { to: '/about',    label: 'About Us' },
                 { to: '/projects', label: 'Our Projects' },
                 { to: '/sponsors', label: 'Sponsors' },
-                { to: '/register', label: 'Register' },
               ].map(({ to, label }, i) => (
                 <Link
                   key={i}
