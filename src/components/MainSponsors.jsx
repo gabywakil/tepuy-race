@@ -10,10 +10,6 @@ import logoMarea from '../assets/logo-marea.png';
 import logoMareaWebp from '../assets/logo-marea.webp';
 import logoMintur from '../assets/logo-mintur.png';
 import logoMinturWebp from '../assets/logo-mintur.webp';
-import logoConMariaBonita from '../assets/logo-conmariabonita.png';
-import logoConMariaBonitoWebp from '../assets/logo-conmariabonita.webp';
-import logoNatvisual from '../assets/logo-natvisual.png';
-import logoNatvisualWebp from '../assets/logo-natvisual.webp';
 
 
 
@@ -24,11 +20,9 @@ const MainSponsors = () => {
   const [ctaRef, ctaVisible] = useInView(0.3);
 
   const mainSponsors = [
-    { name: "Venetur",         tier: "PRINCIPAL", logo: logoVenetur,       logoWebp: logoVeneturWebp },
-    { name: "Marea",           tier: "PRINCIPAL", logo: logoMarea,          logoWebp: logoMareaWebp },
-    { name: "Mintur",          tier: "PRINCIPAL", logo: logoMintur,         logoWebp: logoMinturWebp },
-    { name: "Con María Bonita",tier: "ORO",       logo: logoConMariaBonita, logoWebp: logoConMariaBonitoWebp },
-    { name: "Natvisual",       tier: "ORO",       logo: logoNatvisual,      logoWebp: logoNatvisualWebp },
+    { name: "Venetur", tier: "PRINCIPAL", logo: logoVenetur, logoWebp: logoVeneturWebp },
+    { name: "Marea",   tier: "PRINCIPAL", logo: logoMarea,   logoWebp: logoMareaWebp },
+    { name: "Mintur",  tier: "PRINCIPAL", logo: logoMintur,  logoWebp: logoMinturWebp },
   ];
 
   return (
