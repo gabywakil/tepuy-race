@@ -180,9 +180,7 @@ const Navbar = ({ scrollY }) => {
                     </Link>
                   )
                 )}
-                <Link to="/register" style={{ textDecoration:'none' }}>
-                  <button className="nav-register">REGISTER NOW</button>
-                </Link>
+
               </div>
             )}
 
@@ -241,19 +239,7 @@ const Navbar = ({ scrollY }) => {
               )
             )}
 
-            <div style={{ padding:'10px 6px 4px' }}>
-              <Link to="/register" onClick={() => setOpen(false)} style={{ textDecoration:'none' }}>
-                <button style={{
-                  width:'100%', backgroundColor:'#c85a3e', color:'#f5f1e8',
-                  border:'none', padding:'15px', borderRadius:'14px',
-                  cursor:'pointer', fontSize:'15px', fontWeight:'700',
-                  fontFamily:"'Inter',sans-serif", letterSpacing:'1px',
-                  boxShadow:'0 6px 20px rgba(200,90,62,0.35)',
-                }}>
-                  REGISTER NOW
-                </button>
-              </Link>
-            </div>
+
           </div>
         )}
       </nav>
