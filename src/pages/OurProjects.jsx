@@ -1,9 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Calendar, MapPin, Users, Award, ArrowRight } from 'lucide-react';
 import useMedia from '../hooks/useMedia';
-import useInView from '../hooks/useInView';
 
-
+const useInView = (threshold = 0.1) => {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      { threshold }
+    );
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, [threshold]);
+  return [ref, visible];
+};
 
 const Counter = ({ value, visible }) => {
   const [display, setDisplay] = useState(0);
@@ -298,7 +309,16 @@ const OurProjects = () => {
             ref={galleryRef}
             style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(4,1fr)', gap: isMobile ? '12px' : '20px', marginBottom:'40px' }}
           >
-            {[1,2,3,4,5,6,7,8].map((item, i) => (
+            {[
+              { src: '/videos/gallery1.mp4' },
+              { src: '/videos/gallery2.mp4' },
+              { src: '/videos/gallery3.mp4' },
+              { src: '/videos/gallery4.mp4' },
+              { src: '/videos/gallery5.mp4' },
+              { src: '/videos/gallery6.mp4' },
+              { src: null },
+              { src: null },
+            ].map((item, i) => (
               <div
                 key={i}
                 className="op-gallery-item"
@@ -315,8 +335,16 @@ const OurProjects = () => {
                   animationFillMode:'both',
                 }}
               >
+                {item.src ? (
+                  <video
+                    autoPlay loop muted playsInline
+                    style={{ position:'absolute', inset:0, width:'100%', height:'100%', objectFit:'cover' }}
+                  >
+                    <source src={item.src} type="video/mp4" />
+                  </video>
+                ) : null}
                 <div style={{ position:'absolute', inset:0, background:'linear-gradient(180deg,transparent 50%,rgba(10,74,66,0.4) 100%)', pointerEvents:'none' }}/>
-                <span style={{ position:'relative', zIndex:1, opacity:0.7 }}>FOTO {item}</span>
+                {!item.src && <span style={{ position:'relative', zIndex:1, opacity:0.7 }}>PRÓXIMAMENTE</span>}
               </div>
             ))}
           </div>
