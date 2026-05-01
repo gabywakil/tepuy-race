@@ -211,8 +211,8 @@ const About = () => {
             animation: sectionVisible ? "aboutFadeUp 0.8s 0.3s ease forwards" : "none",
           }}>
             Vive un evento de carrera inspirado en la naturaleza que empuja tus
-            límites a través de paisajes majestuosos. Tepuy Race no es solo un
-            maratón: es un viaje espiritual por algunas de las formaciones
+            límites a través de paisajes majestuosos. Tepuy Race no es solo una
+            carrera: es un viaje espiritual por algunas de las formaciones
             geológicas más antiguas de la Tierra.
           </p>
 
