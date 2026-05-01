@@ -362,7 +362,7 @@ const About = () => {
                 fontFamily: "'Inter', sans-serif",
                 opacity: 0.85,
               }}>
-                Venezuela · Oct 2024
+                Venezuela · Nov 2024
               </div>
             </div>
           </div>
