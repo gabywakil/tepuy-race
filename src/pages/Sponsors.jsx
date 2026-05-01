@@ -291,7 +291,7 @@ const Sponsors = () => {
         </div>
       </section>
 
-      {/* ══ ALIADOS ESTRATÉGICOS ══ */}
+      {/* ══ NUESTROS ALIADOS ══ */}
       <section style={{ padding: isMobile ? '50px 18px' : '80px 40px', maxWidth:'1200px', margin:'0 auto' }}>
         <div ref={partRef}>
           <div style={{ display:'flex', alignItems:'center', gap:'15px', marginBottom: isMobile ? '24px' : '50px' }}>
@@ -302,35 +302,41 @@ const Sponsors = () => {
               animation: partVisible ? 'spFadeRight 0.6s 0.1s ease forwards' : 'none',
               animationFillMode:'both',
             }}>
-              ALIADOS ESTRATÉGICOS
+              NUESTROS ALIADOS
             </h2>
           </div>
 
-          <div style={{ display:'grid', gridTemplateColumns: isMobile ? 'repeat(3,1fr)' : 'repeat(6,1fr)', gap: isMobile ? '10px' : '25px' }}>
+          <div style={{ display:'grid', gridTemplateColumns: isMobile ? 'repeat(2,1fr)' : 'repeat(5,1fr)', gap: isMobile ? '10px' : '25px' }}>
             {partners.map((p, i) => (
               <div
                 key={i}
                 className="sp-partner-card"
                 style={{
-                  padding: isMobile ? '14px 10px' : '40px 20px',
-                  backgroundColor:'rgba(245,241,232,0.03)', borderRadius:'15px',
+                  padding: isMobile ? '14px 10px' : '30px 20px',
+                  backgroundColor:'rgba(245,241,232,0.06)', borderRadius:'15px',
                   textAlign:'center', border:'2px solid rgba(200,90,62,0.1)', cursor:'pointer',
                   position:'relative', overflow:'hidden',
                   opacity: partVisible ? 1 : 0,
                   animation: partVisible ? `spCardIn 0.45s ${i * 0.06}s ease forwards` : 'none',
                   animationFillMode:'both',
+                  display:'flex', flexDirection:'column', alignItems:'center', gap:'10px',
                 }}
               >
                 <div style={{
                   width:'100%', height: isMobile ? '62px' : '80px',
-                  backgroundColor:'rgba(245,241,232,0.05)', borderRadius:'10px',
+                  backgroundColor:'rgba(245,241,232,0.9)', borderRadius:'10px',
                   display:'flex', alignItems:'center', justifyContent:'center',
-                  fontSize: isMobile ? '12px' : '14px', fontWeight:'700',
-                  color:'#f5f1e8', fontFamily:"'Inter',sans-serif",
-                  border:'1px dashed rgba(245,241,232,0.18)',
+                  overflow:'hidden', padding:'8px',
                 }}>
-                  LOGO
+                  <picture>
+                    <source srcSet={p.logoWebp} type="image/webp" />
+                    <img src={p.logo} alt={p.name} loading="lazy" decoding="async"
+                      style={{ maxWidth:'100%', maxHeight:'100%', objectFit:'contain' }} />
+                  </picture>
                 </div>
+                <span style={{ fontSize:'11px', color:'rgba(245,241,232,0.7)', fontFamily:"'Inter',sans-serif", fontWeight:'600' }}>
+                  {p.name}
+                </span>
               </div>
             ))}
           </div>
