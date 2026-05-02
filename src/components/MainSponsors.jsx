@@ -20,9 +20,9 @@ const MainSponsors = () => {
   const [ctaRef, ctaVisible] = useInView(0.3);
 
   const mainSponsors = [
-    { name: "Venetur", tier: "PRINCIPAL", logo: logoVenetur, logoWebp: logoVeneturWebp },
-    { name: "Marea",   tier: "PRINCIPAL", logo: logoMarea,   logoWebp: logoMareaWebp },
-    { name: "Mintur",  tier: "PRINCIPAL", logo: logoMintur,  logoWebp: logoMinturWebp },
+    { name: "Venetur", tier: "PRINCIPAL", logo: logoVenetur, logoWebp: logoVeneturWebp, ig: "https://www.instagram.com/venetur_oficial?igsh=cndvbm1lYzM2bXpz" },
+    { name: "Marea",   tier: "PRINCIPAL", logo: logoMarea,   logoWebp: logoMareaWebp,   ig: "https://www.instagram.com/marea_clubdeplaya?igsh=MWt0bHBjdmwxaHBrbg==" },
+    { name: "Mintur",  tier: "PRINCIPAL", logo: logoMintur,  logoWebp: logoMinturWebp,  ig: "https://www.instagram.com/minturismo_ve?igsh=czRvN203cW5pbXJy" },
   ];
 
   return (
@@ -123,8 +123,14 @@ const MainSponsors = () => {
           {mainSponsors.map((sponsor, index) => {
             const isFirst = index === 0;
             return (
-              <div
+              <a
                 key={index}
+                href={sponsor.ig}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ textDecoration:'none' }}
+              >
+              <div
                 className="ms-card"
                 style={{
                   padding: isMobile ? '26px 18px' : (isFirst ? '80px 60px' : '60px 40px'),
@@ -210,6 +216,7 @@ const MainSponsors = () => {
                   {sponsor.name}
                 </div>
               </div>
+              </a>
             );
           })}
         </div>
