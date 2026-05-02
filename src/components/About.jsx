@@ -145,7 +145,7 @@ const About = () => {
             animation: sectionVisible ? "badgePop 0.5s ease forwards" : "none",
           }}>
             <Heart size={15} strokeWidth={2.5} />
-            EVENTO TRAIL CON PASIÓN
+            EVENTO TRAIL CON PROPÓSITO
           </div>
 
           {/* heading */}
