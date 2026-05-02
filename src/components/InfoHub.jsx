@@ -33,7 +33,7 @@ const InfoHub = () => {
 
   const stats = [
     { number: '2,600', label: 'Metros de Elevación', icon: Mountain, delay: '0s',    suffix: '' },
-    { number: '500+',  label: 'Corredores Esperados', icon: Users,    delay: '0.12s', suffix: '' },
+    { number: '1000+',  label: 'Corredores Esperados', icon: Users,    delay: '0.12s', suffix: '' },
     { number: '10K',   label: 'Distancia Máxima',     icon: TrendingUp, delay: '0.24s', suffix: '' },
   ];
 
