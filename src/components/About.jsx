@@ -210,8 +210,7 @@ const About = () => {
             fontFamily: "'Inter', sans-serif",
             animation: sectionVisible ? "aboutFadeUp 0.8s 0.3s ease forwards" : "none",
           }}>
-            Tepuy Race es más que una competencia de running; es un movimiento que fusiona el deporte, la ecología y la acción social. Nacida en la majestuosidad de la Gran Sabana, nuestra carrera se inspira en la fuerza de la naturaleza, el espíritu de superación y la conexión profunda entre el atleta y el entorno.
-          </p>
+Tepuy Race es más que una competencia de running; es un movimiento que fusiona el turismo deportivo, la ecología y la acción social. Nacida en la majestuosidad de la Gran Sabana, nuestra carrera se inspira en la fuerza de la naturaleza, el espíritu de superación y la conexión profunda entre el atleta y el entorno.          </p>
 
           {/* ── stats ── */}
           <div
