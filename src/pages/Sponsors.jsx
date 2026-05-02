@@ -254,6 +254,8 @@ const Sponsors = () => {
                         maxHeight: s.name === 'Natvisual' ? undefined : '85%',
                         objectFit:'contain',
                         display:'block',
+                        transform: s.name === 'Natvisual' ? 'scale(2)' : undefined,
+                        transformOrigin: 'center center',
                       }}
                     />
                   </div>
