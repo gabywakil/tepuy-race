@@ -54,7 +54,7 @@ const Sponsors = () => {
   const partners = [
     { name: "DC Gráficos",         logo: logoDC,    logoWebp: logoDCWebp,    ig: "https://www.instagram.com/dcgraficos?igsh=MXd2anNodzRsNjlvMA==" },
     { name: "Grupo Somos",         logo: logoSomos, logoWebp: logoSomosWebp, ig: "https://www.instagram.com/gruposomos_pzo?igsh=MXJ6dmttZzkwODAycA==" },
-    { name: "GW Studios",         logo: gw,    ig: "https://www.instagram.com/gw.studios_?igsh=MW9rZTB1djN5YmE4eA==" },
+    { name: "GW Studios",          logo: gw,                                  ig: "https://www.instagram.com/gw.studios_?igsh=MW9rZTB1djN5YmE4eA==" },
     { name: "POW Fitness",         logo: logoPow,   logoWebp: logoPowWebp,   ig: "https://www.instagram.com/powfitnessve?igsh=MTgxaDh5YmZrbHd6dg==" },
     { name: "Vive Pilates Studio", logo: logoVive,  logoWebp: logoViveWebp,  ig: "https://www.instagram.com/vivepilates.studio?igsh=MTRoNmI3dWlnOHdiNA==" },
     { name: "SYF",                 logo: logoSyf,   logoWebp: logoSyfWebp,   ig: "https://www.instagram.com/syf.sportswear?igsh=MW55dXUwMjJvemJyMg==" },
@@ -197,8 +197,9 @@ const Sponsors = () => {
                 }}
               >
                 <div style={{ position:'absolute', top:0, left:'10%', right:'10%', height:'3px', background:'linear-gradient(90deg,transparent,#f4d35e 50%,transparent)', backgroundSize:'200% 100%', animation:'spShimmer 2.5s linear infinite' }}/>
-                <div className="sp-logo-box" style={{ width:'100%', height: isMobile ? '160px' : '220px', backgroundColor:'rgba(255,255,255,0.92)', borderRadius:'15px', display:'flex', alignItems:'center', justifyContent:'center', padding:'16px', overflow:'hidden' }}>
-                  <img src={s.logo} alt={s.name} style={{ maxWidth:'85%', maxHeight:'85%', objectFit:'contain', display:'block' }} />
+                {/* ── logo box: padding reducido para que el logo ocupe más espacio ── */}
+                <div className="sp-logo-box" style={{ width:'100%', height: isMobile ? '160px' : '220px', backgroundColor:'rgba(255,255,255,0.92)', borderRadius:'15px', display:'flex', alignItems:'center', justifyContent:'center', padding:'8px', overflow:'hidden' }}>
+                  <img src={s.logo} alt={s.name} style={{ maxWidth:'95%', maxHeight:'95%', objectFit:'contain', display:'block' }} />
                 </div>
                 <div style={{ marginTop:'16px', fontSize: isMobile ? '15px' : '18px', fontWeight:'700', color:'#f5f1e8', fontFamily:"'Inter',sans-serif" }}>
                   {s.name}
@@ -239,8 +240,20 @@ const Sponsors = () => {
                   }}
                 >
                   <div style={{ position:'absolute', top:0, left:'20%', right:'20%', height:'1px', background:'linear-gradient(90deg,transparent,rgba(244,211,94,0.2),transparent)' }}/>
-                  <div className="sp-logo-box" style={{ width:'100%', height: isMobile ? '110px' : '140px', backgroundColor:'rgba(255,255,255,0.92)', borderRadius:'12px', display:'flex', alignItems:'center', justifyContent:'center', padding:'10px', overflow:'hidden' }}>
-                    <img src={s.logo} alt={s.name} loading="lazy" decoding="async" style={{ maxWidth:'85%', maxHeight:'85%', objectFit:'contain', display:'block' }} />
+                  {/* ── Natvisual: padding reducido y logo al 95%; el resto se mantiene igual ── */}
+                  <div className="sp-logo-box" style={{ width:'100%', height: isMobile ? '110px' : '140px', backgroundColor:'rgba(255,255,255,0.92)', borderRadius:'12px', display:'flex', alignItems:'center', justifyContent:'center', padding: s.name === 'Natvisual' ? '4px' : '10px', overflow:'hidden' }}>
+                    <img
+                      src={s.logo}
+                      alt={s.name}
+                      loading="lazy"
+                      decoding="async"
+                      style={{
+                        maxWidth:  s.name === 'Natvisual' ? '95%' : '85%',
+                        maxHeight: s.name === 'Natvisual' ? '95%' : '85%',
+                        objectFit:'contain',
+                        display:'block',
+                      }}
+                    />
                   </div>
                   <div style={{ marginTop:'12px', fontSize: isMobile ? '13px' : '15px', fontWeight:'700', color:'#f5f1e8', fontFamily:"'Inter',sans-serif" }}>
                     {s.name}
