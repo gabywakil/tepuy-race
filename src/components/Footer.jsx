@@ -279,10 +279,10 @@ const Footer = () => {
               fontSize: '14px', lineHeight: '1.9', opacity: 0.8,
               fontFamily: "'Inter', sans-serif", color: '#f5f1e8',
             }}>
-              <p style={{ margin: '0 0 6px 0' }}>Lechería,</p>
-<p style={{ margin: '0 0 6px 0' }}>Anzoátegui, Venezuela</p>
+              <p style={{ margin: '0 0 6px 0' }}>Lecheria, Anzoátegui - Venezuela.</p>
+<p style={{ margin: '0 0 6px 0' }}>Sede oficial Marea Club de Playa. </p>
               <p style={{ margin: '0 0 20px 0', color: '#f4d35e', fontWeight: '600', opacity: 1 }}>
-                info@tepuyrace.com
+                Tepuyrace@gmail.com 
               </p>
             </div>
 
@@ -305,7 +305,7 @@ const Footer = () => {
               animationFillMode: 'both',
             }}>
               <span style={{ fontSize: '14px' }}>📍</span>
-              5°50′ N · 61°30′ O
+              10°11′20″N 64°41′42″O
             </div>
           </div>
         </div>
