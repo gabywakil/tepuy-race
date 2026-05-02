@@ -41,23 +41,23 @@ const Sponsors = () => {
   useEffect(() => { const t = setTimeout(() => setMounted(true), 80); return () => clearTimeout(t); }, []);
 
   const titleSponsors = [
-    { name: "Venetur", logo: logoVenetur, logoWebp: logoVeneturWebp },
-    { name: "Marea",   logo: logoMarea,   logoWebp: logoMareaWebp },
-    { name: "Mintur",  logo: logoMintur,  logoWebp: logoMinturWebp },
+    { name: "Venetur", logo: logoVenetur, logoWebp: logoVeneturWebp, ig: "https://www.instagram.com/venetur_oficial?igsh=cndvbm1lYzM2bXpz" },
+    { name: "Marea",   logo: logoMarea,   logoWebp: logoMareaWebp,   ig: "https://www.instagram.com/marea_clubdeplaya?igsh=MWt0bHBjdmwxaHBrbg==" },
+    { name: "Mintur",  logo: logoMintur,  logoWebp: logoMinturWebp,  ig: "https://www.instagram.com/minturismo_ve?igsh=czRvN203cW5pbXJy" },
   ];
 
   const officialSponsors = [
     { name: "Con María Bonita", logo: logoConMariaBonita, logoWebp: logoConMariaBonitoWebp },
     { name: "Natvisual",        logo: logoNatvisual,      logoWebp: logoNatvisualWebp },
     { name: "BOOM Eventos",     logo: logoBoom,           logoWebp: logoBoomWebp },
-    { name: "DC Gráficos",         logo: logoDC,    logoWebp: logoDCWebp },
-    { name: "Grupo Somos",         logo: logoSomos, logoWebp: logoSomosWebp },
   ];
 
   const partners = [
-    { name: "POW Fitness",         logo: logoPow,   logoWebp: logoPowWebp },
-    { name: "Vive Pilates Studio", logo: logoVive,  logoWebp: logoViveWebp },
-    { name: "SYF",                 logo: logoSyf,   logoWebp: logoSyfWebp },
+    { name: "DC Gráficos",         logo: logoDC,    logoWebp: logoDCWebp,   ig: "https://www.instagram.com/dcgraficos?igsh=MXd2anNodzRsNjlvMA==" },
+    { name: "Grupo Somos",         logo: logoSomos, logoWebp: logoSomosWebp, ig: "https://www.instagram.com/gruposomos_pzo?igsh=MXJ6dmttZzkwODAycA==" },
+    { name: "POW Fitness",         logo: logoPow,   logoWebp: logoPowWebp,   ig: "https://www.instagram.com/powfitnessve?igsh=MTgxaDh5YmZrbHd6dg==" },
+    { name: "Vive Pilates Studio", logo: logoVive,  logoWebp: logoViveWebp,  ig: "https://www.instagram.com/vivepilates.studio?igsh=MTRoNmI3dWlnOHdiNA==" },
+    { name: "SYF",                 logo: logoSyf,   logoWebp: logoSyfWebp,   ig: "https://www.instagram.com/syf.sportswear?igsh=MW55dXUwMjJvemJyMg==" },
   ];
 
   const benefits = [
@@ -183,8 +183,14 @@ const Sponsors = () => {
 
         <div style={{ display:'flex', justifyContent:'center' }}>
           {titleSponsors.map((s, i) => (
-            <div
+            <a
               key={i}
+              href={s.ig}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration:'none' }}
+            >
+            <div
               className="sp-title-card"
               style={{
                 width: isMobile ? '100%' : '500px',
@@ -218,6 +224,7 @@ const Sponsors = () => {
                 {s.name}
               </div>
             </div>
+            </a>
           ))}
         </div>
       </section>
@@ -239,8 +246,14 @@ const Sponsors = () => {
 
           <div style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(4,1fr)', gap: isMobile ? '12px' : '30px' }}>
             {officialSponsors.map((s, i) => (
-              <div
+              <a
                 key={i}
+                href={s.ig}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ textDecoration:'none' }}
+              >
+              <div
                 className="sp-offic-card"
                 style={{
                   padding: isMobile ? '18px' : '60px 40px',
@@ -286,6 +299,7 @@ const Sponsors = () => {
                   </div>
                 )}
               </div>
+              </a>
             ))}
           </div>
         </div>
@@ -308,8 +322,14 @@ const Sponsors = () => {
 
           <div style={{ display:'grid', gridTemplateColumns: isMobile ? 'repeat(2,1fr)' : 'repeat(5,1fr)', gap: isMobile ? '10px' : '25px' }}>
             {partners.map((p, i) => (
-              <div
+              <a
                 key={i}
+                href={p.ig}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ textDecoration:'none' }}
+              >
+              <div
                 className="sp-partner-card"
                 style={{
                   padding: isMobile ? '14px 10px' : '30px 20px',
@@ -338,6 +358,7 @@ const Sponsors = () => {
                   {p.name}
                 </span>
               </div>
+              </a>
             ))}
           </div>
         </div>
