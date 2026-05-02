@@ -197,8 +197,8 @@ const Sponsors = () => {
                 }}
               >
                 <div style={{ position:'absolute', top:0, left:'10%', right:'10%', height:'3px', background:'linear-gradient(90deg,transparent,#f4d35e 50%,transparent)', backgroundSize:'200% 100%', animation:'spShimmer 2.5s linear infinite' }}/>
-                {/* ── logo box: padding reducido para que el logo ocupe más espacio ── */}
-                <div className="sp-logo-box" style={{ width:'100%', height: isMobile ? '160px' : '220px', backgroundColor:'rgba(255,255,255,0.92)', borderRadius:'15px', display:'flex', alignItems:'center', justifyContent:'center', padding:'8px', overflow:'hidden' }}>
+                {/* ── logo box: altura reducida para que el logo llene el espacio ── */}
+                <div className="sp-logo-box" style={{ width:'100%', height: isMobile ? '110px' : '150px', backgroundColor:'rgba(255,255,255,0.92)', borderRadius:'15px', display:'flex', alignItems:'center', justifyContent:'center', padding:'8px', overflow:'hidden' }}>
                   <img src={s.logo} alt={s.name} style={{ maxWidth:'95%', maxHeight:'95%', objectFit:'contain', display:'block' }} />
                 </div>
                 <div style={{ marginTop:'16px', fontSize: isMobile ? '15px' : '18px', fontWeight:'700', color:'#f5f1e8', fontFamily:"'Inter',sans-serif" }}>
@@ -240,8 +240,8 @@ const Sponsors = () => {
                   }}
                 >
                   <div style={{ position:'absolute', top:0, left:'20%', right:'20%', height:'1px', background:'linear-gradient(90deg,transparent,rgba(244,211,94,0.2),transparent)' }}/>
-                  {/* ── Natvisual: padding reducido y logo al 95%; el resto se mantiene igual ── */}
-                  <div className="sp-logo-box" style={{ width:'100%', height: isMobile ? '110px' : '140px', backgroundColor:'rgba(255,255,255,0.92)', borderRadius:'12px', display:'flex', alignItems:'center', justifyContent:'center', padding: s.name === 'Natvisual' ? '4px' : '10px', overflow:'hidden' }}>
+                  {/* ── Natvisual: altura y padding reducidos para que llene más; el resto igual ── */}
+                  <div className="sp-logo-box" style={{ width:'100%', height: s.name === 'Natvisual' ? (isMobile ? '70px' : '90px') : (isMobile ? '110px' : '140px'), backgroundColor:'rgba(255,255,255,0.92)', borderRadius:'12px', display:'flex', alignItems:'center', justifyContent:'center', padding: s.name === 'Natvisual' ? '4px' : '10px', overflow:'hidden' }}>
                     <img
                       src={s.logo}
                       alt={s.name}
