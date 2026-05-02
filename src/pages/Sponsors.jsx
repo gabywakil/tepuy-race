@@ -181,7 +181,7 @@ const Sponsors = () => {
           </h2>
         </div>
 
-        <div style={{ display:'flex', justifyContent:'center' }}>
+        <div style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3,1fr)', gap: isMobile ? '16px' : '30px' }}>
           {titleSponsors.map((s, i) => (
             <a
               key={i}
@@ -193,8 +193,8 @@ const Sponsors = () => {
             <div
               className="sp-title-card"
               style={{
-                width: isMobile ? '100%' : '500px',
-                padding: isMobile ? '34px 18px' : '80px 60px',
+                width: '100%',
+                padding: isMobile ? '34px 18px' : '50px 30px',
                 backgroundColor:'rgba(200,90,62,0.08)', borderRadius:'25px',
                 textAlign:'center', border:'3px solid #f4d35e', cursor:'pointer',
                 position:'relative', overflow:'hidden',
