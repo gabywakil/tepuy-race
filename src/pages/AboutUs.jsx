@@ -155,8 +155,7 @@ const AboutUs = () => {
             animation: heroVisible ? 'auFadeUp 0.7s 0.2s ease forwards' : 'none',
             animationFillMode: 'both',
           }}>
-            Nacida en el corazón de la Gran Sabana venezolana, Tepuy Race fusiona deporte, ecología y acción social. Somos la primera carrera ecológica de la región, conectando atletas, comunidades indígenas y el Mar Caribe.
-          </p>
+Navidad en el corazón de la Gran Sabana, Tepuy Race fusiona el deporte, el turismo, ecología y acción social. Somos la primera carrera que impulsa la artesanía indígena y eco sustentable, turismo, deporte, cultura y el mar caribe.          </p>
 
           {/* Stats */}
           <div
