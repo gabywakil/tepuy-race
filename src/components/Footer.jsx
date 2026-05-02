@@ -283,8 +283,15 @@ const Footer = () => {
 <p style={{ margin: '0 0 6px 0' }}>Sede oficial Marea Club de Playa. </p>
               <p style={{ margin: '0 0 20px 0', color: '#f4d35e', fontWeight: '600', opacity: 1 }}>
                 Tepuyrace@gmail.com 
-                Club deportivo Tepuy Race 
+                
+              </p>
+               <p style={{ margin: '0 0 20px 0', color: '#f4d35e', fontWeight: '600', opacity: 1 }}>
+               Club deportivo Tepuy Race 
+                
+              </p>
+               <p style={{ margin: '0 0 20px 0', color: '#f4d35e', fontWeight: '600', opacity: 1 }}>
                 Rif J508289846
+                
               </p>
             </div>
 
