@@ -118,8 +118,7 @@ const OurProjects = () => {
             animation: heroVisible ? 'opFadeUp 0.6s 0.25s ease forwards' : 'none',
             animationFillMode:'both',
           }}>
-            Desde 2016, hemos organizado eventos que desafían límites,
-            construyen comunidades y celebran el espíritu del trail running.
+            El club deportivo Tepuy Race, desafía límites, construyen comunidades, apuesta al turismo deportivo, enaltece nuestros ancestros indígenas y celebran el espíritu del trail running.
           </p>
         </div>
       </section>
@@ -242,7 +241,7 @@ const OurProjects = () => {
             </h2>
             <div style={{ width:'50px', height:'2px', background:'linear-gradient(90deg,#f4d35e,transparent)', borderRadius:'2px', animation: upcomingVisible ? 'opLineExpand 0.7s 0.15s ease forwards' : 'none', animationFillMode:'both' }}/>
             <p style={{ fontSize: isMobile ? '14px' : '18px', color:'#f5f1e8', opacity: upcomingVisible ? 0.7 : 0, fontFamily:"'Inter',sans-serif", marginTop:'12px', animation: upcomingVisible ? 'opFadeUp 0.5s 0.2s ease forwards' : 'none', animationFillMode:'both' }}>
-              Lo que viene en nuestro calendario 2024–2025
+              Lo que viene en nuestro calendario 2026
             </p>
           </div>
 
