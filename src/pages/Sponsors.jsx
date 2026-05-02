@@ -54,7 +54,7 @@ const Sponsors = () => {
   const partners = [
     { name: "DC Gráficos",         logo: logoDC,    logoWebp: logoDCWebp,    ig: "https://www.instagram.com/dcgraficos?igsh=MXd2anNodzRsNjlvMA==" },
     { name: "Grupo Somos",         logo: logoSomos, logoWebp: logoSomosWebp, ig: "https://www.instagram.com/gruposomos_pzo?igsh=MXJ6dmttZzkwODAycA==" },
-    { name: "GW",         logo: gw,    ig: "https://www.instagram.com/gw.studios_?igsh=MW9rZTB1djN5YmE4eA==" },
+    { name: "GW Studios",         logo: gw,    ig: "https://www.instagram.com/gw.studios_?igsh=MW9rZTB1djN5YmE4eA==" },
     { name: "POW Fitness",         logo: logoPow,   logoWebp: logoPowWebp,   ig: "https://www.instagram.com/powfitnessve?igsh=MTgxaDh5YmZrbHd6dg==" },
     { name: "Vive Pilates Studio", logo: logoVive,  logoWebp: logoViveWebp,  ig: "https://www.instagram.com/vivepilates.studio?igsh=MTRoNmI3dWlnOHdiNA==" },
     { name: "SYF",                 logo: logoSyf,   logoWebp: logoSyfWebp,   ig: "https://www.instagram.com/syf.sportswear?igsh=MW55dXUwMjJvemJyMg==" },
