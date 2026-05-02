@@ -113,8 +113,7 @@ const Overview = () => {
           animation: headerVisible ? 'ovFadeUp 0.6s 0.15s ease forwards' : 'none',
           animationFillMode:'both',
         }}>
-          La primera carrera ecológica de la región. Parte de lo recaudado apoya la limpieza de playas y la preservación de ecosistemas locales, promoviendo el turismo responsable y el desarrollo de comunidades indígenas.
-        </p>
+Una carrera con propósito y pasión. . Parte sera destinado para la preservación de ecosistemas locales, incentivación de artesanía indígena y eco sustentable. De esta forma promover el turismo deportivo responsable.        </p>
       </div>
 
       {/* ── Cards ── */}
