@@ -344,7 +344,7 @@ const Footer = () => {
               fontSize: '11px', letterSpacing: '1.5px', opacity: 0.45,
               fontFamily: "'Inter', sans-serif",
             }}>
-              © 2025 TEPUY RACE.
+              © 2026 TEPUY RACE.
             </div>
 
             {/* separador vertical */}
