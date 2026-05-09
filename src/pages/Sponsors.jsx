@@ -65,10 +65,10 @@ const Sponsors = () => {
     { name: 'DC Gráficos',         logo: logoDC,           logoWebp: logoDCWebp,    bgStyle: 'white',  ig: 'https://www.instagram.com/dcgraficos?igsh=MXd2anNodzRsNjlvMA==' },
     { name: 'Grupo Somos',         logo: logoSomos,        logoWebp: logoSomosWebp, bgStyle: 'transp', ig: 'https://www.instagram.com/gruposomos_pzo?igsh=MXJ6dmttZzkwODAycA==' },
     { name: 'GW Studios',          logo: logoGw,                                    bgStyle: 'white',  ig: 'https://www.instagram.com/gw.studios_?igsh=MW9rZTB1djN5YmE4eA==' },
-    { name: 'Ale Galarreta',       logo: logoAleGalarreta,                          bgStyle: 'dark',   ig: 'https://www.instagram.com/alegalarreta' },
-    { name: 'POW Fitness',         logo: logoPow,          logoWebp: logoPowWebp,   bgStyle: 'dark',   ig: 'https://www.instagram.com/powfitnessve?igsh=MTgxaDh5YmZrbHd6dg==' },
-    { name: 'Vive Pilates Studio', logo: logoVive,         logoWebp: logoViveWebp,  bgStyle: 'dark',   ig: 'https://www.instagram.com/vivepilates.studio?igsh=MTRoNmI3dWlnOHdiNA==' },
-    { name: 'SYF',                 logo: logoSyf,          logoWebp: logoSyfWebp,   bgStyle: 'dark',   ig: 'https://www.instagram.com/syf.sportswear?igsh=MW55dXUwMjJvemJyMg==' },
+    { name: 'Ale Galarreta',       logo: logoAleGalarreta,                          bgStyle: 'transp', ig: 'https://www.instagram.com/alegalarreta' },
+    { name: 'POW Fitness',         logo: logoPow,          logoWebp: logoPowWebp,   bgStyle: 'transp', ig: 'https://www.instagram.com/powfitnessve?igsh=MTgxaDh5YmZrbHd6dg==' },
+    { name: 'Vive Pilates Studio', logo: logoVive,         logoWebp: logoViveWebp,  bgStyle: 'transp', ig: 'https://www.instagram.com/vivepilates.studio?igsh=MTRoNmI3dWlnOHdiNA==' },
+    { name: 'SYF',                 logo: logoSyf,          logoWebp: logoSyfWebp,   bgStyle: 'transp', ig: 'https://www.instagram.com/syf.sportswear?igsh=MW55dXUwMjJvemJyMg==' },
   ];
 
   const benefits = [
@@ -202,21 +202,20 @@ const Sponsors = () => {
               PATROCINADORES OFICIALES
             </h2>
           </div>
-          <div style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(4,1fr)', gap: isMobile ? '12px' : '22px' }}>
+          <div style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(4,1fr)', gap: isMobile ? '14px' : '26px' }}>
             {officialSponsors.map((s, i) => (
-              <div key={i} className="sp-offic-card" style={{ padding: isMobile ? '16px 12px' : '24px 20px', backgroundColor:'rgba(245,241,232,0.05)', borderRadius:'18px', textAlign:'center', border:'2px solid rgba(244,211,94,0.18)', cursor:'pointer', position:'relative', overflow:'hidden', opacity: officVisible ? 1 : 0, animation: officVisible ? `spCardIn 0.5s ${i * 0.07}s ease forwards` : 'none', animationFillMode:'both' }}>
+              <div key={i} className="sp-offic-card" style={{ padding: isMobile ? '18px 14px' : '28px 22px', backgroundColor:'rgba(245,241,232,0.05)', borderRadius:'20px', textAlign:'center', border:'2px solid rgba(244,211,94,0.18)', cursor:'pointer', position:'relative', overflow:'hidden', opacity: officVisible ? 1 : 0, animation: officVisible ? `spCardIn 0.5s ${i * 0.07}s ease forwards` : 'none', animationFillMode:'both' }}>
                 <div style={{ position:'absolute', top:0, left:'20%', right:'20%', height:'1px', background:'linear-gradient(90deg,transparent,rgba(244,211,94,0.22),transparent)' }}/>
-                <div className="sp-logo-inner" style={{ width:'100%', height: isMobile ? '100px' : '130px', backgroundColor: logoBg(s.bgStyle), borderRadius:'12px', display:'flex', alignItems:'center', justifyContent:'center', padding:'10px' }}>
+                <div className="sp-logo-inner" style={{ width:'100%', height: isMobile ? '120px' : '165px', backgroundColor: logoBg(s.bgStyle), borderRadius:'14px', display:'flex', alignItems:'center', justifyContent:'center', padding: s.bgStyle === 'transp' ? '0' : '12px', overflow:'hidden' }}>
                   <img
                     src={s.logo}
                     alt={s.name}
                     loading="lazy"
                     decoding="async"
-                    data-scaled={s.imgScale ? 'true' : undefined}
-                    style={{ ...logoImgStyle(s.imgScale), ...(s.imgScale ? { '--img-scale': s.imgScale } : {}) }}
+                    style={logoImgStyle(s.imgScale)}
                   />
                 </div>
-                <div style={{ marginTop:'10px', fontSize: isMobile ? '12px' : '14px', fontWeight:'700', color:'#f5f1e8', fontFamily:"'Inter',sans-serif" }}>{s.name}</div>
+                <div style={{ marginTop:'12px', fontSize: isMobile ? '12px' : '14px', fontWeight:'700', color:'#f5f1e8', fontFamily:"'Inter',sans-serif" }}>{s.name}</div>
               </div>
             ))}
           </div>
@@ -232,11 +231,11 @@ const Sponsors = () => {
               NUESTROS ALIADOS
             </h2>
           </div>
-          <div style={{ display:'grid', gridTemplateColumns: isMobile ? 'repeat(2,1fr)' : 'repeat(4,1fr)', gap: isMobile ? '12px' : '22px' }}>
+          <div style={{ display:'grid', gridTemplateColumns: isMobile ? 'repeat(2,1fr)' : 'repeat(4,1fr)', gap: isMobile ? '14px' : '26px' }}>
             {partners.map((p, i) => (
               <a key={i} href={p.ig} target="_blank" rel="noopener noreferrer" style={{ textDecoration:'none' }}>
-                <div className="sp-partner-card" style={{ padding: isMobile ? '16px 12px' : '24px 20px', backgroundColor:'rgba(245,241,232,0.06)', borderRadius:'18px', textAlign:'center', border:'2px solid rgba(200,90,62,0.12)', cursor:'pointer', position:'relative', overflow:'hidden', opacity: partVisible ? 1 : 0, animation: partVisible ? `spCardIn 0.4s ${i * 0.05}s ease forwards` : 'none', animationFillMode:'both', display:'flex', flexDirection:'column', alignItems:'center', gap:'12px' }}>
-                  <div className="sp-logo-inner" style={{ width:'100%', height: isMobile ? '100px' : '130px', backgroundColor: logoBg(p.bgStyle), borderRadius:'12px', display:'flex', alignItems:'center', justifyContent:'center', overflow:'hidden', padding: p.bgStyle === 'transp' ? '0' : '10px' }}>
+                <div className="sp-partner-card" style={{ padding: isMobile ? '18px 14px' : '28px 22px', backgroundColor:'rgba(245,241,232,0.06)', borderRadius:'20px', textAlign:'center', border:'2px solid rgba(200,90,62,0.12)', cursor:'pointer', position:'relative', overflow:'hidden', opacity: partVisible ? 1 : 0, animation: partVisible ? `spCardIn 0.4s ${i * 0.05}s ease forwards` : 'none', animationFillMode:'both', display:'flex', flexDirection:'column', alignItems:'center', gap:'14px' }}>
+                  <div className="sp-logo-inner" style={{ width:'100%', height: isMobile ? '120px' : '165px', backgroundColor: logoBg(p.bgStyle), borderRadius:'14px', display:'flex', alignItems:'center', justifyContent:'center', overflow:'hidden', padding: p.bgStyle === 'transp' ? '0' : '12px' }}>
                     <picture>
                       {p.logoWebp && <source srcSet={p.logoWebp} type="image/webp" />}
                       <img
@@ -246,7 +245,7 @@ const Sponsors = () => {
                         decoding="async"
                         style={{
                           ...(p.bgStyle === 'transp'
-                            ? { width:'100%', height:'100%', objectFit:'cover', display:'block' }
+                            ? { width:'100%', height:'100%', objectFit:'cover', display:'block', borderRadius:'14px' }
                             : logoImgStyle(p.imgScale)
                           ),
                         }}
