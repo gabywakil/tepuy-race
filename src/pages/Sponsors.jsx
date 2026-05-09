@@ -239,13 +239,13 @@ const Sponsors = () => {
             </h2>
           </div>
 
-          <div style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(4,1fr)', gap: isMobile ? '12px' : '30px' }}>
+          <div style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3,1fr)', gap: isMobile ? '16px' : '30px' }}>
             {officialSponsors.map((s, i) => (
               <div
                 key={i}
                 className="sp-offic-card"
                 style={{
-                  padding: isMobile ? '18px' : '60px 40px',
+                  padding: isMobile ? '24px' : '40px 36px',
                   backgroundColor:'rgba(245,241,232,0.04)', borderRadius:'20px',
                   textAlign:'center', border:'2px solid rgba(244,211,94,0.15)', cursor:'pointer',
                   position:'relative', overflow:'hidden',
@@ -260,11 +260,11 @@ const Sponsors = () => {
                 <div
                   className="sp-logo-box"
                   style={{
-                    width:'100%', height: isMobile ? '110px' : '140px',
+                    width:'100%', height: isMobile ? '150px' : '200px',
                     backgroundColor: s.logo ? 'rgba(255,255,255,0.92)' : 'rgba(10,74,66,0.5)',
-                    borderRadius:'12px',
+                    borderRadius:'14px',
                     display:'flex', alignItems:'center', justifyContent:'center',
-                    padding: s.logo ? '10px' : '0',
+                    padding: s.logo ? '16px' : '0',
                     overflow:'hidden',
                     border: s.logo ? 'none' : '2px dashed rgba(200,90,62,0.2)',
                   }}
@@ -273,7 +273,7 @@ const Sponsors = () => {
                     <img
                       src={s.logo}
                       alt={s.name}
-                      style={{ maxWidth:'85%', maxHeight:'85%', objectFit:'contain', display:'block' }}
+                      style={{ maxWidth:'90%', maxHeight:'90%', objectFit:'contain', display:'block' }}
                     />
                   ) : (
                     <span style={{ fontSize: isMobile ? '14px' : '18px', fontWeight:'700', color:'#c85a3e', fontFamily:"'Inter',sans-serif" }}>
@@ -283,7 +283,7 @@ const Sponsors = () => {
                 </div>
 
                 {s.logo && (
-                  <div style={{ marginTop:'12px', fontSize: isMobile ? '13px' : '15px', fontWeight:'700', color:'#f5f1e8', fontFamily:"'Inter',sans-serif" }}>
+                  <div style={{ marginTop:'16px', fontSize: isMobile ? '14px' : '17px', fontWeight:'700', color:'#f5f1e8', fontFamily:"'Inter',sans-serif" }}>
                     {s.name}
                   </div>
                 )}
