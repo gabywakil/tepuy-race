@@ -26,6 +26,7 @@ import logoVive           from '../assets/logo-vive.png';
 import logoViveWebp       from '../assets/logo-vive.webp';
 import logoSyf            from '../assets/logo-syf.png';
 import logoSyfWebp        from '../assets/logo-syf.webp';
+import prospectoPDF       from '../assets/prospecto-patrocinio.pdf';
 
 /*
   bgStyle:
@@ -297,9 +298,20 @@ const Sponsors = () => {
               <button className="sp-contact-btn" style={{ backgroundColor:'#c85a3e', color:'#f5f1e8', border:'none', padding:'16px', borderRadius:'15px', cursor:'pointer', fontSize:'14px', fontWeight:'800', fontFamily:"'Inter',sans-serif", display:'flex', alignItems:'center', justifyContent:'center', gap:'10px' }}>
                 <Mail size={18}/> CONTACTAR
               </button>
-              <button className="sp-dl-btn" style={{ backgroundColor:'transparent', color:'#f4d35e', border:'2px solid #f4d35e', padding:'16px', borderRadius:'15px', cursor:'pointer', fontSize:'14px', fontWeight:'800', fontFamily:"'Inter',sans-serif", display:'flex', alignItems:'center', justifyContent:'center', gap:'10px' }}>
+              <a
+                href={prospectoPDF}
+                download="Prospecto-Patrocinio-TepuyRace-2026.pdf"
+                className="sp-dl-btn"
+                style={{
+                  backgroundColor:'transparent', color:'#f4d35e',
+                  border:'2px solid #f4d35e', padding:'16px', borderRadius:'15px', cursor:'pointer',
+                  fontSize:'14px', fontWeight:'800', fontFamily:"'Inter',sans-serif",
+                  display:'flex', alignItems:'center', justifyContent:'center', gap:'10px',
+                  textDecoration:'none',
+                }}
+              >
                 <Download size={18}/> DESCARGAR PDF
-              </button>
+              </a>
             </div>
           </div>
         </div>
