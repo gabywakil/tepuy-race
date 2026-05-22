@@ -66,7 +66,7 @@ const Sponsors = () => {
     { name: 'DC Gráficos',         logo: logoDC,           logoWebp: logoDCWebp,    bgStyle: 'white',  ig: 'https://www.instagram.com/dcgraficos?igsh=MXd2anNodzRsNjlvMA==' },
     { name: 'Grupo Somos',         logo: logoSomos,        logoWebp: logoSomosWebp, bgStyle: 'transp', ig: 'https://www.instagram.com/gruposomos_pzo?igsh=MXJ6dmttZzkwODAycA==' },
     { name: 'GW Studios',          logo: logoGw,                                    bgStyle: 'white',  ig: 'https://www.instagram.com/gw.studios_?igsh=MW9rZTB1djN5YmE4eA==' },
-    { name: 'Ale Galarreta',       logo: logoAleGalarreta,                          bgStyle: 'transp', ig: 'https://www.instagram.com/alegalarreta' },
+    { name: 'Ale Galarreta',       logo: logoAleGalarreta,                          bgStyle: 'transp', ig: ' https://www.instagram.com/ale.galarreta/ ' },
     { name: 'POW Fitness',         logo: logoPow,          logoWebp: logoPowWebp,   bgStyle: 'transp', ig: 'https://www.instagram.com/powfitnessve?igsh=MTgxaDh5YmZrbHd6dg==' },
     { name: 'Vive Pilates Studio', logo: logoVive,         logoWebp: logoViveWebp,  bgStyle: 'transp', ig: 'https://www.instagram.com/vivepilates.studio?igsh=MTRoNmI3dWlnOHdiNA==' },
     { name: 'SYF',                 logo: logoSyf,          logoWebp: logoSyfWebp,   bgStyle: 'transp', ig: 'https://www.instagram.com/syf.sportswear?igsh=MW55dXUwMjJvemJyMg==' },
