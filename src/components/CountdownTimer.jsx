@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import useMedia from "../hooks/useMedia";
 
 /* ── flip digit animation ── */
@@ -399,9 +400,23 @@ const CountdownTimer = () => {
 
             {/* botón ¡Quiero que mi marca sea parte! */}
             <div style={{ display: "flex", justifyContent: "center" }}>
-              <a
-                href="src/pages/Sponsors.jsx"
+              <Link
+                to="/sponsors"
                 className="ct-btn-sponsor"
+                style={{
+                  display: "inline-flex", alignItems: "center", justifyContent: "center",
+                  gap: "8px", padding: "12px 28px",
+                  backgroundColor: "#a2432d", color: "#f5f1e8",
+                  borderRadius: "50px", fontSize: "13px", fontWeight: 700,
+                  fontFamily: "'Inter', sans-serif", letterSpacing: "0.5px",
+                  textDecoration: "none",
+                  boxShadow: "0 8px 28px rgba(162,67,45,0.35)",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                ¡Quiero que mi marca sea parte de esto!
+              </Link>
+            </div>
                 style={{
                   display: "inline-flex", alignItems: "center", justifyContent: "center",
                   gap: "8px", padding: "12px 28px",
