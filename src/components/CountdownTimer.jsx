@@ -429,7 +429,7 @@ const CountdownTimer = () => {
                 }}
               >
                 ¡Quiero que mi marca sea parte de esto!
-              </a>
+              </Link>
             </div>
           </div>
 
