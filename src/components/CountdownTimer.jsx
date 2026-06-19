@@ -400,7 +400,7 @@ const CountdownTimer = () => {
             {/* botón ¡Quiero que mi marca sea parte! */}
             <div style={{ display: "flex", justifyContent: "center" }}>
               <a
-                href="/sponsors"
+                href="src/pages/Sponsors.jsx"
                 className="ct-btn-sponsor"
                 style={{
                   display: "inline-flex", alignItems: "center", justifyContent: "center",
