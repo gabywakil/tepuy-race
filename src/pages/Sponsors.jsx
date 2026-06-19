@@ -28,15 +28,6 @@ import logoSyf            from '../assets/logo-syf.png';
 import logoSyfWebp        from '../assets/logo-syf.webp';
 import prospectoPDF       from '../assets/prospecto-patrocinio.pdf';
 
-/*
-  bgStyle:
-    'white'  → caja blanca clásica (logos con fondo blanco/transparente)
-    'dark'   → caja negra (logos blancos sobre negro: Ale Galarreta, Con María Bonita, POW, Vive, SYF)
-    'transp' → sin caja, logo directo sobre el card (Grupo Somos que ya tiene fondo propio)
-
-  imgScale: multiplicador visual con transform:scale() para logos naturalmente pequeños (Natvisual)
-*/
-
 const Sponsors = () => {
   const { isMobile } = useMedia('(max-width: 768px)');
   const [mounted, setMounted] = useState(false);
@@ -44,7 +35,6 @@ const Sponsors = () => {
   const [heroRef,   heroVisible]   = useInView(0.1);
   const [titleRef,  titleVisible]  = useInView(0.15);
   const [officRef,  officVisible]  = useInView(0.08);
-  const [partRef,   partVisible]   = useInView(0.08);
   const [becomeRef, becomeVisible] = useInView(0.1);
 
   useEffect(() => { const t = setTimeout(() => setMounted(true), 80); return () => clearTimeout(t); }, []);
@@ -55,21 +45,19 @@ const Sponsors = () => {
     { name: 'Mintur',  logo: logoMintur,  logoWebp: logoMinturWebp,  bgStyle: 'white' },
   ];
 
+  // ── Patrocinadores oficiales + aliados fusionados ──
   const officialSponsors = [
-    { name: 'Con María Bonita', logo: logoConMariaBonita, bgStyle: 'dark'  },
-    { name: 'Natvisual',        logo: logoNatvisual,      bgStyle: 'white', imgScale: 1.8 },
-    { name: 'BOOM Eventos',     logo: logoBoom,           logoWebp: logoBoomWebp,        bgStyle: 'white' },
-    { name: 'Transporte SV',    logo: logoTransporteSV,   bgStyle: 'white' },
-  ];
-
-  const partners = [
-    { name: 'DC Gráficos',         logo: logoDC,           logoWebp: logoDCWebp,    bgStyle: 'white',  ig: 'https://www.instagram.com/dcgraficos?igsh=MXd2anNodzRsNjlvMA==' },
-    { name: 'Grupo Somos',         logo: logoSomos,        logoWebp: logoSomosWebp, bgStyle: 'transp', ig: 'https://www.instagram.com/gruposomos_pzo?igsh=MXJ6dmttZzkwODAycA==' },
-    { name: 'GW Studios',          logo: logoGw,                                    bgStyle: 'white',  ig: 'https://www.instagram.com/gw.studios_?igsh=MW9rZTB1djN5YmE4eA==' },
-    { name: 'Ale Galarreta',       logo: logoAleGalarreta,                          bgStyle: 'transp', ig: 'https://www.instagram.com/ale.galarreta?igsh=MWVqcWx2Mmlzb2lu' },
-    { name: 'POW Fitness',         logo: logoPow,          logoWebp: logoPowWebp,   bgStyle: 'transp', ig: 'https://www.instagram.com/powfitnessve?igsh=MTgxaDh5YmZrbHd6dg==' },
-    { name: 'Vive Pilates Studio', logo: logoVive,         logoWebp: logoViveWebp,  bgStyle: 'transp', ig: 'https://www.instagram.com/vivepilates.studio?igsh=MTRoNmI3dWlnOHdiNA==' },
-    { name: 'SYF',                 logo: logoSyf,          logoWebp: logoSyfWebp,   bgStyle: 'transp', ig: 'https://www.instagram.com/syf.sportswear?igsh=MW55dXUwMjJvemJyMg==' },
+    { name: 'Con María Bonita', logo: logoConMariaBonita,                              bgStyle: 'dark'   },
+    { name: 'Natvisual',        logo: logoNatvisual,                                   bgStyle: 'white', imgScale: 1.8 },
+    { name: 'BOOM Eventos',     logo: logoBoom,           logoWebp: logoBoomWebp,      bgStyle: 'white'  },
+    { name: 'Transporte SV',    logo: logoTransporteSV,                                bgStyle: 'white'  },
+    { name: 'DC Gráficos',      logo: logoDC,             logoWebp: logoDCWebp,        bgStyle: 'white',  ig: 'https://www.instagram.com/dcgraficos?igsh=MXd2anNodzRsNjlvMA==' },
+    { name: 'Grupo Somos',      logo: logoSomos,          logoWebp: logoSomosWebp,     bgStyle: 'transp', ig: 'https://www.instagram.com/gruposomos_pzo?igsh=MXJ6dmttZzkwODAycA==' },
+    { name: 'GW Studios',       logo: logoGw,                                          bgStyle: 'white',  ig: 'https://www.instagram.com/gw.studios_?igsh=MW9rZTB1djN5YmE4eA==' },
+    { name: 'Ale Galarreta',    logo: logoAleGalarreta,                                bgStyle: 'transp', ig: 'https://www.instagram.com/ale.galarreta?igsh=MWVqcWx2Mmlzb2lu' },
+    { name: 'POW Fitness',      logo: logoPow,            logoWebp: logoPowWebp,       bgStyle: 'transp', ig: 'https://www.instagram.com/powfitnessve?igsh=MTgxaDh5YmZrbHd6dg==' },
+    { name: 'Vive Pilates',     logo: logoVive,           logoWebp: logoViveWebp,      bgStyle: 'transp', ig: 'https://www.instagram.com/vivepilates.studio?igsh=MTRoNmI3dWlnOHdiNA==' },
+    { name: 'SYF',              logo: logoSyf,            logoWebp: logoSyfWebp,       bgStyle: 'transp', ig: 'https://www.instagram.com/syf.sportswear?igsh=MW55dXUwMjJvemJyMg==' },
   ];
 
   const benefits = [
@@ -78,7 +66,6 @@ const Sponsors = () => {
     { icon: Users,      text: 'Marketing digital en todas nuestras redes sociales' },
   ];
 
-  /* ── helpers ── */
   const logoBg = (bgStyle) => ({
     white:  'rgba(255,255,255,0.95)',
     dark:   '#0e0e0e',
@@ -107,26 +94,14 @@ const Sponsors = () => {
         @keyframes spShimmer   { 0%{background-position:-200% center} 100%{background-position:200% center} }
         @keyframes spTitleGlow { 0%,100%{box-shadow:0 15px 40px rgba(0,0,0,0.08);} 50%{box-shadow:0 20px 60px rgba(244,211,94,0.25);} }
         @keyframes spBtnPulse  { 0%,100%{box-shadow:0 5px 20px rgba(200,90,62,0.35);} 50%{box-shadow:0 8px 30px rgba(200,90,62,0.6);} }
-
-        /* cards */
         .sp-title-card   { transition:transform 0.28s ease,box-shadow 0.28s ease; }
         .sp-title-card:hover { transform:translateY(-6px)!important; }
         .sp-offic-card   { transition:transform 0.28s,border-color 0.28s,box-shadow 0.28s; }
         .sp-offic-card:hover { transform:translateY(-7px)!important; border-color:#f4d35e!important; box-shadow:0 16px 36px rgba(200,90,62,0.18)!important; }
-        .sp-partner-card { transition:transform 0.28s,border-color 0.28s,box-shadow 0.28s; }
-        .sp-partner-card:hover { transform:translateY(-6px)!important; border-color:#f4d35e!important; box-shadow:0 12px 28px rgba(200,90,62,0.14)!important; }
-
-        /* logo hover zoom — solo en cards con caja (no transp) */
         .sp-logo-inner { overflow:hidden; }
         .sp-logo-inner img { transition:transform 0.3s ease; }
-        .sp-offic-card:hover  .sp-logo-inner img,
-        .sp-partner-card:hover .sp-logo-inner img,
-        .sp-title-card:hover  .sp-logo-inner img { transform:scale(1.06); }
-        /* si ya tiene imgScale no sobreescribir con hover — se maneja inline */
-        .sp-logo-inner img[data-scaled='true'] { transform:scale(var(--img-scale)); }
-        .sp-offic-card:hover .sp-logo-inner img[data-scaled='true'] { transform:scale(calc(var(--img-scale) * 1.04)); }
-
-        /* botones */
+        .sp-offic-card:hover .sp-logo-inner img,
+        .sp-title-card:hover .sp-logo-inner img { transform:scale(1.06); }
         .sp-hero-btn    { animation:spBtnPulse 2.8s ease-in-out infinite; transition:transform 0.2s,background-color 0.2s; }
         .sp-hero-btn:hover { transform:translateY(-2px) scale(1.03)!important; background-color:#f5f1e8!important; animation:none!important; }
         .sp-contact-btn { animation:spBtnPulse 2.8s ease-in-out infinite; transition:transform 0.2s,background-color 0.2s; }
@@ -194,71 +169,75 @@ const Sponsors = () => {
         </div>
       </section>
 
-      {/* ══ PATROCINADORES OFICIALES ══ */}
+      {/* ══ PATROCINADORES OFICIALES + ALIADOS ══ */}
       <section style={{ padding: isMobile ? '50px 18px' : '80px 40px', borderTop:'1px solid rgba(200,90,62,0.12)', borderBottom:'1px solid rgba(200,90,62,0.12)' }}>
         <div ref={officRef} style={{ maxWidth:'1200px', margin:'0 auto' }}>
           <div style={{ display:'flex', alignItems:'center', gap:'15px', marginBottom: isMobile ? '24px' : '50px' }}>
             <div style={{ width: officVisible ? '60px' : '0', height:'3px', backgroundColor:'#c85a3e', transition:'width 0.7s ease', borderRadius:'2px' }}/>
             <h2 style={{ fontSize: isMobile ? '28px' : '42px', fontWeight:'900', margin:0, letterSpacing:'2px', opacity: officVisible ? 1 : 0, animation: officVisible ? 'spFadeRight 0.6s 0.1s ease forwards' : 'none', animationFillMode:'both' }}>
-              PATROCINADORES OFICIALES
+              PATROCINADORES
             </h2>
           </div>
-          <div style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(4,1fr)', gap: isMobile ? '14px' : '26px' }}>
-            {officialSponsors.map((s, i) => (
-              <div key={i} className="sp-offic-card" style={{ padding: isMobile ? '18px 14px' : '28px 22px', backgroundColor:'rgba(245,241,232,0.05)', borderRadius:'20px', textAlign:'center', border:'2px solid rgba(244,211,94,0.18)', cursor:'pointer', position:'relative', overflow:'hidden', opacity: officVisible ? 1 : 0, animation: officVisible ? `spCardIn 0.5s ${i * 0.07}s ease forwards` : 'none', animationFillMode:'both' }}>
-                <div style={{ position:'absolute', top:0, left:'20%', right:'20%', height:'1px', background:'linear-gradient(90deg,transparent,rgba(244,211,94,0.22),transparent)' }}/>
-                <div className="sp-logo-inner" style={{ width:'100%', height: isMobile ? '120px' : '165px', backgroundColor: logoBg(s.bgStyle), borderRadius:'14px', display:'flex', alignItems:'center', justifyContent:'center', padding: s.bgStyle === 'transp' ? '0' : '12px', overflow:'hidden' }}>
-                  <img
-                    src={s.logo}
-                    alt={s.name}
-                    loading="lazy"
-                    decoding="async"
-                    style={logoImgStyle(s.imgScale)}
-                  />
-                </div>
-                <div style={{ marginTop:'12px', fontSize: isMobile ? '12px' : '14px', fontWeight:'700', color:'#f5f1e8', fontFamily:"'Inter',sans-serif" }}>{s.name}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* ══ NUESTROS ALIADOS ══ */}
-      <section style={{ padding: isMobile ? '50px 18px' : '80px 40px', maxWidth:'1200px', margin:'0 auto' }}>
-        <div ref={partRef}>
-          <div style={{ display:'flex', alignItems:'center', gap:'15px', marginBottom: isMobile ? '24px' : '50px' }}>
-            <div style={{ width: partVisible ? '60px' : '0', height:'3px', backgroundColor:'#c85a3e', transition:'width 0.7s ease', borderRadius:'2px' }}/>
-            <h2 style={{ fontSize: isMobile ? '28px' : '42px', fontWeight:'900', margin:0, letterSpacing:'2px', opacity: partVisible ? 1 : 0, animation: partVisible ? 'spFadeRight 0.6s 0.1s ease forwards' : 'none', animationFillMode:'both' }}>
-              NUESTROS ALIADOS
-            </h2>
-          </div>
-          <div style={{ display:'grid', gridTemplateColumns: isMobile ? 'repeat(2,1fr)' : 'repeat(4,1fr)', gap: isMobile ? '14px' : '26px' }}>
-            {partners.map((p, i) => (
-              <a key={i} href={p.ig} target="_blank" rel="noopener noreferrer" style={{ textDecoration:'none' }}>
-                <div className="sp-partner-card" style={{ padding: isMobile ? '18px 14px' : '28px 22px', backgroundColor:'rgba(245,241,232,0.06)', borderRadius:'20px', textAlign:'center', border:'2px solid rgba(200,90,62,0.12)', cursor:'pointer', position:'relative', overflow:'hidden', opacity: partVisible ? 1 : 0, animation: partVisible ? `spCardIn 0.4s ${i * 0.05}s ease forwards` : 'none', animationFillMode:'both', display:'flex', flexDirection:'column', alignItems:'center', gap:'14px' }}>
-                  <div className="sp-logo-inner" style={{ width:'100%', height: isMobile ? '120px' : '165px', backgroundColor: logoBg(p.bgStyle), borderRadius:'14px', display:'flex', alignItems:'center', justifyContent:'center', overflow:'hidden', padding: p.bgStyle === 'transp' ? '0' : '12px' }}>
+          {/* grid: 4 cols desktop, 2 cols mobile — se adapta a 11 items */}
+          <div style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(4,1fr)', gap: isMobile ? '14px' : '26px' }}>
+            {officialSponsors.map((s, i) => {
+              const cardContent = (
+                <div
+                  className="sp-offic-card"
+                  style={{
+                    padding: isMobile ? '18px 14px' : '28px 22px',
+                    backgroundColor:'rgba(245,241,232,0.05)', borderRadius:'20px',
+                    textAlign:'center', border:'2px solid rgba(244,211,94,0.18)',
+                    cursor: s.ig ? 'pointer' : 'default',
+                    position:'relative', overflow:'hidden',
+                    opacity: officVisible ? 1 : 0,
+                    animation: officVisible ? `spCardIn 0.5s ${i * 0.05}s ease forwards` : 'none',
+                    animationFillMode:'both',
+                    height:'100%',
+                  }}
+                >
+                  <div style={{ position:'absolute', top:0, left:'20%', right:'20%', height:'1px', background:'linear-gradient(90deg,transparent,rgba(244,211,94,0.22),transparent)' }}/>
+                  <div
+                    className="sp-logo-inner"
+                    style={{
+                      width:'100%', height: isMobile ? '110px' : '150px',
+                      backgroundColor: logoBg(s.bgStyle),
+                      borderRadius:'14px', display:'flex', alignItems:'center',
+                      justifyContent:'center',
+                      padding: s.bgStyle === 'transp' ? '0' : '12px',
+                      overflow:'hidden',
+                    }}
+                  >
                     <picture>
-                      {p.logoWebp && <source srcSet={p.logoWebp} type="image/webp" />}
+                      {s.logoWebp && <source srcSet={s.logoWebp} type="image/webp" />}
                       <img
-                        src={p.logo}
-                        alt={p.name}
+                        src={s.logo}
+                        alt={s.name}
                         loading="lazy"
                         decoding="async"
-                        style={{
-                          ...(p.bgStyle === 'transp'
+                        style={
+                          s.bgStyle === 'transp'
                             ? { width:'100%', height:'100%', objectFit:'cover', display:'block', borderRadius:'14px' }
-                            : logoImgStyle(p.imgScale)
-                          ),
-                        }}
+                            : logoImgStyle(s.imgScale)
+                        }
                       />
                     </picture>
                   </div>
-                  <span style={{ fontSize: isMobile ? '12px' : '13px', color:'rgba(245,241,232,0.88)', fontFamily:"'Inter',sans-serif", fontWeight:'700', letterSpacing:'0.4px' }}>
-                    {p.name}
-                  </span>
+                  <div style={{ marginTop:'12px', fontSize: isMobile ? '12px' : '14px', fontWeight:'700', color:'#f5f1e8', fontFamily:"'Inter',sans-serif" }}>
+                    {s.name}
+                  </div>
                 </div>
-              </a>
-            ))}
+              );
+
+              return s.ig ? (
+                <a key={i} href={s.ig} target="_blank" rel="noopener noreferrer" style={{ textDecoration:'none' }}>
+                  {cardContent}
+                </a>
+              ) : (
+                <div key={i}>{cardContent}</div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -302,13 +281,7 @@ const Sponsors = () => {
                 href={prospectoPDF}
                 download="Prospecto-Patrocinio-TepuyRace-2026.pdf"
                 className="sp-dl-btn"
-                style={{
-                  backgroundColor:'transparent', color:'#f4d35e',
-                  border:'2px solid #f4d35e', padding:'16px', borderRadius:'15px', cursor:'pointer',
-                  fontSize:'14px', fontWeight:'800', fontFamily:"'Inter',sans-serif",
-                  display:'flex', alignItems:'center', justifyContent:'center', gap:'10px',
-                  textDecoration:'none',
-                }}
+                style={{ backgroundColor:'transparent', color:'#f4d35e', border:'2px solid #f4d35e', padding:'16px', borderRadius:'15px', cursor:'pointer', fontSize:'14px', fontWeight:'800', fontFamily:"'Inter',sans-serif", display:'flex', alignItems:'center', justifyContent:'center', gap:'10px', textDecoration:'none' }}
               >
                 <Download size={18}/> DESCARGAR PDF
               </a>
