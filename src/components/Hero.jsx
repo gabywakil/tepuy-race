@@ -24,8 +24,8 @@ const Hero = () => {
           to   { opacity: 1; transform: translateY(0) skewY(0deg); }
         }
         @keyframes heroSub {
-          from { opacity: 0; letter-spacing: 14px; }
-          to   { opacity: 0.9; letter-spacing: ${isMobile ? '3px' : '8px'}; }
+          from { opacity: 0; transform: translateY(16px); }
+          to   { opacity: 1; transform: translateY(0); }
         }
         @keyframes heroCountdown {
           from { opacity: 0; transform: translateY(24px); }
@@ -44,13 +44,9 @@ const Hero = () => {
           0%,100% { opacity: 0.4; transform: scaleX(1); }
           50%      { opacity: 1;   transform: scaleX(1.06); }
         }
-        @keyframes heroScanline {
-          0%   { transform: translateY(-100%); }
-          100% { transform: translateY(200vh); }
-        }
-        @keyframes heroVignette {
-          from { opacity: 0; }
-          to   { opacity: 1; }
+        @keyframes heroShimmer {
+          0%   { background-position: -200% center; }
+          100% { background-position:  200% center; }
         }
       `}</style>
 
@@ -73,7 +69,7 @@ const Hero = () => {
 
         {/* ── video ── */}
         <video
-          autoPlay loop muted playsInline preload={isMobile ? "metadata" : "auto"}
+          autoPlay loop muted playsInline preload={isMobile ? 'metadata' : 'auto'}
           style={{
             position: 'absolute', inset: 0,
             width: '100%', height: '100%',
@@ -102,14 +98,14 @@ const Hero = () => {
           transition: 'opacity 1.5s ease 0.5s',
         }} />
 
-        {/* ── scanline effect (ultra-subtle) ── */}
+        {/* ── scanline effect ── */}
         <div style={{
           position: 'absolute', inset: 0, zIndex: 3,
           background: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.015) 2px, rgba(0,0,0,0.015) 4px)',
           pointerEvents: 'none',
         }} />
 
-        {/* ── bottom fade to section below ── */}
+        {/* ── bottom fade ── */}
         <div style={{
           position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 4,
           height: '120px',
@@ -120,30 +116,10 @@ const Hero = () => {
         {/* ── decorative corner lines ── */}
         {!isMobile && (
           <>
-            <div style={{
-              position: 'absolute', top: '100px', left: '40px', zIndex: 5,
-              width: '60px', height: '1px',
-              background: 'rgba(244,211,94,0.35)',
-              animation: loaded ? 'heroLinePulse 3s 1s ease-in-out infinite' : 'none',
-            }} />
-            <div style={{
-              position: 'absolute', top: '100px', left: '40px', zIndex: 5,
-              width: '1px', height: '60px',
-              background: 'rgba(244,211,94,0.35)',
-              animation: loaded ? 'heroLinePulse 3s 1.2s ease-in-out infinite' : 'none',
-            }} />
-            <div style={{
-              position: 'absolute', top: '100px', right: '40px', zIndex: 5,
-              width: '60px', height: '1px',
-              background: 'rgba(244,211,94,0.35)',
-              animation: loaded ? 'heroLinePulse 3s 1.4s ease-in-out infinite' : 'none',
-            }} />
-            <div style={{
-              position: 'absolute', top: '100px', right: '40px', zIndex: 5,
-              width: '1px', height: '60px',
-              background: 'rgba(244,211,94,0.35)',
-              animation: loaded ? 'heroLinePulse 3s 1.6s ease-in-out infinite' : 'none',
-            }} />
+            <div style={{ position: 'absolute', top: '100px', left: '40px', zIndex: 5, width: '60px', height: '1px', background: 'rgba(244,211,94,0.35)', animation: loaded ? 'heroLinePulse 3s 1s ease-in-out infinite' : 'none' }} />
+            <div style={{ position: 'absolute', top: '100px', left: '40px', zIndex: 5, width: '1px', height: '60px', background: 'rgba(244,211,94,0.35)', animation: loaded ? 'heroLinePulse 3s 1.2s ease-in-out infinite' : 'none' }} />
+            <div style={{ position: 'absolute', top: '100px', right: '40px', zIndex: 5, width: '60px', height: '1px', background: 'rgba(244,211,94,0.35)', animation: loaded ? 'heroLinePulse 3s 1.4s ease-in-out infinite' : 'none' }} />
+            <div style={{ position: 'absolute', top: '100px', right: '40px', zIndex: 5, width: '1px', height: '60px', background: 'rgba(244,211,94,0.35)', animation: loaded ? 'heroLinePulse 3s 1.6s ease-in-out infinite' : 'none' }} />
           </>
         )}
 
@@ -157,10 +133,7 @@ const Hero = () => {
             opacity: loaded ? 1 : 0,
             transition: 'opacity 1s ease 2.2s',
           }}>
-            <div style={{
-              fontSize: '10px', letterSpacing: '3px', color: '#f5f1e8',
-              opacity: 0.45, fontFamily: "'Inter', sans-serif", fontWeight: '600',
-            }}>
+            <div style={{ fontSize: '10px', letterSpacing: '3px', color: '#f5f1e8', opacity: 0.45, fontFamily: "'Inter', sans-serif", fontWeight: '600' }}>
               SCROLL
             </div>
             <div style={{
@@ -218,37 +191,54 @@ const Hero = () => {
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
             opacity: loaded ? 1 : 0,
-            animation: loaded
-              ? 'heroTitle 0.9s 0.5s cubic-bezier(0.16,1,0.3,1) forwards'
-              : 'none',
+            animation: loaded ? 'heroTitle 0.9s 0.5s cubic-bezier(0.16,1,0.3,1) forwards' : 'none',
             animationFillMode: 'both',
           }}>
             TEPUY RACE
           </h1>
 
-          {/* subtitle */}
-          <p style={{
-            fontSize: 'clamp(11px, 3.5vw, 21px)',
-            fontWeight: '500',
-            letterSpacing: isMobile ? '3px' : '8px',
-            marginBottom: isMobile ? '22px' : '40px',
-            color: '#f5f1e8',
-            fontFamily: "'Inter', sans-serif",
-            opacity: loaded ? 0.9 : 0,
-            animation: loaded ? 'heroSub 1s 0.9s ease forwards' : 'none',
-            animationFillMode: 'both',
-          }}>
-            DE LO ANCESTRAL AL CARIBE
-          </p>
-
-          {/* thin divider line */}
+          {/* ── nuevo subtítulo ── */}
           <div style={{
-            width: '40px', height: '1px',
-            background: 'linear-gradient(90deg, transparent, rgba(244,211,94,0.5), transparent)',
-            margin: '0 auto 32px',
             opacity: loaded ? 1 : 0,
-            transition: 'opacity 0.5s ease 1.4s',
-          }} />
+            animation: loaded ? 'heroSub 0.8s 0.85s ease forwards' : 'none',
+            animationFillMode: 'both',
+            marginBottom: isMobile ? '22px' : '36px',
+          }}>
+            {/* línea decorativa arriba */}
+            <div style={{
+              width: '40px', height: '1px',
+              background: 'linear-gradient(90deg, transparent, rgba(244,211,94,0.5), transparent)',
+              margin: '0 auto 18px',
+            }} />
+
+            <p style={{
+              fontSize: isMobile ? 'clamp(13px, 4.5vw, 18px)' : 'clamp(15px, 2vw, 22px)',
+              fontWeight: '700',
+              letterSpacing: isMobile ? '1px' : '2px',
+              color: '#f5f1e8',
+              fontFamily: "'Inter', sans-serif",
+              margin: 0,
+              lineHeight: 1.3,
+              textTransform: 'uppercase',
+              /* glassmorphism pill */
+              display: 'inline-block',
+              backgroundColor: 'rgba(10,74,66,0.45)',
+              backdropFilter: 'blur(10px)',
+              WebkitBackdropFilter: 'blur(10px)',
+              border: '1px solid rgba(244,211,94,0.2)',
+              borderRadius: '12px',
+              padding: isMobile ? '10px 18px' : '14px 32px',
+            }}>
+              La única carrera que te permite conocer Venezuela
+            </p>
+
+            {/* línea decorativa abajo */}
+            <div style={{
+              width: '40px', height: '1px',
+              background: 'linear-gradient(90deg, transparent, rgba(244,211,94,0.5), transparent)',
+              margin: '18px auto 0',
+            }} />
+          </div>
 
           {/* countdown */}
           <div style={{
