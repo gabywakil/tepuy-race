@@ -149,19 +149,6 @@ const CountdownTimer = () => {
             animation: visible ? "ctMsgIn 0.9s 0.2s ease forwards" : "none",
             animationFillMode: "both",
           }}>
-            {/* ícono decorativo */}
-            <div style={{
-              width: "48px", height: "48px",
-              borderRadius: "50%",
-              backgroundColor: "rgba(162,67,45,0.1)",
-              border: "1.5px solid rgba(162,67,45,0.25)",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              margin: "0 auto 20px",
-              fontSize: "22px",
-            }}>
-              🌿
-            </div>
-
             {/* mensaje principal */}
             <p style={{
               fontSize: isMobile ? "clamp(16px,5vw,22px)" : "clamp(18px,2.2vw,26px)",
@@ -196,6 +183,7 @@ const CountdownTimer = () => {
               border: "1px solid rgba(162,67,45,0.18)",
               borderRadius: "20px",
               padding: "6px 18px",
+              marginBottom: "22px",
             }}>
               <span style={{
                 fontSize: "11px", fontWeight: 700, letterSpacing: "2px",
@@ -204,6 +192,35 @@ const CountdownTimer = () => {
                 textTransform: "uppercase",
               }}>
                 Fecha por confirmar · Lechería, VE
+              </span>
+            </div>
+
+            {/* botón inscríbete + sublabel "Como corredor" */}
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "6px" }}>
+              <a
+                href="https://tepuy.b9ticketing.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ct-btn-inscribe"
+                style={{
+                  display: "inline-flex", alignItems: "center", justifyContent: "center",
+                  gap: "8px", padding: "13px 28px",
+                  backgroundColor: "#c85a3e", color: "#f5f1e8",
+                  borderRadius: "50px", fontSize: "13px", fontWeight: 700,
+                  fontFamily: "'Inter', sans-serif", letterSpacing: "1px",
+                  textDecoration: "none",
+                  boxShadow: "0 10px 35px rgba(200,90,62,0.4)",
+                  animation: visible ? "ctBtnPulse 2.8s ease-in-out infinite" : "none",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                INSCRÍBETE AHORA →
+              </a>
+              <span style={{
+                fontSize: "10px", fontWeight: 700, color: "#a2432d",
+                fontFamily: "'Inter', sans-serif", letterSpacing: "1px", opacity: 0.7,
+              }}>
+                Como corredor
               </span>
             </div>
           </div>
@@ -269,49 +286,9 @@ const CountdownTimer = () => {
             {/* botones */}
             <div style={{
               display: "flex",
-              flexDirection: isMobile ? "column" : "row",
-              gap: "12px",
               justifyContent: "center",
               alignItems: "center",
             }}>
-              {/* inscríbete */}
-              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "5px" }}>
-                <a
-                  href="https://tepuy.b9ticketing.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="ct-btn-inscribe"
-                  style={{
-                    display: "inline-flex", alignItems: "center", justifyContent: "center",
-                    gap: "8px", padding: "13px 28px",
-                    backgroundColor: "#c85a3e", color: "#f5f1e8",
-                    borderRadius: "50px", fontSize: "13px", fontWeight: 700,
-                    fontFamily: "'Inter', sans-serif", letterSpacing: "1px",
-                    textDecoration: "none",
-                    boxShadow: "0 10px 35px rgba(200,90,62,0.4)",
-                    animation: visible ? "ctBtnPulse 2.8s ease-in-out infinite" : "none",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  INSCRÍBETE AHORA →
-                </a>
-                <span style={{
-                  fontSize: "10px", fontWeight: 700, color: "#a2432d",
-                  fontFamily: "'Inter', sans-serif", letterSpacing: "1px", opacity: 0.7,
-                }}>
-                  Como corredor
-                </span>
-              </div>
-
-              {/* separador vertical solo desktop */}
-              {!isMobile && (
-                <div style={{
-                  width: "1px", height: "36px", alignSelf: "center",
-                  background: "linear-gradient(to bottom, transparent, rgba(162,67,45,0.25), transparent)",
-                  marginBottom: "14px",
-                }} />
-              )}
-
               {/* mi marca */}
               <Link
                 to="/sponsors"
