@@ -2,31 +2,65 @@ import React, { useEffect, useState } from 'react';
 import { Award, TrendingUp, Users, Download, Mail } from 'lucide-react';
 import useMedia from '../hooks/useMedia';
 import useInView from '../hooks/useInView';
+import prospectoPDF from '../assets/prospecto-patrocinio.pdf';
 
-import logoVenetur        from '../assets/logo-venetur.png';
-import logoVeneturWebp    from '../assets/logo-venetur.webp';
-import logoMarea          from '../assets/logo-marea.png';
-import logoMareaWebp      from '../assets/logo-marea.webp';
-import logoMintur         from '../assets/logo-mintur.png';
-import logoMinturWebp     from '../assets/logo-mintur.webp';
-import logoConMariaBonita from '../assets/logo-conmariabonita.png';
-import logoNatvisual      from '../assets/logo-natvisual.png';
-import logoBoom           from '../assets/logo-boom.png';
-import logoBoomWebp       from '../assets/logo-boom.webp';
-import logoTransporteSV   from '../assets/logo-transportesv.jpg';
-import logoDC             from '../assets/logo-dc.png';
-import logoDCWebp         from '../assets/logo-dc.webp';
-import logoSomos          from '../assets/logo-somos.png';
-import logoSomosWebp      from '../assets/logo-somos.webp';
-import logoGw             from '../assets/gw.png';
-import logoAleGalarreta   from '../assets/logo-alegalarreta.png';
-import logoPow            from '../assets/logo-pow.png';
-import logoPowWebp        from '../assets/logo-pow.webp';
-import logoVive           from '../assets/logo-vive.png';
-import logoViveWebp       from '../assets/logo-vive.webp';
-import logoSyf            from '../assets/logo-syf.png';
-import logoSyfWebp        from '../assets/logo-syf.webp';
-import prospectoPDF       from '../assets/prospecto-patrocinio.pdf';
+/* ── PATROCINADORES PRINCIPALES ── */
+import logoVenetur        from '../assets/logo-venetur.webp';
+import logoVeneturPng     from '../assets/logo-venetur.png';
+import logoMarea          from '../assets/logo-marea.webp';
+import logoMareaPng       from '../assets/logo-marea.png';
+import logoMintur         from '../assets/logo-mintur.webp';
+import logoMinturPng      from '../assets/logo-mintur.png';
+
+/* ── PATROCINADORES OFICIALES ── */
+import logoConMariaBonita from '../assets/logo-conmariabonita.webp';
+import logoConMariaPng    from '../assets/logo-conmariabonita.png';
+import logoNatvisual      from '../assets/logo-natvisual.webp';
+import logoNatvisualPng   from '../assets/logo-natvisual.png';
+import logoBoom           from '../assets/logo-boom.webp';
+import logoBoomPng        from '../assets/logo-boom.png';
+import logoTransporteSV   from '../assets/logo-transportesv.webp';
+import logoTransportePng  from '../assets/logo-transportesv.png';
+
+/* ── ALIADOS ── */
+import logoDC             from '../assets/logo-dc.webp';
+import logoDCPng          from '../assets/logo-dc.png';
+import logoSomos          from '../assets/logo-somos.webp';
+import logoSomosPng       from '../assets/logo-somos.png';
+import logoGw             from '../assets/logo-gw.webp';
+import logoGwPng          from '../assets/logo-gw.png';
+import logoAleGalarreta   from '../assets/logo-alegalarreta.webp';
+import logoAlePng         from '../assets/logo-alegalarreta.png';
+import logoPow            from '../assets/logo-pow.webp';
+import logoPowPng         from '../assets/logo-pow.png';
+import logoVive           from '../assets/logo-vive.webp';
+import logoVivePng        from '../assets/logo-vive.png';
+import logoSyf            from '../assets/logo-syf.webp';
+import logoSyfPng         from '../assets/logo-syf.png';
+import logoNativa         from '../assets/logo-nativa.webp';
+import logoNativaPng      from '../assets/logo-nativa.png';
+import logoCabanas        from '../assets/logo-cabanas-hainburg.webp';
+import logoCabanasPng     from '../assets/logo-cabanas-hainburg.png';
+import logoLavista        from '../assets/logo-lavista.webp';
+import logoLavistaPng     from '../assets/logo-lavista.png';
+import logoXeria          from '../assets/logo-xeria.webp';
+import logoXeriaPng       from '../assets/logo-xeria.png';
+import logoZune           from '../assets/logo-zune.webp';
+import logoZunePng        from '../assets/logo-zune.png';
+import logoCasarena       from '../assets/logo-casarena.webp';
+import logoCasarenaPng    from '../assets/logo-casarena.png';
+import logoAquilaya       from '../assets/logo-aquilaya.webp';
+import logoAquilayaPng    from '../assets/logo-aquilaya.png';
+import logoAnzoEnamora    from '../assets/logo-anzoategui-enamora.webp';
+import logoAnzoEnamoraPng from '../assets/logo-anzoategui-enamora.png';
+import logoGobernacion    from '../assets/logo-gobernacion.webp';
+import logoGobernacionPng from '../assets/logo-gobernacion.png';
+
+/* Todos los logos tienen el mismo fondo verde Tepuy → cover directo */
+const LOGO_IMG = {
+  width: '100%', height: '100%',
+  objectFit: 'cover', display: 'block',
+};
 
 const Sponsors = () => {
   const { isMobile } = useMedia('(max-width: 768px)');
@@ -40,24 +74,35 @@ const Sponsors = () => {
   useEffect(() => { const t = setTimeout(() => setMounted(true), 80); return () => clearTimeout(t); }, []);
 
   const titleSponsors = [
-    { name: 'Venetur', logo: logoVenetur, logoWebp: logoVeneturWebp, bgStyle: 'white' },
-    { name: 'Marea',   logo: logoMarea,   logoWebp: logoMareaWebp,   bgStyle: 'white' },
-    { name: 'Mintur',  logo: logoMintur,  logoWebp: logoMinturWebp,  bgStyle: 'white' },
+    { name: 'Venetur', logo: logoVeneturPng, logoWebp: logoVenetur },
+    { name: 'Marea',   logo: logoMareaPng,   logoWebp: logoMarea   },
+    { name: 'Mintur',  logo: logoMinturPng,  logoWebp: logoMintur  },
   ];
 
-  // ── Patrocinadores oficiales + aliados fusionados ──
   const officialSponsors = [
-    { name: 'Con María Bonita', logo: logoConMariaBonita,                              bgStyle: 'dark'   },
-    { name: 'Natvisual',        logo: logoNatvisual,                                   bgStyle: 'white', imgScale: 1.8 },
-    { name: 'BOOM Eventos',     logo: logoBoom,           logoWebp: logoBoomWebp,      bgStyle: 'white'  },
-    { name: 'Transporte SV',    logo: logoTransporteSV,                                bgStyle: 'white'  },
-    { name: 'DC Gráficos',      logo: logoDC,             logoWebp: logoDCWebp,        bgStyle: 'white',  ig: 'https://www.instagram.com/dcgraficos?igsh=MXd2anNodzRsNjlvMA==' },
-    { name: 'Grupo Somos',      logo: logoSomos,          logoWebp: logoSomosWebp,     bgStyle: 'transp', ig: 'https://www.instagram.com/gruposomos_pzo?igsh=MXJ6dmttZzkwODAycA==' },
-    { name: 'GW Studios',       logo: logoGw,                                          bgStyle: 'white',  ig: 'https://www.instagram.com/gw.studios_?igsh=MW9rZTB1djN5YmE4eA==' },
-    { name: 'Ale Galarreta',    logo: logoAleGalarreta,                                bgStyle: 'transp', ig: 'https://www.instagram.com/ale.galarreta?igsh=MWVqcWx2Mmlzb2lu' },
-    { name: 'POW Fitness',      logo: logoPow,            logoWebp: logoPowWebp,       bgStyle: 'transp', ig: 'https://www.instagram.com/powfitnessve?igsh=MTgxaDh5YmZrbHd6dg==' },
-    { name: 'Vive Pilates',     logo: logoVive,           logoWebp: logoViveWebp,      bgStyle: 'transp', ig: 'https://www.instagram.com/vivepilates.studio?igsh=MTRoNmI3dWlnOHdiNA==' },
-    { name: 'SYF',              logo: logoSyf,            logoWebp: logoSyfWebp,       bgStyle: 'transp', ig: 'https://www.instagram.com/syf.sportswear?igsh=MW55dXUwMjJvemJyMg==' },
+    { name: 'Con María Bonita', logo: logoConMariaPng,   logoWebp: logoConMariaBonita },
+    { name: 'Natvisual',        logo: logoNatvisualPng,  logoWebp: logoNatvisual      },
+    { name: 'BOOM Eventos',     logo: logoBoomPng,       logoWebp: logoBoom           },
+    { name: 'Transporte SV',    logo: logoTransportePng, logoWebp: logoTransporteSV   },
+  ];
+
+  const partners = [
+    { name: 'DC Gráficos',             logo: logoDCPng,          logoWebp: logoDC,           ig: 'https://www.instagram.com/dcgraficos?igsh=MXd2anNodzRsNjlvMA==' },
+    { name: 'Grupo Somos',             logo: logoSomosPng,       logoWebp: logoSomos,        ig: 'https://www.instagram.com/gruposomos_pzo?igsh=MXJ6dmttZzkwODAycA==' },
+    { name: 'GW Studios',              logo: logoGwPng,          logoWebp: logoGw,           ig: 'https://www.instagram.com/gw.studios_?igsh=MW9rZTB1djN5YmE4eA==' },
+    { name: 'Ale Galarreta',           logo: logoAlePng,         logoWebp: logoAleGalarreta, ig: 'https://www.instagram.com/ale.galarreta?igsh=MWVqcWx2Mmlzb2lu' },
+    { name: 'POW Fitness',             logo: logoPowPng,         logoWebp: logoPow,          ig: 'https://www.instagram.com/powfitnessve?igsh=MTgxaDh5YmZrbHd6dg==' },
+    { name: 'Vive Pilates',            logo: logoVivePng,        logoWebp: logoVive,         ig: 'https://www.instagram.com/vivepilates.studio?igsh=MTRoNmI3dWlnOHdiNA==' },
+    { name: 'SYF Sportswear',          logo: logoSyfPng,         logoWebp: logoSyf,          ig: 'https://www.instagram.com/syf.sportswear?igsh=MW55dXUwMjJvemJyMg==' },
+    { name: 'Nativa Tours Khasen',     logo: logoNativaPng,      logoWebp: logoNativa        },
+    { name: 'Cabañas Hainburg',        logo: logoCabanasPng,     logoWebp: logoCabanas       },
+    { name: 'LaVista Glamping',        logo: logoLavistaPng,     logoWebp: logoLavista       },
+    { name: 'Xeria',                   logo: logoXeriaPng,       logoWebp: logoXeria         },
+    { name: 'Zune',                    logo: logoZunePng,        logoWebp: logoZune          },
+    { name: 'Casareña Beach House',    logo: logoCasarenaPng,    logoWebp: logoCasarena      },
+    { name: 'Alquila Ya',              logo: logoAquilayaPng,    logoWebp: logoAquilaya      },
+    { name: 'Anzoátegui te enamora',   logo: logoAnzoEnamoraPng, logoWebp: logoAnzoEnamora   },
+    { name: 'Gob. Bolivariano Anzoátegui', logo: logoGobernacionPng, logoWebp: logoGobernacion },
   ];
 
   const benefits = [
@@ -66,22 +111,35 @@ const Sponsors = () => {
     { icon: Users,      text: 'Marketing digital en todas nuestras redes sociales' },
   ];
 
-  const logoBg = (bgStyle) => ({
-    white:  'rgba(255,255,255,0.95)',
-    dark:   '#0e0e0e',
-    transp: 'transparent',
-  }[bgStyle] || 'rgba(255,255,255,0.95)');
-
-  const logoImgStyle = (imgScale) => ({
-    maxWidth:  '88%',
-    maxHeight: '88%',
-    width:     'auto',
-    height:    'auto',
-    objectFit: 'contain',
-    display:   'block',
-    transform: imgScale ? `scale(${imgScale})` : undefined,
-    transformOrigin: 'center center',
-  });
+  /* Card de logo reutilizable */
+  const LogoCard = ({ s, height, className, style }) => (
+    <div
+      className={className}
+      style={{
+        borderRadius: '16px', overflow: 'hidden',
+        position: 'relative',
+        ...style,
+      }}
+    >
+      <div style={{ width: '100%', height, overflow: 'hidden' }}>
+        <picture>
+          <source srcSet={s.logoWebp} type="image/webp" />
+          <img src={s.logo} alt={s.name} loading="lazy" decoding="async" style={LOGO_IMG} />
+        </picture>
+      </div>
+      <div style={{
+        padding: '8px 10px',
+        fontSize: isMobile ? '11px' : '12px',
+        fontWeight: '700', color: '#f5f1e8',
+        fontFamily: "'Inter',sans-serif",
+        textAlign: 'center',
+        backgroundColor: 'rgba(10,40,32,0.6)',
+        letterSpacing: '0.3px',
+      }}>
+        {s.name}
+      </div>
+    </div>
+  );
 
   return (
     <div style={{ fontFamily:"'Playfair Display',serif", backgroundColor:'transparent', color:'#f5f1e8', minHeight:'100vh', paddingTop:'100px', overflowX:'hidden' }}>
@@ -89,20 +147,28 @@ const Sponsors = () => {
         @keyframes spFadeUp    { from{opacity:0;transform:translateY(36px)} to{opacity:1;transform:translateY(0)} }
         @keyframes spFadeRight { from{opacity:0;transform:translateX(-28px)} to{opacity:1;transform:translateX(0)} }
         @keyframes spFadeLeft  { from{opacity:0;transform:translateX(28px)}  to{opacity:1;transform:translateX(0)} }
-        @keyframes spCardIn    { from{opacity:0;transform:translateY(20px)scale(0.97)} to{opacity:1;transform:translateY(0)scale(1)} }
-        @keyframes spHeroIn    { from{opacity:0;transform:scale(0.95)translateY(20px)} to{opacity:1;transform:scale(1)translateY(0)} }
+        @keyframes spCardIn    { from{opacity:0;transform:translateY(20px) scale(0.97)} to{opacity:1;transform:translateY(0) scale(1)} }
+        @keyframes spHeroIn    { from{opacity:0;transform:scale(0.95) translateY(20px)} to{opacity:1;transform:scale(1) translateY(0)} }
         @keyframes spShimmer   { 0%{background-position:-200% center} 100%{background-position:200% center} }
         @keyframes spTitleGlow { 0%,100%{box-shadow:0 15px 40px rgba(0,0,0,0.08);} 50%{box-shadow:0 20px 60px rgba(244,211,94,0.25);} }
         @keyframes spBtnPulse  { 0%,100%{box-shadow:0 5px 20px rgba(200,90,62,0.35);} 50%{box-shadow:0 8px 30px rgba(200,90,62,0.6);} }
-        .sp-title-card   { transition:transform 0.28s ease,box-shadow 0.28s ease; }
+
+        .sp-title-card { transition:transform 0.28s ease,box-shadow 0.28s ease; border:3px solid #f4d35e; border-radius:20px; overflow:hidden; cursor:default; position:relative; }
         .sp-title-card:hover { transform:translateY(-6px)!important; }
-        .sp-offic-card   { transition:transform 0.28s,border-color 0.28s,box-shadow 0.28s; }
-        .sp-offic-card:hover { transform:translateY(-7px)!important; border-color:#f4d35e!important; box-shadow:0 16px 36px rgba(200,90,62,0.18)!important; }
-        .sp-logo-inner { overflow:hidden; }
-        .sp-logo-inner img { transition:transform 0.3s ease; }
-        .sp-offic-card:hover .sp-logo-inner img,
-        .sp-title-card:hover .sp-logo-inner img { transform:scale(1.06); }
-        .sp-hero-btn    { animation:spBtnPulse 2.8s ease-in-out infinite; transition:transform 0.2s,background-color 0.2s; }
+        .sp-title-card:hover img { transform:scale(1.05); }
+        .sp-title-card img { transition:transform 0.35s ease; }
+
+        .sp-offic-card { transition:transform 0.28s,border-color 0.28s,box-shadow 0.28s; border:2px solid rgba(244,211,94,0.18); border-radius:18px; overflow:hidden; }
+        .sp-offic-card:hover { transform:translateY(-6px)!important; border-color:#f4d35e!important; box-shadow:0 16px 36px rgba(200,90,62,0.18)!important; }
+        .sp-offic-card:hover img { transform:scale(1.05); }
+        .sp-offic-card img { transition:transform 0.35s ease; }
+
+        .sp-partner-card { transition:transform 0.28s,border-color 0.28s,box-shadow 0.28s; border:2px solid rgba(200,90,62,0.12); border-radius:16px; overflow:hidden; }
+        .sp-partner-card:hover { transform:translateY(-5px)!important; border-color:#f4d35e!important; box-shadow:0 12px 28px rgba(200,90,62,0.14)!important; }
+        .sp-partner-card:hover img { transform:scale(1.05); }
+        .sp-partner-card img { transition:transform 0.35s ease; }
+
+        .sp-hero-btn { animation:spBtnPulse 2.8s ease-in-out infinite; transition:transform 0.2s,background-color 0.2s; }
         .sp-hero-btn:hover { transform:translateY(-2px) scale(1.03)!important; background-color:#f5f1e8!important; animation:none!important; }
         .sp-contact-btn { animation:spBtnPulse 2.8s ease-in-out infinite; transition:transform 0.2s,background-color 0.2s; }
         .sp-contact-btn:hover { transform:translateY(-2px)!important; background-color:#b04935!important; animation:none!important; }
@@ -125,12 +191,7 @@ const Sponsors = () => {
             animation: heroVisible ? 'spHeroIn 0.8s cubic-bezier(0.16,1,0.3,1) forwards' : 'none',
           }}>
             <div style={{ position:'absolute', top:0, left:0, right:0, height:'3px', background:'linear-gradient(90deg,transparent,#f4d35e 40%,#c85a3e 60%,transparent)', backgroundSize:'200% 100%', animation:'spShimmer 3s linear infinite', zIndex:2 }}/>
-            <div style={{
-              width:'100%', height:'100%',
-              background:'linear-gradient(135deg,rgba(10,74,66,0.95) 0%,rgba(200,90,62,0.85) 100%)',
-              display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center',
-              padding: isMobile ? '40px 18px' : '40px', minHeight: isMobile ? '280px' : 'auto',
-            }}>
+            <div style={{ width:'100%', height:'100%', background:'linear-gradient(135deg,rgba(10,74,66,0.95) 0%,rgba(200,90,62,0.85) 100%)', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', padding: isMobile ? '40px 18px' : '40px', minHeight: isMobile ? '280px' : 'auto' }}>
               <div style={{ display:'inline-block', backgroundColor:'rgba(244,211,94,0.15)', color:'#f4d35e', padding:'8px 20px', borderRadius:'20px', fontSize:'12px', fontWeight:'700', letterSpacing:'2px', marginBottom:'20px', fontFamily:"'Inter',sans-serif", border:'1px solid rgba(244,211,94,0.3)', opacity: heroVisible ? 1 : 0, animation: heroVisible ? 'spFadeUp 0.5s 0.2s ease forwards' : 'none', animationFillMode:'both' }}>
                 NUESTROS ALIADOS
               </div>
@@ -156,86 +217,103 @@ const Sponsors = () => {
             PATROCINADOR PRINCIPAL
           </h2>
         </div>
-        <div style={{ display:'flex', justifyContent:'center' }}>
+        <div style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3,1fr)', gap: isMobile ? '16px' : '28px' }}>
           {titleSponsors.map((s, i) => (
-            <div key={i} className="sp-title-card" style={{ width: isMobile ? '100%' : '500px', padding: isMobile ? '24px 16px' : '40px 36px', backgroundColor:'rgba(200,90,62,0.08)', borderRadius:'22px', textAlign:'center', border:'3px solid #f4d35e', cursor:'pointer', position:'relative', overflow:'hidden', opacity: titleVisible ? 1 : 0, animation: titleVisible ? 'spCardIn 0.7s 0.15s ease forwards, spTitleGlow 4s 1s ease-in-out infinite' : 'none', animationFillMode:'both, forwards', animationIterationCount:'1, infinite' }}>
-              <div style={{ position:'absolute', top:0, left:'10%', right:'10%', height:'3px', background:'linear-gradient(90deg,transparent,#f4d35e 50%,transparent)', backgroundSize:'200% 100%', animation:'spShimmer 2.5s linear infinite' }}/>
-              <div className="sp-logo-inner" style={{ width:'100%', height: isMobile ? '140px' : '190px', backgroundColor: logoBg(s.bgStyle), borderRadius:'14px', display:'flex', alignItems:'center', justifyContent:'center', padding:'10px' }}>
-                <img src={s.logo} alt={s.name} style={logoImgStyle(s.imgScale)} />
+            <div
+              key={i}
+              className="sp-title-card"
+              style={{
+                opacity: titleVisible ? 1 : 0,
+                animation: titleVisible ? `spCardIn 0.6s ${i * 0.1}s ease forwards, spTitleGlow 4s 1s ease-in-out infinite` : 'none',
+                animationFillMode: 'both, forwards',
+                animationIterationCount: '1, infinite',
+              }}
+            >
+              <div style={{ position:'absolute', top:0, left:'10%', right:'10%', height:'3px', background:'linear-gradient(90deg,transparent,#f4d35e 50%,transparent)', backgroundSize:'200% 100%', animation:'spShimmer 2.5s linear infinite', zIndex:1 }}/>
+              <div style={{ width:'100%', height: isMobile ? '200px' : '260px', overflow:'hidden' }}>
+                <picture>
+                  <source srcSet={s.logoWebp} type="image/webp" />
+                  <img src={s.logo} alt={s.name} style={LOGO_IMG} />
+                </picture>
               </div>
-              <div style={{ marginTop:'14px', fontSize: isMobile ? '15px' : '17px', fontWeight:'700', color:'#f5f1e8', fontFamily:"'Inter',sans-serif" }}>{s.name}</div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* ══ PATROCINADORES OFICIALES + ALIADOS ══ */}
-      <section style={{ padding: isMobile ? '50px 18px' : '80px 40px', borderTop:'1px solid rgba(200,90,62,0.12)', borderBottom:'1px solid rgba(200,90,62,0.12)' }}>
+      {/* ══ PATROCINADORES OFICIALES ══ */}
+      <section style={{ padding: isMobile ? '50px 18px' : '80px 40px', borderTop:'1px solid rgba(200,90,62,0.12)' }}>
         <div ref={officRef} style={{ maxWidth:'1200px', margin:'0 auto' }}>
           <div style={{ display:'flex', alignItems:'center', gap:'15px', marginBottom: isMobile ? '24px' : '50px' }}>
             <div style={{ width: officVisible ? '60px' : '0', height:'3px', backgroundColor:'#c85a3e', transition:'width 0.7s ease', borderRadius:'2px' }}/>
             <h2 style={{ fontSize: isMobile ? '28px' : '42px', fontWeight:'900', margin:0, letterSpacing:'2px', opacity: officVisible ? 1 : 0, animation: officVisible ? 'spFadeRight 0.6s 0.1s ease forwards' : 'none', animationFillMode:'both' }}>
-              PATROCINADORES
+              PATROCINADORES OFICIALES
             </h2>
           </div>
+          <div style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(4,1fr)', gap: isMobile ? '14px' : '22px' }}>
+            {officialSponsors.map((s, i) => (
+              <div
+                key={i}
+                className="sp-offic-card"
+                style={{
+                  opacity: officVisible ? 1 : 0,
+                  animation: officVisible ? `spCardIn 0.5s ${i * 0.08}s ease forwards` : 'none',
+                  animationFillMode: 'both',
+                }}
+              >
+                <div style={{ width:'100%', height: isMobile ? '140px' : '180px', overflow:'hidden' }}>
+                  <picture>
+                    <source srcSet={s.logoWebp} type="image/webp" />
+                    <img src={s.logo} alt={s.name} loading="lazy" decoding="async" style={LOGO_IMG} />
+                  </picture>
+                </div>
+                <div style={{ padding:'10px', fontSize: isMobile ? '11px' : '13px', fontWeight:'700', color:'#f5f1e8', fontFamily:"'Inter',sans-serif", textAlign:'center', backgroundColor:'rgba(10,40,32,0.6)' }}>
+                  {s.name}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-          {/* grid: 4 cols desktop, 2 cols mobile — se adapta a 11 items */}
-          <div style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(4,1fr)', gap: isMobile ? '14px' : '26px' }}>
-            {officialSponsors.map((s, i) => {
-              const cardContent = (
+      {/* ══ ALIADOS ══ */}
+      <section style={{ padding: isMobile ? '50px 18px' : '80px 40px', borderTop:'1px solid rgba(200,90,62,0.12)', borderBottom:'1px solid rgba(200,90,62,0.12)' }}>
+        <div style={{ maxWidth:'1200px', margin:'0 auto' }}>
+          <div style={{ display:'flex', alignItems:'center', gap:'15px', marginBottom: isMobile ? '24px' : '50px' }}>
+            <div style={{ width:'60px', height:'3px', backgroundColor:'#c85a3e', borderRadius:'2px' }}/>
+            <h2 style={{ fontSize: isMobile ? '28px' : '42px', fontWeight:'900', margin:0, letterSpacing:'2px' }}>
+              ALIADOS
+            </h2>
+          </div>
+          <div style={{ display:'grid', gridTemplateColumns: isMobile ? 'repeat(2,1fr)' : 'repeat(4,1fr)', gap: isMobile ? '12px' : '20px' }}>
+            {partners.map((p, i) => {
+              const card = (
                 <div
-                  className="sp-offic-card"
+                  className="sp-partner-card"
                   style={{
-                    padding: isMobile ? '18px 14px' : '28px 22px',
-                    backgroundColor:'rgba(245,241,232,0.05)', borderRadius:'20px',
-                    textAlign:'center', border:'2px solid rgba(244,211,94,0.18)',
-                    cursor: s.ig ? 'pointer' : 'default',
-                    position:'relative', overflow:'hidden',
-                    opacity: officVisible ? 1 : 0,
-                    animation: officVisible ? `spCardIn 0.5s ${i * 0.05}s ease forwards` : 'none',
-                    animationFillMode:'both',
-                    height:'100%',
+                    opacity: 1,
+                    animation: `spCardIn 0.4s ${i * 0.04}s ease forwards`,
+                    animationFillMode: 'both',
+                    cursor: p.ig ? 'pointer' : 'default',
                   }}
                 >
-                  <div style={{ position:'absolute', top:0, left:'20%', right:'20%', height:'1px', background:'linear-gradient(90deg,transparent,rgba(244,211,94,0.22),transparent)' }}/>
-                  <div
-                    className="sp-logo-inner"
-                    style={{
-                      width:'100%', height: isMobile ? '110px' : '150px',
-                      backgroundColor: logoBg(s.bgStyle),
-                      borderRadius:'14px', display:'flex', alignItems:'center',
-                      justifyContent:'center',
-                      padding: s.bgStyle === 'transp' ? '0' : '12px',
-                      overflow:'hidden',
-                    }}
-                  >
+                  <div style={{ width:'100%', height: isMobile ? '120px' : '155px', overflow:'hidden' }}>
                     <picture>
-                      {s.logoWebp && <source srcSet={s.logoWebp} type="image/webp" />}
-                      <img
-                        src={s.logo}
-                        alt={s.name}
-                        loading="lazy"
-                        decoding="async"
-                        style={
-                          s.bgStyle === 'transp'
-                            ? { width:'100%', height:'100%', objectFit:'cover', display:'block', borderRadius:'14px' }
-                            : logoImgStyle(s.imgScale)
-                        }
-                      />
+                      <source srcSet={p.logoWebp} type="image/webp" />
+                      <img src={p.logo} alt={p.name} loading="lazy" decoding="async" style={LOGO_IMG} />
                     </picture>
                   </div>
-                  <div style={{ marginTop:'12px', fontSize: isMobile ? '12px' : '14px', fontWeight:'700', color:'#f5f1e8', fontFamily:"'Inter',sans-serif" }}>
-                    {s.name}
+                  <div style={{ padding:'8px 10px', fontSize: isMobile ? '10px' : '12px', fontWeight:'700', color:'#f5f1e8', fontFamily:"'Inter',sans-serif", textAlign:'center', backgroundColor:'rgba(10,40,32,0.6)' }}>
+                    {p.name}
                   </div>
                 </div>
               );
-
-              return s.ig ? (
-                <a key={i} href={s.ig} target="_blank" rel="noopener noreferrer" style={{ textDecoration:'none' }}>
-                  {cardContent}
+              return p.ig ? (
+                <a key={i} href={p.ig} target="_blank" rel="noopener noreferrer" style={{ textDecoration:'none' }}>
+                  {card}
                 </a>
               ) : (
-                <div key={i}>{cardContent}</div>
+                <div key={i}>{card}</div>
               );
             })}
           </div>
