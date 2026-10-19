@@ -141,7 +141,7 @@ const CountdownTimer = () => {
             animation: "ctLinePulse 3s ease-in-out infinite",
           }} />
 
-          {/* ══ mensaje "nos vamos a fortalecer…" ══ */}
+          {/* ══ mensaje principal: fecha oficial + inscripción ══ */}
           <div style={{
             padding: isMobile ? "36px 24px 28px" : "44px 52px 32px",
             textAlign: "center",
@@ -161,7 +161,7 @@ const CountdownTimer = () => {
               letterSpacing: "-0.3px",
               animation: "ctPulseText 4s ease-in-out infinite",
             }}>
-              Nos vamos a fortalecer para volver,
+              ¡Ya tenemos fecha! Inscríbete y vive
             </p>
             <p style={{
               fontSize: isMobile ? "clamp(16px,5vw,22px)" : "clamp(18px,2.2vw,26px)",
@@ -173,7 +173,7 @@ const CountdownTimer = () => {
               margin: "0 0 20px 0",
               letterSpacing: "-0.3px",
             }}>
-              todo a su tiempo.
+              la carrera y la caminata.
             </p>
 
             {/* sublabel */}
@@ -186,16 +186,26 @@ const CountdownTimer = () => {
               marginBottom: "22px",
             }}>
               <span style={{
-                fontSize: "11px", fontWeight: 700, letterSpacing: "2px",
-                color: "#0d4037", opacity: 0.6,
+                fontSize: isMobile ? "11px" : "12px", fontWeight: 800, letterSpacing: "2px",
+                color: "#0d4037", opacity: 0.8,
                 fontFamily: "'Inter', sans-serif",
                 textTransform: "uppercase",
               }}>
-                Fecha por confirmar · Lechería, VE
+                21 de noviembre · Lechería, VE
               </span>
             </div>
 
-            {/* botón inscríbete + sublabel "Como corredor" */}
+            {/* modalidades: carrera y caminata */}
+            <div style={{
+              display: "flex", justifyContent: "center", flexWrap: "wrap",
+              gap: "8px", marginBottom: "20px",
+            }}>
+              {["🏃 Carrera", "🚶 Caminata"].map((m) => (
+                <span key={m} className="ct-dest-tag">{m}</span>
+              ))}
+            </div>
+
+            {/* botón inscríbete + sublabel */}
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "6px" }}>
               <a
                 href="https://tepuy.b9ticketing.com"
@@ -220,7 +230,7 @@ const CountdownTimer = () => {
                 fontSize: "10px", fontWeight: 700, color: "#a2432d",
                 fontFamily: "'Inter', sans-serif", letterSpacing: "1px", opacity: 0.7,
               }}>
-                Como corredor
+                Como corredor o caminante
               </span>
             </div>
           </div>
