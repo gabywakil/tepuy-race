@@ -133,7 +133,7 @@ const MainSponsors = () => {
               <div
                 className="ms-card"
                 style={{
-                  padding: isMobile ? '26px 18px' : (isFirst ? '80px 60px' : '60px 40px'),
+                  padding: isMobile ? '26px 18px' : '60px 40px',
                   backgroundColor: isFirst ? 'rgba(244,211,94,0.1)' : 'rgba(245,241,232,0.08)',
                   borderRadius:'25px', textAlign:'center',
                   border: isFirst ? '3px solid #f4d35e' : '2px solid rgba(244,211,94,0.3)',
@@ -186,25 +186,27 @@ const MainSponsors = () => {
                   className="ms-logo-box"
                   style={{
                     width:'100%',
-                    height: isMobile ? '180px' : (isFirst ? '260px' : '200px'),
-                    backgroundColor:'rgba(255,255,255,0.9)',
+                    aspectRatio:'1080 / 670', /* misma proporción que los logos */
+                    backgroundColor:'#1e2e11',
                     borderRadius:'15px',
                     display:'flex', alignItems:'center', justifyContent:'center',
                     marginBottom:'12px',
                     overflow:'hidden',
-                    padding:'12px',
                   }}
                 >
-                  <img
-                    src={sponsor.logo}
-                    alt={sponsor.name}
-                    style={{
-                      maxWidth:'85%',
-                      maxHeight:'85%',
-                      objectFit:'contain',
-                      display:'block',
-                    }}
-                  />
+                  <picture style={{ width:'100%', height:'100%', display:'block' }}>
+                    <source srcSet={sponsor.logoWebp} type="image/webp" />
+                    <img
+                      src={sponsor.logo}
+                      alt={sponsor.name}
+                      style={{
+                        width:'100%',
+                        height:'100%',
+                        objectFit:'contain',
+                        display:'block',
+                      }}
+                    />
+                  </picture>
                 </div>
 
                 {/* ── Nombre ── */}

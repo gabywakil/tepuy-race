@@ -19,8 +19,6 @@ import logoNatvisual      from '../assets/logo-natvisual.webp';
 import logoNatvisualPng   from '../assets/logo-natvisual.png';
 import logoBoom           from '../assets/logo-boom.webp';
 import logoBoomPng        from '../assets/logo-boom.png';
-import logoTransporteSV   from '../assets/logo-transportesv.webp';
-import logoTransportePng  from '../assets/logo-transportesv.png';
 
 /* ── ALIADOS ── */
 import logoDC             from '../assets/logo-dc.webp';
@@ -57,9 +55,12 @@ import logoGobernacion    from '../assets/logo-gobernacion.webp';
 import logoGobernacionPng from '../assets/logo-gobernacion.png';
 
 /* Todos los logos tienen el mismo fondo verde Tepuy → cover directo */
+/* todos los logos oficiales tienen el fondo verde de marca (#1e2e11);
+   'contain' muestra el logo completo y el fondo rellena el espacio sobrante */
 const LOGO_IMG = {
   width: '100%', height: '100%',
-  objectFit: 'cover', display: 'block',
+  objectFit: 'contain', display: 'block',
+  backgroundColor: '#1e2e11',
 };
 
 const Sponsors = () => {
@@ -83,7 +84,6 @@ const Sponsors = () => {
     { name: 'Con María Bonita', logo: logoConMariaPng,   logoWebp: logoConMariaBonita },
     { name: 'Natvisual',        logo: logoNatvisualPng,  logoWebp: logoNatvisual      },
     { name: 'BOOM Eventos',     logo: logoBoomPng,       logoWebp: logoBoom           },
-    { name: 'Transporte SV',    logo: logoTransportePng, logoWebp: logoTransporteSV   },
   ];
 
   const partners = [
@@ -250,7 +250,7 @@ const Sponsors = () => {
               PATROCINADORES OFICIALES
             </h2>
           </div>
-          <div style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(4,1fr)', gap: isMobile ? '14px' : '22px' }}>
+          <div style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3,1fr)', gap: isMobile ? '14px' : '22px' }}>
             {officialSponsors.map((s, i) => (
               <div
                 key={i}
